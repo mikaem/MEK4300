@@ -2,9 +2,9 @@ name: mek4300
 channels:
   - conda-forge
 dependencies:
+  - numpy
+  - scipy
+  - matplotlib
   - python=3.8
   - fenics=2019.1.0=py38_9
   - mshr
-  - pip
-  - pip:
-    - -r ../requirements.txt

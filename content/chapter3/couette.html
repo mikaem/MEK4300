@@ -337,17 +337,23 @@
 <p>In this course we will learn how to use the FEniCS software, but the focus will be on the physics of flow. We will use FEniCS to generate numerical solutions that we can easily play with to enhance our understanding of what the mathematical equations represent, but we will not go through the inner details of the finite element method.</p>
 <p>In the current case of a Couette flow we will solve <a class="reference internal" href="#equation-eq-couettepde">(2)</a>. We assume here for completeness that the equation has an additional constant source <span class="math notranslate nohighlight">\(f\)</span></p>
 <div class="math notranslate nohighlight">
-\[\nabla ^2 u = f.\]</div>
+\[
+\nabla ^2 u = f.
+\]</div>
 <p>We now multiply the Poisson equation by the test function <span class="math notranslate nohighlight">\(v\)</span> and integrate over the domain <span class="math notranslate nohighlight">\(\Omega=[-h, h]\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[\int_\Omega (\nabla^2 u)v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace .\]</div>
+\[
+\int_\Omega (\nabla^2 u)v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace .
+\]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> is used to represent a volume integral. For Cartesian coordinates <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> is equal to <span class="math notranslate nohighlight">\(\mathrm{d}x\mathrm{d}y\mathrm{d}z\)</span>, whereas for cylindrical coordinates it equals <span class="math notranslate nohighlight">\(r\mathrm{d}r\mathrm{d}\theta\mathrm{d}z\)</span>.</p>
 <p>Next we apply integration by parts to the integrand on the left hand side with a second-order derivative,</p>
 <div class="math notranslate nohighlight" id="equation-eq-secondorderint">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eq-secondorderint" title="Permalink to this equation">¶</a></span>\[\int_\Omega (\nabla^2 u)v \, \mathrm{d}x =  -\int_\Omega\nabla u\cdot\nabla v \, \mathrm{d}x + \int_{\partial\Omega}{\partial u\over \partial n}v \, \mathrm{d}s ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\partial u \over \partial n\)</span> is the derivative of u in the outward normal direction at the boundary (here at <span class="math notranslate nohighlight">\(y=\pm h\)</span>). The test function <span class="math notranslate nohighlight">\(v\)</span> is required to vanish on the parts of the boundary where <span class="math notranslate nohighlight">\(u\)</span> is known, which in the present problem implies that <span class="math notranslate nohighlight">\(v=0\)</span> for <span class="math notranslate nohighlight">\(y=\pm h\)</span>. The second term on the right-hand side of <a class="reference internal" href="#equation-eq-secondorderint">(4)</a> therefore vanishes for the current problem and we are left with</p>
 <div class="math notranslate nohighlight">
-\[-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,\]</div>
+\[
+-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,
+\]</div>
 <p>which is also referred to as the weak form of the original boundary value problem (<span class="math notranslate nohighlight">\(\nabla^2 u=f\)</span> with boundary conditions). The finite element method discretizes and solves this weak form of the problem on a domain divided into non-overlapping cells. In 2D we typically apply triangles, whereas in 3D tetrahedrons are applied. For 1D problems like the Couette flow we simply divide the computational domain <span class="math notranslate nohighlight">\(\Omega\)</span> into non-overlapping intervals.</p>
 <p>The final step required for building a finite element solution is to choose an appropriate function space for our solution. A function space can for example be piecewise linear functions or piecewise polynomials of a higher degree. Different function spaces can be chosen for the trial and test functions, but in general they only differ on the boundaries.
 The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are in the present problem defined as</p>

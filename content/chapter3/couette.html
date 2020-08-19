@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Couette flows &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Poiseuille flows" href="poiseuille.html" />
+    <link rel="prev" title="Parallel shear flows" href="planeshearflow.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   Chapter 3
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="reference internal" href="planeshearflow.html">
+     Parallel shear flows
+    </a>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Couette flows
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="poiseuille.html">
+       Poiseuille flows
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="similarity.html">
+     Similarity solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stokes.html">
+     Stokes flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fenics/intro.html">
+   FEniCS
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/chapter3/couette.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/chapter3/couette.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#couette-flow-between-axially-moving-concentric-cylinders">
+   Couette flow between axially moving concentric cylinders
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsteady-couette-flows">
+   Unsteady Couette flows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fluid-oscillation-above-an-infinite-plate">
+   Fluid oscillation above an infinite plate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsteady-flow-between-two-infinite-plates">
+   Unsteady flow between two infinite plates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-assignments-couette">
+   Suggested assignments Couette
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#couette-problems-from-white">
+     Couette problems from White:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-couette-problems">
+     Additional Couette problems:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computer-assignments-couette">
+   Computer assignments Couette
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="couette-flows">
+<h1>Couette flows<a class="headerlink" href="#couette-flows" title="Permalink to this headline">¶</a></h1>
+<p>We will first look at a steady plane Couette flow, like in Chapter 3-2.1, where the height of the plane channel is <span class="math notranslate nohighlight">\(2h\)</span>. There is no applied pressure and no gravitational forces in the <span class="math notranslate nohighlight">\(x\)</span>-direction, so the Navier-Stokes equations reduce further to</p>
+<div class="math notranslate nohighlight" id="equation-eq-couettepde">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-couettepde" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \nabla ^2 u &amp;= 0,    \\
+  \frac{\partial u}{\partial x} &amp;= 0,
+\end{aligned}\end{split}\]</div>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<div class="math notranslate nohighlight" id="equation-eq-exactcouette">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
+<p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
+<p>FEniCS solves PDEs by expressing the original problem (the PDEs with boundary and initial conditions) as a variational problem. The core of the recipe for turning a PDE into a variational problem is to multiply the PDE by a function <span class="math notranslate nohighlight">\(v\)</span>, integrate the resulting equation over the computational domain (typically called <span class="math notranslate nohighlight">\(\Omega\)</span>), and perform integration by parts of terms with second-order derivatives. The function <span class="math notranslate nohighlight">\(v\)</span> which multiplies the PDE is in the mathematical finite element literature called a test function. The unknown function <span class="math notranslate nohighlight">\(u\)</span> to be approximated is referred to as a trial function. The terms test and trial function are used in FEniCS programs too.</p>
+<p>In this course we will learn how to use the FEniCS software, but the focus will be on the physics of flow. We will use FEniCS to generate numerical solutions that we can easily play with to enhance our understanding of what the mathematical equations represent, but we will not go through the inner details of the finite element method.</p>
+<p>In the current case of a Couette flow we will solve <a class="reference internal" href="#equation-eq-couettepde">(2)</a>. We assume here for completeness that the equation has an additional constant source <span class="math notranslate nohighlight">\(f\)</span></p>
+<div class="math notranslate nohighlight">
+\[\nabla ^2 u = f.\]</div>
+<p>We now multiply the Poisson equation by the test function <span class="math notranslate nohighlight">\(v\)</span> and integrate over the domain <span class="math notranslate nohighlight">\(\Omega=[-h, h]\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\int_\Omega (\nabla^2 u)v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace .\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> is used to represent a volume integral. For Cartesian coordinates <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> is equal to <span class="math notranslate nohighlight">\(\mathrm{d}x\mathrm{d}y\mathrm{d}z\)</span>, whereas for cylindrical coordinates it equals <span class="math notranslate nohighlight">\(r\mathrm{d}r\mathrm{d}\theta\mathrm{d}z\)</span>.</p>
+<p>Next we apply integration by parts to the integrand on the left hand side with a second-order derivative,</p>
+<div class="math notranslate nohighlight" id="equation-eq-secondorderint">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-secondorderint" title="Permalink to this equation">¶</a></span>\[\int_\Omega (\nabla^2 u)v \, \mathrm{d}x =  -\int_\Omega\nabla u\cdot\nabla v \, \mathrm{d}x + \int_{\partial\Omega}{\partial u\over \partial n}v \, \mathrm{d}s ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\partial u \over \partial n\)</span> is the derivative of u in the outward normal direction at the boundary (here at <span class="math notranslate nohighlight">\(y=\pm h\)</span>). The test function <span class="math notranslate nohighlight">\(v\)</span> is required to vanish on the parts of the boundary where <span class="math notranslate nohighlight">\(u\)</span> is known, which in the present problem implies that <span class="math notranslate nohighlight">\(v=0\)</span> for <span class="math notranslate nohighlight">\(y=\pm h\)</span>. The second term on the right-hand side of <a class="reference internal" href="#equation-eq-secondorderint">(4)</a> therefore vanishes for the current problem and we are left with</p>
+<div class="math notranslate nohighlight">
+\[-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,\]</div>
+<p>which is also referred to as the weak form of the original boundary value problem (<span class="math notranslate nohighlight">\(\nabla^2 u=f\)</span> with boundary conditions). The finite element method discretizes and solves this weak form of the problem on a domain divided into non-overlapping cells. In 2D we typically apply triangles, whereas in 3D tetrahedrons are applied. For 1D problems like the Couette flow we simply divide the computational domain <span class="math notranslate nohighlight">\(\Omega\)</span> into non-overlapping intervals.</p>
+<p>The final step required for building a finite element solution is to choose an appropriate function space for our solution. A function space can for example be piecewise linear functions or piecewise polynomials of a higher degree. Different function spaces can be chosen for the trial and test functions, but in general they only differ on the boundaries.
+The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are in the present problem defined as</p>
+<div class="math notranslate nohighlight" id="equation-eq-testspace">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-testspace" title="Permalink to this equation">¶</a></span>\[\hat{V} = \{v \in H^1(\Omega) : v = 0 \text{ for } y=\pm h\},\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-trialspace">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-trialspace" title="Permalink to this equation">¶</a></span>\[V = \{v \in H^1(\Omega) : v = 0 \text{ for } y=-h \text{ and } v=U for y=h\},\]</div>
+<p>Briefly, <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> is known as the Sobolev space containing functions <span class="math notranslate nohighlight">\(v\)</span> such that <span class="math notranslate nohighlight">\(v^2\)</span> and <span class="math notranslate nohighlight">\(\|\nabla v\|^2\)</span> have finite integrals over <span class="math notranslate nohighlight">\(\Omega\)</span>. You will learn more about the Sobolev space in a basic finite element course. For now it will be sufficient to know that you need to choose a function space and for fluid flow it is usually appropriate to choose a space consisting of piecewise linear or quadratic polynomials.</p>
+<p>Note that the proper mathematical statement of our variational problem now goes as follows: Find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-varcouette">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-varcouette" title="Permalink to this equation">¶</a></span>\[-\int_{\Omega} \nabla u \cdot \nabla v \, \mathrm{d}x = \int_{\Omega} fv \, \mathrm{d}x \quad \forall v \in \hat{V}.\]</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>The entire implementation that solves the variational problem <a class="reference internal" href="#equation-eq-varcouette">(7)</a> is given below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Couette flow</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bottom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+
+<span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+
+<span class="n">U</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bottom</span><span class="p">),</span>
+       <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">top</span><span class="p">)]</span>
+
+<span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="o">-</span><span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span> <span class="o">==</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="n">bcs</span><span class="p">)</span>
+
+<span class="n">u_exact</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;U/2*(1+x[0]/h)&quot;</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">U</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Couette flow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">u_</span> <span class="o">-</span> <span class="n">u_exact</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/couette_1_0.png" src="../../_images/couette_1_0.png" />
+</div>
+</div>
+<p>A more thorough tutorial for the Poisson equation is given in <a class="reference external" href="https://fenicsproject.org/docs/dolfin/dev/python/demos/poisson/demo_poisson.py.html">the online tutorial</a>. Here we will repeat only the most necessary steps. The first thing we need to do is to import all basic FEniCS functionality into the python environment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>This is typically the first line of most FEniCS scripts as it imports all necessary functionality like <code class="docutils literal notranslate"><span class="pre">Interval,</span> <span class="pre">FunctionSpace,</span> <span class="pre">Function,</span> <span class="pre">DirichletBC,</span> <span class="pre">UnitSquare</span></code> and much, much more. A computational mesh is then generated by dividing the computational domain (<span class="math notranslate nohighlight">\(\Omega = [-h, h]\)</span>) into N equally sized intervals, each of size <span class="math notranslate nohighlight">\(2h/\mathrm{N}\)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We now choose a piecewise linear solution by defining a function space over the mesh</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Second order polynomials or higher may be chosen by using a higher number here, but for the current problem this will not enhance the accuracy since the analytical solution is linear. The trial and test functions <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are then declared, just as described leading up to <a class="reference internal" href="#equation-eq-varcouette">(7)</a>.</p>
+<p>The current problem assigns a value for <span class="math notranslate nohighlight">\(u\)</span> on both boundaries, which is mathematically termed Dirichlet boundary conditions. To implement these Dirichlet conditions we first need to specify where the boundaries are using two python functions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bottom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+
+<span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+</pre></div>
+</div>
+<p>Here x is an array representing position. It is an array of length equal to the number of spatial dimensions of the mesh. In our case it is an array of length 1. The boundary conditions are created using the FEniCS function <code class="docutils literal notranslate"><span class="pre">DirichletBC</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">U</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bottom</span><span class="p">),</span>
+       <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">top</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Note that by using brackets <span class="math notranslate nohighlight">\([\,]\)</span> the two boundary conditions are placed in a python list named bcs. The variational problem is solved by creating a <code class="docutils literal notranslate"><span class="pre">Function</span></code> to hold the solution and then calling the function <code class="docutils literal notranslate"><span class="pre">solve</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="o">-</span><span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span> <span class="o">==</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="n">bcs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(u_{-}\)</span> <code class="docutils literal notranslate"><span class="pre">Function</span></code> has <span class="math notranslate nohighlight">\(\mathrm{N}+1\)</span> unknowns, which are the solutions at the <span class="math notranslate nohighlight">\(\mathrm{N}+1\)</span> nodes of the mesh. However, it is important to remember that the finite element solution is not restricted to the nodes of the mesh. The finite element solution is the piecewise continuous linear profiles, well defined over the entire elements. You can look at the discrete solution at the nodes on the command line as a numpy array using</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[1.  0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0. ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can put the exact solution in a FEniCS <code class="docutils literal notranslate"><span class="pre">Function</span></code> by projecting a known analytical solution as an <code class="docutils literal notranslate"><span class="pre">Expression</span></code> onto the same function space as the numerical solution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_exact</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;U/2*(1+x[0]/h)&quot;</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">U</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Function</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> will now contain <span class="math notranslate nohighlight">\(\mathrm{N}+1\)</span> values, just like <code class="docutils literal notranslate"><span class="pre">u_</span></code>, and if we have computed correctly these values should be more or less the same as in <code class="docutils literal notranslate"><span class="pre">u_</span></code>. The plot above of the numerical solution minus the exact solution (<code class="docutils literal notranslate"><span class="pre">plot(u_</span> <span class="pre">-</span> <span class="pre">u_exact,</span> <span class="pre">title=&quot;Error</span> <span class="pre">couette</span> <span class="pre">flow&quot;)</span></code>) shows that the computed solution is exact down to machine precision <span class="math notranslate nohighlight">\(\approx 10^{-16}\)</span>. This is to be expected since the solution is linear and we are assuming a piecewise linear finite element solution.</p>
+</div>
+<div class="section" id="couette-flow-between-axially-moving-concentric-cylinders">
+<h2>Couette flow between axially moving concentric cylinders<a class="headerlink" href="#couette-flow-between-axially-moving-concentric-cylinders" title="Permalink to this headline">¶</a></h2>
+<p>The next example in Chapter 3-2.2 is the flow between axially moving concentric cylinders. The equation is the same as for the regular Couette flow in 3-2.1, but the coordinate system is cylindrical.
+There is no applied pressure gradient and the flow is described by the Poisson equation with no source.</p>
+<div class="math notranslate nohighlight" id="equation-eq-poissoncyl">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \nabla^2 u &amp;= 0, \\
+  \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r} \right) &amp;= 0. 
+\end{aligned}\end{split}\]</div>
+<p>The two cylinders have diameters <span class="math notranslate nohighlight">\(r_0\)</span> and <span class="math notranslate nohighlight">\(r_1\)</span>, where <span class="math notranslate nohighlight">\(r_0&lt;r_1\)</span>. The Dirichlet boundary conditions are <span class="math notranslate nohighlight">\(u(r=r_0)=u_0\)</span> and <span class="math notranslate nohighlight">\(u(r=r_1)=u_1\)</span>. The solution to <a class="reference internal" href="#equation-eq-poissoncyl">(8)</a> can be found by integrating twice</p>
+<div class="math notranslate nohighlight" id="equation-eq-ustep1">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-ustep1" title="Permalink to this equation">¶</a></span>\[  u(r) = C_1 \ln(r) + C_2,\]</div>
+<p>where the two integration constants are found using the boundary conditions leading to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ C_1 &amp;= \frac{U_1-U_0}{\ln(r_1/r_0)} \\
+ C_2 &amp;= U_0\frac{\ln(r_1)}{\ln(r_1/r_0)} - U_1 \frac{\ln(r_0)}{\ln(r_1/r_0)}
+\end{aligned}\end{split}\]</div>
+<p>which inserted into <a class="reference internal" href="#equation-eq-ustep1">(9)</a> gives</p>
+<div class="math notranslate nohighlight" id="equation-eq-uaxcyl">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-uaxcyl" title="Permalink to this equation">¶</a></span>\[ u(r) = U_0\frac{\ln(r_1/r)}{\ln(r_1/r_0)} + U_1\frac{\ln(r/r_0)}{\ln(r_1/r_0)}.\]</div>
+<p>Eq. <a class="reference internal" href="#equation-eq-uaxcyl">(10)</a> is exactly the sum of Eqs.~(3-18) and (3-19), which is a result of the governing equation being linear.</p>
+<p>The variational formulation of the problem reads</p>
+<div class="math notranslate nohighlight">
+\[-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,\]</div>
+<p>but in Cylindrical coordinates the volume integral needs to be transformed (<span class="math notranslate nohighlight">\(\mathrm{d}x = r\mathrm{d}r2\pi L\)</span>, assuming the cylinder has length <span class="math notranslate nohighlight">\(L\)</span>) and the variational problem becomes</p>
+<div class="math notranslate nohighlight">
+\[-\int_\Omega \nabla u \cdot \nabla v \, r \mathrm{d}r = \int_\Omega fv r \, \mathrm{d}r\thinspace.\]</div>
+<p>Note that the gradient requires no special treatment since the gradient component in the <span class="math notranslate nohighlight">\(r\)</span>-direction is unchanged in cylindrical coordinates.</p>
+<p>A FEniCS implementation for axially moving concentric cylinders is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Couette flow between two axially moving cylinders</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;reorder_dofs_serial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;CG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">inner_boundary</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+
+<span class="k">def</span> <span class="nf">outer_boundary</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">near</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+
+<span class="n">bc0</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">inner_boundary</span><span class="p">)</span>
+<span class="n">bc1</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">u1</span><span class="p">,</span> <span class="n">outer_boundary</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;x[0]&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">==</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">dx</span>
+
+<span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="c1"># Compute all three subproblems (3-2) and plot in the same figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">u00</span><span class="p">,</span> <span class="n">u11</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]):</span>
+    <span class="n">u0</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">u00</span><span class="p">)</span>
+    <span class="n">u1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">u11</span><span class="p">)</span>
+    <span class="n">solve</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bc0</span><span class="p">,</span> <span class="n">bc1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">(),</span> <span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;(a) U=1&quot;</span><span class="p">,</span> <span class="s2">&quot;(b) U=-1&quot;</span><span class="p">,</span> <span class="s2">&quot;(c) U=2&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Velocity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="n">u_exact</span> <span class="o">=</span> <span class="p">(</span><span class="n">u1</span><span class="o">-</span><span class="n">u0</span><span class="p">)</span><span class="o">*</span><span class="n">ln</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u0</span> <span class="o">-</span> <span class="p">(</span><span class="n">u1</span><span class="o">-</span><span class="n">u0</span><span class="p">)</span><span class="o">*</span><span class="n">ln</span><span class="p">(</span><span class="n">r0</span><span class="p">)</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span>
+<span class="n">u_exact</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">u_exact</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error &#39;</span><span class="p">,</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">degree_rise</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Error  2.7838640479591485e-05
+</pre></div>
+</div>
+<img alt="../../_images/couette_20_1.png" src="../../_images/couette_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="unsteady-couette-flows">
+<h2>Unsteady Couette flows<a class="headerlink" href="#unsteady-couette-flows" title="Permalink to this headline">¶</a></h2>
+<p>Transient behavior can be obtained for Couette type flows, where the velocity of the walls are either</p>
+<ol class="simple">
+<li><p>Suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(u_{wall}=U_0\)</span></p></li>
+<li><p>Oscillated as a function of time, i.e., <span class="math notranslate nohighlight">\(u_{wall}=f(t)\)</span>.</p></li>
+</ol>
+<p>The governing equation for these types of flow is the homogeneous heat equation</p>
+<div class="math notranslate nohighlight">
+\[  \frac{\partial \boldsymbol{u}}{\partial t} = \nu \nabla^2 \boldsymbol{u}.\]</div>
+<p>We consider only parallel shear flows in Cartesian coordinates, where the velocity vector is
+<span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y, t), 0, 0)\)</span> and the equation is reduced to</p>
+<div class="math notranslate nohighlight" id="equation-eq-heat1d">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-heat1d" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t} = \nu \frac{\partial^2 u}{\partial y^2}.\]</div>
+<p>There are many different solutions available for this 1D heat equation, depending on the boundary and initial conditions of the problem. Most solutions make use of the Fourier series, the Fourier integral or Fourier transforms, see, e.g., <a class="bibtex reference internal" href="#kreyszig" id="id2">[Kre99]</a>.</p>
+<p>As a first example of flow that is suddenly accelerated to  a constant velocity, consider a infinite plane normal to the <span class="math notranslate nohighlight">\(y\)</span>-axis located at <span class="math notranslate nohighlight">\(y=0\)</span> and initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. The plane is then suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(U_0\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction and remains at this velocity for all <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Above the plane, for <span class="math notranslate nohighlight">\(y&gt;0\)</span>, the fluid is initially at rest. Friction and the no-slip boundary condition will make the flow above the plane increase in speed. Far away from the plane the velocity will be zero, i.e., <span class="math notranslate nohighlight">\(u(\infty, t)=0\)</span>. This means that the velocity will never reach a steady state, and the boundary layer over the plane will continue to grow for all time.</p>
+<p>We can find the solution as before using a separation of variables, but first we normalize the velocity</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = \frac{u-U_0}{U_0},\]</div>
+<p>such that the boundary condition at <span class="math notranslate nohighlight">\(y=0\)</span> becomes homogeneous, i.e., <span class="math notranslate nohighlight">\(v(0, t)=0\)</span> for <span class="math notranslate nohighlight">\(t&gt;0\)</span>. The PDE for <span class="math notranslate nohighlight">\(v\)</span> is still <a class="reference internal" href="#equation-eq-heat1d">(11)</a>.</p>
+<p>Start by separating variables</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = T(t)V(y).\]</div>
+<p>Inserted into <a class="reference internal" href="#equation-eq-heat1d">(11)</a> we get</p>
+<div class="math notranslate nohighlight">
+\[  \frac{\dot{T}}{\nu T} = \frac{V''}{V} = K,\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> is a constant. To obtain physically realistic solutions, the constant needs to be negative. This can be understood looking first at the transient part:</p>
+<div class="math notranslate nohighlight">
+\[  \dot{T} = K \nu T,\]</div>
+<p>with solution</p>
+<div class="math notranslate nohighlight">
+\[  T(t) = e^{K \nu t}.\]</div>
+<p>If <span class="math notranslate nohighlight">\(K\)</span> is positive, then the velocity will grow without bounds and without energy being added to the system. For the second equation we have</p>
+<div class="math notranslate nohighlight">
+\[  V'' - K V = 0.\]</div>
+<p>If <span class="math notranslate nohighlight">\(K\)</span> is positive, then the solution is</p>
+<div class="math notranslate nohighlight">
+\[  V(y) = A \sinh(\sqrt{K} y) + B \cosh (\sqrt{K} y).\]</div>
+<p>The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> requires <span class="math notranslate nohighlight">\(B=0\)</span>. The remaining term <span class="math notranslate nohighlight">\(A\sinh (\sqrt{K} y)\)</span> grows without bounds as <span class="math notranslate nohighlight">\(y \longrightarrow \infty\)</span>, which is not in agreement with <span class="math notranslate nohighlight">\(v(\infty, t)=-1\)</span> and we have to assume that <span class="math notranslate nohighlight">\(K\)</span> is a negative constant that we can write as <span class="math notranslate nohighlight">\(K=-\lambda^2\)</span>. The solutions to the separated ordinary differential equations become</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  T(t) &amp;= e^{-\lambda^2 \nu t}, \\
+  V(y) &amp;= A \sin(\lambda y) + B \cos(\lambda y).
+\end{aligned}\end{split}\]</div>
+<p>The constants need to be found using boundary and initial conditions. The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> leads to <span class="math notranslate nohighlight">\(B=0\)</span> and as such one solution reads</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = A \sin (\lambda y) e^{-\lambda^2 \nu t}.\]</div>
+<p>To satisfy the initial condition we need to use more than one solution and through the superposition principle we can simply add solutions. A periodic Fourier series for <span class="math notranslate nohighlight">\(v\)</span> reads</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = \sum_{k=1}^{\infty} A_k \sin (\lambda_k y) e^{-\lambda_k^2 \nu t},\]</div>
+<p>where <span class="math notranslate nohighlight">\(A_k\)</span> are constants, <span class="math notranslate nohighlight">\(\lambda_k = k \pi / L\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the length of the periodic domain.</p>
+<p>However, our domain is not periodic and it is unbounded for <span class="math notranslate nohighlight">\(y\longrightarrow \infty\)</span>. It turns out that for infinite domains and non-periodic solution, it is advantageous to work with Fourier integrals instead. A Fourier integral for our problem reads</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = \int_{0}^{\infty} A(\lambda) \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda.\]</div>
+<div class="figure align-default" id="heaviside">
+<a class="reference internal image-reference" href="../../_images/Heaviside.png"><img alt="../../_images/Heaviside.png" src="../../_images/Heaviside.png" style="width: 300px; height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The Heaviside function.</span><a class="headerlink" href="#heaviside" title="Permalink to this image">¶</a></p>
+</div>
+<p>and the “constant” <span class="math notranslate nohighlight">\(A(\lambda)\)</span> is a continuous function of <span class="math notranslate nohighlight">\(\lambda\)</span>. Since <span class="math notranslate nohighlight">\(v\)</span> only contains sinuses it is an odd function. As such, even though we are only interested in the domain <span class="math notranslate nohighlight">\(y &gt; 0\)</span> we can define an initial condition for <span class="math notranslate nohighlight">\(v(y, 0)\)</span> over the entire <span class="math notranslate nohighlight">\(-\infty&lt;y&lt;\infty\)</span> as an odd function</p>
+<div class="math notranslate nohighlight">
+\[
+  v(y, 0) = 1-2\boldsymbol{H}(y) = \int_{0}^{\infty} A(\lambda) \sin (\lambda y) d\lambda, \, \mathrm{for } -\infty &lt; y &lt; \infty,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{H(y)}\)</span> is the Heaviside function.</p>
+<p>This way <span class="math notranslate nohighlight">\(v(y, 0) = 1\)</span> for <span class="math notranslate nohighlight">\(y&lt;0\)</span>, <span class="math notranslate nohighlight">\(v(y, 0)=-1\)</span> for <span class="math notranslate nohighlight">\(y&gt;0\)</span> and by symmetry <span class="math notranslate nohighlight">\(v(0, 0)=0\)</span>. Through orthogonality and the initial condition we can find <span class="math notranslate nohighlight">\(A(\lambda)\)</span> as (see <a class="bibtex reference internal" href="#kreyszig" id="id3">[Kre99]</a>)</p>
+<div class="math notranslate nohighlight">
+\[ A(\lambda) = -\frac{2}{\pi}\int_{0}^{\infty} \sin(\lambda y') dy' .\]</div>
+<p>Inserted into the total solution we get</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') dy' \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda,\]</div>
+<p>which can be rewritten by changing the order of integration as</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda dy'.\]</div>
+<p>The inner integral can be transformed using <span class="math notranslate nohighlight">\(\sin(\lambda y)\sin(\lambda y') = 0.5 (\cos \lambda(y-y') - \cos \lambda(y+y'))\)</span></p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \frac{1}{2} \left(\cos \lambda(y-y') - \cos \lambda(y+y') \right) d\lambda dy'.\]</div>
+<p>The inner integrals can then be computed exactly since</p>
+<div class="math notranslate nohighlight">
+\[  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y-y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2},\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y+y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}.\]</div>
+<p>The solution now reads</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = -\sqrt{\frac{1}{4 \pi \nu t}} \int_{0}^{\infty} \left( e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2} - e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2} \right)  dy'.\]</div>
+<p>Using integration by substitution, the integrals can be reorganized into error functions</p>
+<div class="math notranslate nohighlight">
+\[  \mathrm{erf}(z) = \frac{2}{\sqrt{\pi}} \int_0^{z} e^{-u^2} \mathrm{d}u,\]</div>
+<p>if we simply use a change of variables</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  u &amp;= \frac{y-y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = -\frac{1}{2\sqrt{\nu t}} \\
+  u' &amp;= \frac{y+y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = \frac{1}{2\sqrt{\nu t}}
+\end{aligned}\end{split}\]</div>
+<p>The integrals become</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\int_{0}^{\infty} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= -2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{-\infty} e^{-u^2} \mathrm{d}u,\\
+    &amp;= -\sqrt{\nu t \pi}\left(1+ \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right)
+\end{aligned}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\int_{0}^{\infty} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= 2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{\infty} e^{-u^2} \mathrm{d}u,\\
+    &amp;= \sqrt{\nu t \pi}\left(1- \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right).
+\end{aligned}\end{split}\]</div>
+<p>Putting it all together we finally obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  v(y, t) &amp;= -\sqrt{\frac{1}{4 \pi \nu t}} \left(-\sqrt{\nu t \pi} \right) (-2) \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right), \\
+  &amp;= -\mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right).
+\end{aligned}\end{split}\]</div>
+<p>The original unnormalized velocity becomes</p>
+<div class="math notranslate nohighlight">
+\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),
+  \label{eq:Stokesfirst}\]</div>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="k">for</span> <span class="n">y0</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Solution in extended domain&#39;</span><span class="p">,</span> <span class="s1">&#39;Solution in true domain&#39;</span><span class="p">)):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">200.</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">U0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">erf</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nu</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">),</span>
+                 <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+                 <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-.15&quot;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Velocity &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$u/U_0$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Position &quot;</span> <span class="o">+</span> <span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/couette_25_0.png" src="../../_images/couette_25_0.png" />
+<img alt="../../_images/couette_25_1.png" src="../../_images/couette_25_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fluid-oscillation-above-an-infinite-plate">
+<h2>Fluid oscillation above an infinite plate<a class="headerlink" href="#fluid-oscillation-above-an-infinite-plate" title="Permalink to this headline">¶</a></h2>
+<p>An infinite plate oscillates with a velocity <span class="math notranslate nohighlight">\(u(0, t) = U_0 \cos (\omega t)\)</span>, which is the boundary condition to the fluid flow set in motion above the plate. We look for a “steady state” solution <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, meaning that we look for a solution independent of initial conditions. This problem is also referred to as Stokes second problem.</p>
+<p>Since the plate oscillates with frequency <span class="math notranslate nohighlight">\(\cos (\omega t)\)</span> a justified guessed solution is</p>
+<div class="math notranslate nohighlight">
+\[  u(y, t) = f(y) e^{i \omega t} .\]</div>
+<p>Inserted into the unsteady 1D heat equation we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  f i \omega \cancel{e^{i \omega t}} - \nu f^{''} \cancel{e^{i \omega t}} &amp;= 0, \\
+  f^{''} - \frac{i \omega}{\nu}f &amp;= 0
+\end{aligned}\end{split}\]</div>
+<p>A general solution to this problem is</p>
+<div class="math notranslate nohighlight">
+\[  f(y) = Ae^{-\sqrt{\frac{i\omega}{\nu}}y} + Be^{\sqrt{\frac{i\omega}{\nu}}y},\]</div>
+<p>where only the first leads to physically realistic real solutions for <span class="math notranslate nohighlight">\(y\longrightarrow \infty\)</span>, such that <span class="math notranslate nohighlight">\(B=0\)</span>. The boundary condition at <span class="math notranslate nohighlight">\(y=0\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[  u(0, t) = f(0)e^{i \omega t} = A e^{i \omega t},\]</div>
+<p>where the real part then requires <span class="math notranslate nohighlight">\(A=U_0\)</span> and as such</p>
+<div class="math notranslate nohighlight">
+\[ u(y, t) = U_0  e^{ -\sqrt{\frac{i\omega}{\nu}} y + i \omega t}\]</div>
+</div>
+<div class="section" id="unsteady-flow-between-two-infinite-plates">
+<h2>Unsteady flow between two infinite plates<a class="headerlink" href="#unsteady-flow-between-two-infinite-plates" title="Permalink to this headline">¶</a></h2>
+<p>Consider two infinite plates separated by a distance <span class="math notranslate nohighlight">\(h\)</span> containing fluid initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. At <span class="math notranslate nohighlight">\(t=0\)</span> the velocity of the lower plate at <span class="math notranslate nohighlight">\(y=0\)</span> is suddenly accelerated to a velocity of <span class="math notranslate nohighlight">\(U_0\)</span> and the fluid above the plate starts to move due to friction and the no-slip boundary condition. The flow will approximate the steady linear Couette solution <span class="math notranslate nohighlight">\(U_0(1-y/h)\)</span> as <span class="math notranslate nohighlight">\(t \longrightarrow \infty\)</span>. Find the velocity between the plates as a function of time and space.</p>
+<p>The velocity, <span class="math notranslate nohighlight">\(\boldsymbol{u}=(u(y), 0, 0)\)</span>, is parallel to the walls and described by the 1D heat equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
+  u(y, 0) &amp;= 0, \quad 0 &lt; y &lt; h \\
+  u(0, t) &amp;= U_0, \\
+  u(h, t) &amp;= 0
+\end{aligned}\end{split}\]</div>
+<p>Through a shift of variables and using the steady Couette solution <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - U_0(1-y/h)\)</span>, the problem can be redefined with homogeneous boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
+  v(y, 0) &amp;= -U_0(1-y/h), \quad 0 &lt; y &lt; h \\
+  v(0, t) &amp;= 0, \\
+  v(h, t) &amp;= 0
+\end{aligned}\end{split}\]</div>
+<p>We can solve this problem easily using separation of variables <span class="math notranslate nohighlight">\(v(y, t) = T(t) V(y)\)</span>. Inserted into the heat equation we obtain as before</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\dot{T}}{\nu T} = \frac{V''}{V} = -\lambda^2\]</div>
+<p>and two ordinary differential equations for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  T(t) &amp;= e^{-\lambda^2 \nu t}, \\
+  V(y) &amp;= A\sin(\lambda y) + B \cos(\lambda y).
+\end{aligned}\end{split}\]</div>
+<p>The boundary conditions give us <span class="math notranslate nohighlight">\(B=0\)</span> and <span class="math notranslate nohighlight">\(\lambda = \lambda_n = n \pi / h\)</span> for <span class="math notranslate nohighlight">\(n=1,2,\ldots\)</span>. Using superposition we get the total solution for <span class="math notranslate nohighlight">\(v(y, t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[  v(y, t) = \sum_{n=1}^{\infty} A_n \sin(\lambda_n y) e^{-\lambda_n^2 \nu t},\]</div>
+<p>where the coefficients are found using the initial condition and orthogonality. That is,  multiply <span class="math notranslate nohighlight">\(v(y, 0)\)</span> by <span class="math notranslate nohighlight">\(\sin(\lambda_m)\)</span>, integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(h\)</span> and isolate <span class="math notranslate nohighlight">\(A_n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  A_n &amp;= -\frac{2U_0}{h}\int_0^h \sin(\lambda_n y)(1-y/h) \mathrm{d}y \\
+  A_n &amp;= -\frac{2 U_0}{n \pi}
+\end{aligned}\end{split}\]</div>
+<p>The total solution is then</p>
+<div class="math notranslate nohighlight">
+\[  u(y, t) = U_0(1-y/h) - \frac{2U_0}{\pi}\sum_{n=1}^{\infty} \frac{\sin(\lambda_n y)}{n} e^{-\lambda_n^2 \nu t}.\]</div>
+</div>
+<div class="section" id="suggested-assignments-couette">
+<h2>Suggested assignments Couette<a class="headerlink" href="#suggested-assignments-couette" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="couette-problems-from-white">
+<h3>Couette problems from White:<a class="headerlink" href="#couette-problems-from-white" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Problem 3-1 <a id='problem-3-1'></a></p></li>
+<li><p>Problem 3-2 <a id='problem-3-2'></a></p></li>
+<li><p>Problem 3-3 <a id='problem-3-3'></a></p></li>
+<li><p>Problem 3-4 <a id='problem-3-4'></a></p></li>
+<li><p>Problem 3-5 <a id='problem-3-5'></a></p></li>
+</ol>
+</div>
+<div class="section" id="additional-couette-problems">
+<h3>Additional Couette problems:<a class="headerlink" href="#additional-couette-problems" title="Permalink to this headline">¶</a></h3>
+<ol start='6'> 
+    <li> Homogeneous heat equation with inhomogeneous boundary conditions <a id='problem-6'></a>
+<p>Consider the homogeneous heat equation with inhomogeneous boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq L \\
+  u(y, 0) &amp;= \phi(y), \\
+  u(0, t) &amp;= g, \\
+  u(L, t) &amp;= h
+\end{aligned}
+   \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are constants. Find the general solution <span class="math notranslate nohighlight">\(u(y, t)\)</span>. Hint: use a function <span class="math notranslate nohighlight">\(\boldsymbol{U}(y) =
+   1/L[(L-y)g + y h]\)</span> and find the solution of <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - \boldsymbol{U}(y)\)</span>. The equation for <span class="math notranslate nohighlight">\(v(y, t)\)</span> is
+the same as for <span class="math notranslate nohighlight">\(u(y, t)\)</span>, but now with homogeneous boundary conditions.</p>
+<p>Optional (difficult), find the general solution if <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are functions of time. Two hints to the optional
+assignment are</p>
+<ul>
+<li> 
+Hint 1: use a function $\boldsymbol{U}(y, t) = 1/L[(L-y)g(t) + y h(t)]$ and find the solution of $v(y, t) = u(y,t)-\boldsymbol{U}(y,t)$. The equation for $v(y, t)$ should be obtained as an inhomogeneous heat equation with homogeneous boundary conditions.
+</li>
+<li> <a id='problem-6-hint-2'></a>
+Hint 2: Use Duhamel's principle to solve the inhomogeneous heat equation. Duhamel's principle states that the solution to the inhomogeneous heat equation can be found through solving just the homogeneous part. An inhomogeneous heat equation for $v(y, t)$ reads
+<p></p> 
+$$
+\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &= f(y, t), \quad \mathrm{ for }\quad 0 \leq y \leq L   \label{eq:Heat1DInhomo} \\
+\notag  v(y, 0) &= \overline{\phi}(y), \\
+\notag  v(0, t) &= v(L, t) = 0,
+\end{aligned}
+$$
+<p></p>
+We can solve instead the homogeneous part
+<p></p>   
+$$
+\begin{aligned}
+  \frac{\partial v^h}{\partial t} - \nu \frac{\partial ^2 v^h}{\partial y^2} &= 0, \quad \mathrm{ for }\quad 0 \leq y \leq L   \label{eq:Heat1DHomo} \\
+\notag  v^h(y, 0) &= \overline{\phi}(y), \\
+\notag  v^h(0, t) &= v^h(L, t) =  0,
+\end{aligned}
+$$
+<p></p>
+using for example a separation of variables $v^h(y,t)=S(t)V(y)$. The solution will evolve from the initial condition $\overline{\phi}$ and we thus expect the solution in a small increment of time to be expressed as $v^h(y, t) = S(t)\overline{\phi}(y)$. Duhamel's principle then states that the solution to the inhomogeneous problem can be computed as
+<p></p>
+$$
+\begin{aligned}
+  v(y, t) = v^h(y, t) + \int_0^t S(t-s)f(y, s)\mathrm{d}s,
+\end{aligned}
+$$
+<p></p>
+where $S(t-s)f(y, s)$ is the homogeneous solution we found earlier, but computed from the initial condition $f(y, s)$ instead of $\overline{\phi}$. One may think of $\int_0^t S(t-s)f(y, s)\mathrm{d}s$ as a superposition in time. Initialize using $f(y, s)$ and then move the solution an infinitesimal time forward using the homogeneous solution. By linearity, or superposition in time, one may add up, or integrate, the solution in time.<br>
+<p></p>
+<p>    </p>Duhamel's principle can be justified by computation. Insert for the inhomogeneous solution in the inhomogeneous equation
+<p></p>
+$$
+\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial^2 v}{\partial y^2} = \cancel{\frac{\partial v^h}{\partial t} - \nu \frac{\partial^2 v^h}{\partial y^2}} + \left( \frac{\partial }{\partial t} - \nu \frac{\partial^2 }{\partial y^2}  \right) \left( \int_0^t S(t-s)f(y, s)\mathrm{d}s\right)
+\end{aligned}
+$$
+<p></p>
+Use Leibniz rule for differentiation under the integral sign on the last part
+<p></p>
+$$
+\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial^2 v}{\partial y^2} &= S(t-t)f(y, t) + \int_0^t \left(\frac{\partial }{\partial t} - \nu \frac{\partial^2 }{\partial y^2}  \right) S(t-s)f(y, s)\mathrm{d}s, \\
+ &= S(0)f(y, t) = f(y, t).
+\end{aligned}
+$$
+<p></p>
+The integral is zero since the integrand $S(t-s)f(y, s)$ is known to be a solution of the homogeneous heat equation.
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="computer-assignments-couette">
+<h2>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Rotating cylinders. <a id='c-computer-1'></a></p>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
+</li>
+<li><p>Implement <a class="reference external" href="couette.html#problem-6">problem 6</a>. <a id='c-computer-2'></a></p>
+<p>Consider <a class="reference external" href="couette.html#problem-6">problem 6</a> with suitable <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> and compare the analytical solution from the written assignment with a numerical implementation.</p>
+</li>
+</ol>
+<p id="bibtex-bibliography-content/chapter3/couette-0"><dl class="citation">
+<dt class="bibtex label" id="kreyszig"><span class="brackets">Kre99</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Erwin Kreyszig. <em>Advanced Engineering mathematics</em>. Wiley, 8 edition, 1999.</p>
+</dd>
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>)</span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="planeshearflow.html" title="previous page">Parallel shear flows</a>
+    <a class='right-next' id="next-link" href="poiseuille.html" title="next page">Poiseuille flows</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

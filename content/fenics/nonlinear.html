@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numerical solution of nonlinear equations &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Transient problems" href="transient.html" />
+    <link rel="prev" title="FEniCS" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   FEniCS
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Numerical solution of nonlinear equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transient.html">
+     Transient problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/fenics/nonlinear.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/fenics/nonlinear.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonlinear-poisson-equation">
+   Nonlinear Poisson equation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-s-method">
+     Newton’s method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#picard-iterations">
+     Picard iterations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="numerical-solution-of-nonlinear-equations">
+<h1>Numerical solution of nonlinear equations<a class="headerlink" href="#numerical-solution-of-nonlinear-equations" title="Permalink to this headline">¶</a></h1>
+<p>Several derived equations in <a class="reference external" href="../chapter3/similarity.html#Similarity-solutions">Similarity solutions</a> (e.g., Eq. <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(41)</a>) are nonlinear and no analytical solutions are known. Very few techniques are actually available for solving nonlinear equations analytically and as such we usually have to rely on numerical methods to obtain solutions for real fluid flows. Reynolds Averaged Navier-Stokes equations, that will be discussed thoroughly in chapter 6 of White <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, are basically Navier-Stokes equations with a nonlinear viscosity coefficient. In this section we will consider two of the most important techniques for iteratively solving nonlinear equations: Picard and Newton iterations.</p>
+<p>The general procedure for obtaining solutions to nonlinear equations is to guess an initial solution and then successively recompute new and hopefully better approximations to the solution.  This is illustrated nicely with Newton’s method (also called Newton-Raphson’s method). Consider a nonlinear function <span class="math notranslate nohighlight">\(f(x)\)</span> of one variable <span class="math notranslate nohighlight">\(x\)</span> (e.g., <span class="math notranslate nohighlight">\(f(x)=x^2-1\)</span> or <span class="math notranslate nohighlight">\(f(x)=x \sin(x)-1\)</span>), where one is interested in finding the roots <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(f(x)=0\)</span>. Newton’s method boils down to making an initial guess <span class="math notranslate nohighlight">\(x_0\)</span> that does not satisfy our equation (i.e., <span class="math notranslate nohighlight">\(f(x_0) \neq 0\)</span>) and from this initial guess we successively compute better approximations to the final root:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\mathrm{Guess }&amp;\, x_0, \quad n=0 \\
+\mathrm{while}\,&amp;\,\mathrm{not }\, f(x_n) \approx 0\,\, \mathrm{do} \\
+&amp;x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})} \\
+&amp;n = n + 1
+\end{aligned}\end{split}\]</div>
+<p>That is, compute <span class="math notranslate nohighlight">\(x_1\)</span> from <span class="math notranslate nohighlight">\(x_0\)</span> and check if the solution is close enough to the root. If not, compute <span class="math notranslate nohighlight">\(x_2\)</span> using <span class="math notranslate nohighlight">\(x_1\)</span> as initial condition. Repeat until <span class="math notranslate nohighlight">\(f(x_n)\approx 0\)</span>.</p>
+<p>When PDEs are solved numerically we obtain through discretization a system of many equations for many variables. Newton’s method extends easily to systems of equations as well. Consider 2 equations with two unknowns written compactly as <span class="math notranslate nohighlight">\(F(\overline{x})\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  F(\overline{x}) =
+  \begin{cases}
+  x^2 + 2 x y &amp;= 0, \\
+  x + 4 y^2  &amp;= 0,
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{x} = (x, y)^T\)</span>. The vector <span class="math notranslate nohighlight">\(F\)</span> has two components (the two equations) and there are two unknowns. We can compute the derivative of <span class="math notranslate nohighlight">\(F\)</span> with respect to <span class="math notranslate nohighlight">\(\overline{x}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  J_{ij} = \frac{\partial F_i}{\partial x_j} =
+  \begin{pmatrix}
+   2x + 2y &amp; 2 x \\
+   1 &amp; 8y
+  \end{pmatrix}.\end{split}\]</div>
+<p>The derivative is often called the Jacobian. Newton’s method for these two equations (or any system of equations) is simply</p>
+<div class="math notranslate nohighlight">
+\[  J(\overline{x}^{k}) (\overline{x}^{k+1} - \overline{x}^{k}) = - F(\overline{x}^{k}),\]</div>
+<p>or with index notation for equation <span class="math notranslate nohighlight">\(i\)</span></p>
+<div class="math notranslate nohighlight">
+\[  J_{ij}^k (x_j^{k+1} - x_j^{k}) = - F_i^k,\]</div>
+<p>where the <span class="math notranslate nohighlight">\(k\)</span> index signals that both <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are computed using the solution at iteration step <span class="math notranslate nohighlight">\(k\)</span>. There is no summation on repeated <span class="math notranslate nohighlight">\(k\)</span>’s.</p>
+<p>A discrete finite element solution of the function <span class="math notranslate nohighlight">\(u\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[  u(x) = \sum_{i=0}^{N} u_i v_i(x),\]</div>
+<p>where <span class="math notranslate nohighlight">\(v_i\)</span> are the testfunctions. The solution has <span class="math notranslate nohighlight">\(N+1\)</span> unknowns <span class="math notranslate nohighlight">\(u_i\)</span>, or “degrees of freedom”, that for a linear Lagrange element are the values at the vertices of the mesh. When a PDE containing both trial- and testfunctions is assembled in FEniCS a set of <span class="math notranslate nohighlight">\(N+1\)</span> linear equations arise for these unknowns. We will now see how nonlinear equations can be handled by FEniCS.</p>
+<div class="section" id="nonlinear-poisson-equation">
+<h2>Nonlinear Poisson equation<a class="headerlink" href="#nonlinear-poisson-equation" title="Permalink to this headline">¶</a></h2>
+<p>Consider the nonlinear Poisson equation</p>
+<div class="math notranslate nohighlight">
+\[  - \nabla \cdot \left(q(u) \nabla u \right) = f(u),\]</div>
+<p>where <span class="math notranslate nohighlight">\(q\)</span> and <span class="math notranslate nohighlight">\(f\)</span> may be nonlinear functions of <span class="math notranslate nohighlight">\(u\)</span>. Using testfunction <span class="math notranslate nohighlight">\(v\)</span> and neglecting the boundary term the variational form reads</p>
+<div class="math notranslate nohighlight" id="equation-eq-nonlinpoissonvar">
+<span class="eqno">(65)<a class="headerlink" href="#equation-eq-nonlinpoissonvar" title="Permalink to this equation">¶</a></span>\[  \int_{\Omega}  q(u) \nabla u \cdot \nabla v \mathrm{d}x = \int_{\Omega} f(u) v \mathrm{d}x.\]</div>
+<p>This is a nonlinear variational form and we need to solve it iteratively.</p>
+<div class="section" id="newton-s-method">
+<h3>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
+<p>Consider first Newton’s method for solving the nonlinear Poisson equation. We use the notation <span class="math notranslate nohighlight">\(u^k\)</span> for the known solution at iteration step <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(u\)</span> the unknown trialfunction. For Newton’s method we write the variational form solely in terms of known functions</p>
+<div class="math notranslate nohighlight">
+\[F(u^k;v) =   \int_{\Omega}  q(u^k) \nabla u^k \cdot \nabla v \mathrm{d}x - \int_{\Omega} f(u^k) v \mathrm{d}x.\]</div>
+<p><span class="math notranslate nohighlight">\(F(u^k;v)\)</span> is a linear form in that it does not contain the unknown <span class="math notranslate nohighlight">\(u\)</span>, only the testfunction <span class="math notranslate nohighlight">\(v\)</span>. It is a <em>nonlinear</em> form in terms of the known <code class="docutils literal notranslate"><span class="pre">Function</span></code> <span class="math notranslate nohighlight">\(u^k\)</span> though. The Jacobian of  <span class="math notranslate nohighlight">\(F(u^k;v)\)</span> is computed is FEniCS as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A complete implementation that solves the nonlinear Poisson equation on the unit interval x=[0, 1] is shown below, where the use of this <code class="docutils literal notranslate"><span class="pre">J</span></code> should be obvious</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">UnitIntervalMesh</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="n">bc0</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;std::abs(x[0]) &lt; 1e-10&quot;</span><span class="p">)</span>
+<span class="n">bc1</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;std::abs(x[0]-1) &lt; 1e-10&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">q</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">+</span><span class="n">u</span><span class="o">**</span><span class="mi">4</span>
+    
+<span class="n">u_</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;x[0]&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">q</span><span class="p">(</span><span class="n">u_</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u_</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span>
+<span class="c1">##solve(F == 0, u_, [bc0, bc1])</span>
+
+<span class="n">J</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">du</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="o">-</span><span class="n">F</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">bc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="p">[</span><span class="n">bc0</span><span class="p">,</span> <span class="n">bc1</span><span class="p">]]</span>
+    <span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">du</span><span class="o">.</span><span class="n">vector</span><span class="p">(),</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">axpy</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">du</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">du</span><span class="o">.</span><span class="n">vector</span><span class="p">())</span>
+    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">{}</span><span class="s2"> Error = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.20207598526678652
+Iteration 2 Error = 0.006786044472018965
+Iteration 3 Error = 1.626130021884984e-05
+Iteration 4 Error = 1.1905550866645789e-10
+Iteration 5 Error = 8.698631493053902e-17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that everything below the line with <code class="docutils literal notranslate"><span class="pre">solve(F</span> <span class="pre">==</span> <span class="pre">0,</span> <span class="pre">u_,</span> <span class="pre">[bc0,</span> <span class="pre">bc1])</span></code> actually can be replaced simply by using this very compact call. The part from <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">derivative(F,</span> <span class="pre">u_,</span> <span class="pre">u)</span></code> and out is included here simply to illustrate how Newton’s method works in practise.</p>
+</div>
+<div class="section" id="picard-iterations">
+<h3>Picard iterations<a class="headerlink" href="#picard-iterations" title="Permalink to this headline">¶</a></h3>
+<p>For Picard iterations we have to linearize the variational form in Eq. <a class="reference internal" href="#equation-eq-nonlinpoissonvar">(65)</a> ourself. Let us first linearize such that the coefficient is known:</p>
+<div class="math notranslate nohighlight">
+\[F(u;v) =   \int_{\Omega}  q(u^k) \nabla u \cdot \nabla v \mathrm{d}x - \int_{\Omega} f(u^k, u) v \mathrm{d}x\]</div>
+<p>The first term on the rhs of <span class="math notranslate nohighlight">\(F(u;v)\)</span> is bilinear in that it contains both trial- and testfunctions <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. The equation is also linear in <span class="math notranslate nohighlight">\(u\)</span>, which is necessary for FEniCS to accept it. Note that the function <span class="math notranslate nohighlight">\(f\)</span> could be linear in <span class="math notranslate nohighlight">\(u\)</span> as well. For example, if <span class="math notranslate nohighlight">\(f(u) = u^2\)</span>, then we can linearize it like <span class="math notranslate nohighlight">\(f(u) = u \cdot u^k\)</span>. Picard iterations are implemented as Newton up to the point where the form is created. The remaining part of the Picard code reads:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u_</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;x[0]&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">q</span><span class="p">(</span><span class="n">u_</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">u_1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+    <span class="n">solve</span><span class="p">(</span><span class="n">F</span> <span class="o">==</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">,</span> <span class="n">u_</span><span class="p">,</span> <span class="p">[</span><span class="n">bc0</span><span class="p">,</span> <span class="n">bc1</span><span class="p">])</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">u_1</span><span class="p">)</span>
+    <span class="n">u_1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">u_</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">{}</span><span class="s2"> Error = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span>  <span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.6227202551171986
+Iteration 2 Error = 0.009279110924024897
+Iteration 3 Error = 0.0009571365383617912
+Iteration 4 Error = 7.170672306756823e-05
+Iteration 5 Error = 1.6196475252925717e-05
+Iteration 6 Error = 1.6051762319950847e-06
+Iteration 7 Error = 1.5867106937166712e-07
+Iteration 8 Error = 3.2011735458409474e-08
+Iteration 9 Error = 2.6184233711820267e-09
+Iteration 10 Error = 3.617146938878996e-10
+Iteration 11 Error = 6.066104630273271e-11
+Iteration 12 Error = 4.281972850229132e-12
+Iteration 13 Error = 8.043617961021526e-13
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Function</span></code> <code class="docutils literal notranslate"><span class="pre">u_1</span></code> holds the previous solution and <code class="docutils literal notranslate"><span class="pre">u_1.assign(u_)</span></code> copies all values from the newly computed <code class="docutils literal notranslate"><span class="pre">u_</span></code> to <code class="docutils literal notranslate"><span class="pre">u_1</span></code>.</p>
+<p>Note that the Newton’s method requires 5 iterations to converge, whereas Picard requires 13. This is quite typical. Newton’s method is known to be very efficient when it actually finds the solution, but it often diverges if the initial guess is not close enough to the final solution.  Picard is known to approach the solution more slowly, but in return it is usually more robust in that it finds the solution from a broader range of initial conditions.</p>
+<p id="bibtex-bibliography-content/fenics/nonlinear-0"><dl class="citation">
+<dt class="bibtex label" id="white06"><span class="brackets"><a class="fn-backref" href="#id1">Whi06</a></span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/fenics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">FEniCS</a>
+    <a class='right-next' id="next-link" href="transient.html" title="next page">Transient problems</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

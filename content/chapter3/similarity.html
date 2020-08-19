@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Similarity solutions &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stokes flow" href="stokes.html" />
+    <link rel="prev" title="Poiseuille flows" href="poiseuille.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   Chapter 3
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="planeshearflow.html">
+     Parallel shear flows
+    </a>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="couette.html">
+       Couette flows
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="poiseuille.html">
+       Poiseuille flows
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Similarity solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stokes.html">
+     Stokes flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fenics/intro.html">
+   FEniCS
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/chapter3/similarity.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/chapter3/similarity.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stokes-first-problem-revisited">
+   Stokes’ first problem revisited
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plane-stagnation-flow">
+   Plane stagnation flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axisymmetric-stagnation-flow">
+   Axisymmetric stagnation flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-assignments-similarity-solutions">
+   Suggested assignments similarity solutions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="similarity-solutions">
+<h1>Similarity solutions<a class="headerlink" href="#similarity-solutions" title="Permalink to this headline">¶</a></h1>
+<p>Similarity solutions are obtained when the number of independent variables describing a problem is reduced by at least one.</p>
+<div class="section" id="stokes-first-problem-revisited">
+<h2>Stokes’ first problem revisited<a class="headerlink" href="#stokes-first-problem-revisited" title="Permalink to this headline">¶</a></h2>
+<p>We will first illustrate this by revisiting Stokes’ first problem - A fluid initially at rest in an infinite domain (<span class="math notranslate nohighlight">\(y\in[0, \infty)\)</span>) is suddenly set in motion by an infinite flat plate located at <span class="math notranslate nohighlight">\(y=0\)</span>.
+The problem is described by the equations</p>
+<div class="math notranslate nohighlight" id="equation-eq-stokesheat1d">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-stokesheat1d" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+\frac{\partial u}{\partial t} &amp;= \nu \frac{\partial^2 u}{\partial y^2} \text{ for } y\in [0, \infty), \\
+u(\infty, t) &amp;= 0, \\
+u(y, t&lt;0) &amp;= 0 \\
+u(0, t&gt;0) &amp;= U_0
+\end{aligned}\end{split}\]</div>
+<p>We have already found the solution to this problem using Fourier integrals with the solution as shown below</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">200.</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">U0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">erf</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nu</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">),</span>
+             <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> 
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-.15&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Velocity &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$u/U_0$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Position &quot;</span> <span class="o">+</span> <span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Stokes&#39; first problem&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/similarity_1_0.png" src="../../_images/similarity_1_0.png" />
+</div>
+</div>
+<p>The solution is repeated here</p>
+<div class="math notranslate nohighlight">
+\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right).\]</div>
+<p>We will now look at this problem again and try to find this solution using a similarity approach. First define a similarity variable</p>
+<div class="math notranslate nohighlight">
+\[ \eta = \frac{y}{2 \sqrt{\nu t}},\]</div>
+<p>and observe that the solution can be written in terms of merely one variable</p>
+<div class="math notranslate nohighlight">
+\[  u(\eta) = U_0\left(1-\mathrm{erf} (\eta) \right).\]</div>
+<p>Usually we don’t know the solution and have to guess a similarity variable. Having defined <span class="math notranslate nohighlight">\(\eta\)</span>, the heat equation <a class="reference internal" href="#equation-eq-stokesheat1d">(31)</a> can be rewritten using chain rule differentiation</p>
+<div class="math notranslate nohighlight">
+\[  \frac{\mathrm{d} u}{\mathrm{d} \eta} \frac{\partial \eta}{\partial t} - \nu \left( \frac{\mathrm{d}^2 u}{\mathrm{d} \eta^2} \left( \frac{\partial \eta}{\partial y} \right)^2 + \frac{\mathrm{d} u}{\mathrm{d} \eta} \frac{\partial^2 \eta}{\partial y^2} \right) = 0.\]</div>
+<p>The partial derivatives of <span class="math notranslate nohighlight">\(\eta\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \frac{\partial \eta}{\partial t} &amp;= -\frac{\eta}{2 t}, \\
+  \frac{\partial \eta}{\partial y} &amp;= \frac{1}{2\sqrt{\nu t}}, \\
+  \frac{\partial^2 \eta}{\partial y^2} &amp;= 0.
+\end{aligned}\end{split}\]</div>
+<p>Inserting this into the above leads to and ordinary differential equation for <span class="math notranslate nohighlight">\(u(\eta)\)</span>, which is exactly what we were hoping to achieve</p>
+<div class="math notranslate nohighlight">
+\[ 2\eta \frac{\mathrm{d} u}{\mathrm{d} \eta} + \frac{\mathrm{d}^2 u}{\mathrm{d} \eta^2} = 0.\]</div>
+<p>This ordinary differential equation must be solved using boundary conditions <span class="math notranslate nohighlight">\(u(0) = U_0\)</span> and <span class="math notranslate nohighlight">\(u(\infty) = 0\)</span>. Define first <span class="math notranslate nohighlight">\(h(\eta) = \mathrm{d} u / \mathrm{d}\eta\)</span> and rewrite the ODE as</p>
+<div class="math notranslate nohighlight">
+\[  2\eta h + \frac{\mathrm{d} h}{\mathrm{d} \eta} = 0.\]</div>
+<p>Separate variables and integrate to obtain</p>
+<div class="math notranslate nohighlight">
+\[  \frac{\mathrm{d} u}{\mathrm{d} \eta} = Ae ^{- \eta^2}.\]</div>
+<p>Integrate one more time to obtain</p>
+<div class="math notranslate nohighlight">
+\[ u(\eta) = A\mathrm{erf} (\eta) + B\]</div>
+<p>Inserting for the boundary conditions we finally get the original solution derived with much more effort in <a class="reference external" href="../chapter3/couette.html#Unsteady-Couette-flows">Unsteady Couette</a>.</p>
+</div>
+<div class="section" id="plane-stagnation-flow">
+<h2>Plane stagnation flow<a class="headerlink" href="#plane-stagnation-flow" title="Permalink to this headline">¶</a></h2>
+<p>Another well known and much used similarity solution is the streamfunction <span class="math notranslate nohighlight">\(\psi(\boldsymbol{x}, t)\)</span>, that is most often used for two-dimensional flows, where it is defined through</p>
+<div class="math notranslate nohighlight" id="equation-eq-streamfunction2d">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-streamfunction2d" title="Permalink to this equation">¶</a></span>\[ u = \frac{\partial \psi}{\partial y}, \quad v = -\frac{\partial \psi}{\partial x}.\]</div>
+<p>In 2D the only non-zero component of the vorticity vector, <span class="math notranslate nohighlight">\(\omega_z\)</span>, is computed as</p>
+<div class="math notranslate nohighlight">
+\[  \omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},\]</div>
+<p>If this definition is combined with <a class="reference internal" href="#equation-eq-streamfunction2d">(32)</a> we obtain a Poisson equation for the streamfunction</p>
+<div class="math notranslate nohighlight" id="equation-eq-eqstreamfunction2d">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-eqstreamfunction2d" title="Permalink to this equation">¶</a></span>\[  \nabla^2 \psi = -\omega_z.\]</div>
+<p>The streamfunction is much used for inviscid irrotational flows, where the vorticity component <span class="math notranslate nohighlight">\(\omega_z=0\)</span>. However, the definition of the streamfunction is equally valid for viscous flows.</p>
+<p>An illustration of plane stagnation flow is given in Fig. (3-24) of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>. For inviscid flows the solution is trivially obtained as</p>
+<div class="math notranslate nohighlight">
+\[\psi = Bxy, \quad u = Bx, \quad v = -By,\]</div>
+<p>where <span class="math notranslate nohighlight">\(B\)</span> is a positive constant. Make sure to check that the solution satisfies both <a class="reference internal" href="#equation-eq-eqstreamfunction2d">(33)</a> (with zero right hand side) and the continuity equation</p>
+<div class="math notranslate nohighlight">
+\[  \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0.\]</div>
+<p>For viscous flows it is somewhat more complicated, since the right hand side of <a class="reference internal" href="#equation-eq-eqstreamfunction2d">(33)</a> is nonzero. To find the solution for viscous flows we also need to consider the momentum equations in two dimensions</p>
+<div class="math notranslate nohighlight" id="equation-eq-ns2d">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-ns2d" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+ \underline{u\frac{\partial u}{\partial x}} + v\frac{\partial u}{\partial y} &amp;= -\frac{1}{\rho}\frac{\partial p}{\partial x} + \nu \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), \notag \\
+u\frac{\partial v}{\partial x} + \underline{v\frac{\partial v}{\partial y}} &amp;= -\frac{1}{\rho}\frac{\partial p}{\partial y} + \nu \left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right).
+\end{aligned}\end{split}\]</div>
+<p>These equations are nonlinear due to the two underlined terms and coupled through the continuity equation. Note that there are three equations for the three unknowns <span class="math notranslate nohighlight">\(u, v, p\)</span>, so the equations are closed. We will now look for a similarity solution through a modification of the streamfunction of the form</p>
+<div class="math notranslate nohighlight">
+\[ \psi_{\nu} = B x f(y), \quad u = \frac{\partial \psi_{\nu}}{\partial y} = Bx \frac{d f}{dy}, \quad v = -\frac{\partial \psi_{\nu}}{\partial x} = -Bf.\]</div>
+<p>Using an apostrophe for the derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(y\)</span> one has immediately</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \frac{\partial u}{\partial x} = B f^{\prime},\quad   \frac{\partial u}{\partial y} = Bx f^{\prime\prime}, \quad
+  \frac{\partial^2 u}{\partial x^2} = 0,\quad   \frac{\partial^2 u}{\partial y^2} = Bx f^{\prime\prime\prime}, \\
+  \frac{\partial v}{\partial x} = 0,\quad   \frac{\partial v}{\partial y} = -B f^{\prime}, \quad
+  \frac{\partial^2 v}{\partial x^2} = 0,\quad   \frac{\partial^2 v}{\partial y^2} = -B f^{\prime\prime}.
+\end{aligned}\end{split}\]</div>
+<p>We immediately see that the continuity equation is satisfied. Inserting for the streamfunction in <a class="reference internal" href="#equation-eq-ns2d">(34)</a> we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  B^2 x (f^{\prime})^2 - B^2 x f f^{\prime\prime} - \nu B x f^{\prime\prime\prime} = -\frac{1}{\rho} \frac{\partial p}{\partial x}, \\
+  B^2 f f^{\prime} + \nu B f^{\prime\prime} = -\frac{1}{\rho} \frac{\partial p}{\partial y}
+\end{aligned}\end{split}\]</div>
+<p>The last equation here states that <span class="math notranslate nohighlight">\(\partial p/\partial y\)</span> is only a function of <span class="math notranslate nohighlight">\(y\)</span> and thus</p>
+<div class="math notranslate nohighlight" id="equation-eq-pressure-stag">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-pressure-stag" title="Permalink to this equation">¶</a></span>\[ \frac{\partial^2 p}{\partial x \partial y} = 0.\]</div>
+<p>The momentum equation in the <span class="math notranslate nohighlight">\(x\)</span>-direction can be simplified by dividing through by <span class="math notranslate nohighlight">\(- \nu B x\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq-stagnation0">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-stagnation0" title="Permalink to this equation">¶</a></span>\[ f^{\prime\prime\prime} + \frac{B}{\nu} \left( f f^{\prime\prime} - (f^{\prime})^2\right)  = \frac{1}{\nu B x \rho} \frac{\partial p}{\partial x}\]</div>
+<p>The left hand side is only a function of <span class="math notranslate nohighlight">\(y\)</span> and as such we need the right hand side also as a function of only <span class="math notranslate nohighlight">\(y\)</span>. For this to happen it is evident that the pressure derivative <span class="math notranslate nohighlight">\(\partial p / \partial x = \mathrm{const} \, x \, h(y)\)</span>, where <span class="math notranslate nohighlight">\(h(y)\)</span> is some function of <span class="math notranslate nohighlight">\(y\)</span>. However, from Eq. <a class="reference internal" href="#equation-eq-pressure-stag">(35)</a> it follows that <span class="math notranslate nohighlight">\(h\)</span> must be a constant as well and as such the right hand side of <a class="reference internal" href="#equation-eq-stagnation0">(36)</a> must be constant. Since the right hand side is constant, this means that the left hand side also must be a constant.</p>
+<p>Treating the right hand side as a constant we can compute its value using the boundary conditions <span class="math notranslate nohighlight">\(f^{\prime}=1, f^{\prime \prime}=f^{\prime\prime\prime}=0\)</span> for <span class="math notranslate nohighlight">\(y\longrightarrow \infty\)</span> (the first follows from freestream condition <span class="math notranslate nohighlight">\(u_{viscous}=u_{inviscid}\)</span>). Inserted for the boundary conditions we obtain finally</p>
+<div class="math notranslate nohighlight" id="equation-eq-stagnation">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-stagnation" title="Permalink to this equation">¶</a></span>\[ f^{\prime\prime\prime} + \frac{B}{\nu} \left( f f^{\prime\prime} - (f^{\prime})^2\right)  =- \frac{B}{\nu}.\]</div>
+<p>Note that <a class="reference internal" href="#equation-eq-stagnation">(37)</a> is an exact equation for stagnation flow, since no terms have been eliminated in its derivation. The equation is nonlinear, which calls for iterative numerical solution techniques. The equation can be non-dimensionalised using length- and velocity-scales <span class="math notranslate nohighlight">\(\sqrt{\nu/B}\)</span> and <span class="math notranslate nohighlight">\(\sqrt{\nu B}\)</span> respectively, and the dimensionless variables</p>
+<div class="math notranslate nohighlight" id="equation-eq-stagnationvars">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-stagnationvars" title="Permalink to this equation">¶</a></span>\[  \eta = y \sqrt{\frac{B}{\nu}}, \quad \psi = x F(\eta) \sqrt{B\nu}.\]</div>
+<p>We can now easily obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  f(y) &amp;= F\sqrt{\frac{\nu}{B}}, \\
+  f^{\prime} &amp;= \frac{dF}{d\eta}\frac{d\eta}{dy} \sqrt{\frac{\nu}{B}} = F^{\prime} \sqrt{\frac{B}{\nu}} \sqrt{\frac{\nu}{B}} = F^{\prime}, \\
+  f^{\prime\prime} &amp;= \frac{dF^{\prime}}{d\eta}\frac{d\eta}{dy} = F^{\prime\prime}\sqrt{\frac{B}{\nu}}, \\
+    f^{\prime\prime\prime} &amp;= \frac{dF^{\prime\prime}}{d\eta}\frac{d\eta}{dy} = F^{\prime\prime\prime}\frac{B}{\nu}.
+\end{aligned}\end{split}\]</div>
+<p>Inserted into <a class="reference internal" href="#equation-eq-stagnation">(37)</a> we obtain the dimensionless equation</p>
+<div class="math notranslate nohighlight" id="equation-eq-stagnationnonnorm">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-stagnationnonnorm" title="Permalink to this equation">¶</a></span>\[  F^{\prime\prime\prime} + F F^{\prime\prime} + 1 - (F^{\prime})^2 = 0,\]</div>
+<p>that can be solved using boundary conditions <span class="math notranslate nohighlight">\(F(0)=F^{\prime}(0)=0\)</span> and <span class="math notranslate nohighlight">\(F^{\prime}(\infty)=1\)</span>.</p>
+</div>
+<div class="section" id="axisymmetric-stagnation-flow">
+<h2>Axisymmetric stagnation flow<a class="headerlink" href="#axisymmetric-stagnation-flow" title="Permalink to this headline">¶</a></h2>
+<p>The plane stagnation flow discussed in the previous section is stagnant for a line in the <span class="math notranslate nohighlight">\(z\)</span>-plane located at <span class="math notranslate nohighlight">\(x=0\)</span>. Axisymmetric stagnation flow is similar in form, but only stagnant in a single point located at <span class="math notranslate nohighlight">\(x=y=z=0\)</span>. This axisymmetric flow is what you obtain by pointing a garden hose directly towards a plane wall (neglecting gravity). The equations are similar to the plane flow, but may be simplified using cylindrical coordinates. A streamfunction in cylindrical coordinates can be defined through</p>
+<div class="math notranslate nohighlight" id="equation-eq-streamfunction2daxi">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-streamfunction2daxi" title="Permalink to this equation">¶</a></span>\[  u_{r} = -\frac{1}{r}\frac{\partial \psi}{\partial z}, \quad  u_{z} = \frac{1}{r}\frac{\partial \psi}{\partial r}\]</div>
+<p>For axisymmetric flows with <span class="math notranslate nohighlight">\(u_{\theta}=0\)</span> the continuity equation reads</p>
+<div class="math notranslate nohighlight">
+\[  \frac{1}{r}\frac{\partial r u_r}{\partial r} + \frac{\partial u_z}{\partial z} = 0.\]</div>
+<p>Inserting for <a class="reference internal" href="#equation-eq-streamfunction2daxi">(40)</a> it is easily verified that continuity is satisfied.</p>
+<p>The streamfunction for axisymmetric inviscid flow towards a stagnation point is given as</p>
+<div class="math notranslate nohighlight">
+\[  \psi = -B r^2 z\]</div>
+<p>which leads to velocity components</p>
+<div class="math notranslate nohighlight">
+\[  u_r = B r, \quad u_z = -2B z\]</div>
+<p>For viscous flows one may obtain a dimensionless similarity solution using</p>
+<div class="math notranslate nohighlight">
+\[  \psi = - r^2 F(\eta) \sqrt{B \nu}, \quad \eta = z\sqrt{\frac{B}{\nu}}.\]</div>
+<p>Inserting into the momentum equation for <span class="math notranslate nohighlight">\(u_{r}\)</span> the mathematics are very much like in the previous section leading to</p>
+<div class="math notranslate nohighlight" id="equation-eq-axistagnationnonnorm">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-axistagnationnonnorm" title="Permalink to this equation">¶</a></span>\[  F^{\prime\prime\prime} + 2 F F^{\prime\prime} + 1 - (F^{\prime})^2 = 0.\]</div>
+<p>This differs from plane stagnation flow only by the factor 2.</p>
+</div>
+<div class="section" id="suggested-assignments-similarity-solutions">
+<h2>Suggested assignments similarity solutions<a class="headerlink" href="#suggested-assignments-similarity-solutions" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/chapter3/similarity-0"><dl class="citation">
+<dt class="bibtex label" id="white06"><span class="brackets"><a class="fn-backref" href="#id1">Whi06</a></span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="poiseuille.html" title="previous page">Poiseuille flows</a>
+    <a class='right-next' id="next-link" href="stokes.html" title="next page">Stokes flow</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 3 &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parallel shear flows" href="planeshearflow.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 3
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="planeshearflow.html">
+     Parallel shear flows
+    </a>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="couette.html">
+       Couette flows
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="poiseuille.html">
+       Poiseuille flows
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="similarity.html">
+     Similarity solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stokes.html">
+     Stokes flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fenics/intro.html">
+   FEniCS
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/chapter3/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/chapter3/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3">
+<h1>Chapter 3<a class="headerlink" href="#chapter-3" title="Permalink to this headline">¶</a></h1>
+<p>Chapter 3 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a> considers simple solutions of incompressible laminar shear flows. Incompressible flows are described by the physical laws for conservation of mass Newton’s second law of motion). Together these are usually termed the <em>Navier-Stokes</em> equations that mathematically can be represented as</p>
+<div class="math notranslate nohighlight" id="equation-eq-ns">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-ns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \frac{\partial \boldsymbol{u}}{\partial t} + (\boldsymbol{u} \cdot \nabla)\boldsymbol{u} &amp;= -\frac{1}{\rho} \nabla p + \nu \nabla ^2 \boldsymbol{u} + \boldsymbol{f}  \\ 
+  \nabla \cdot \boldsymbol{u} &amp;= 0,
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>, <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(\rho\)</span>, <span class="math notranslate nohighlight">\(\nu\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span> are the velocity vector, pressure, density, kinematic viscosity
+and body forces respectively. The equations as written are independent of coordinate system, but they look
+exactly the same using Cartesian coordinates. Of equally great importance, at least in chapter 3, are the
+Navier-Stokes equations in cylindrical coordinates. The cylindrical coordinates, <span class="math notranslate nohighlight">\(r, \theta, z\)</span>, are given in
+terms of the Cartesian coordinates <span class="math notranslate nohighlight">\(x, y, z\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  x &amp;= r \cos \theta, \\
+  y &amp;= r \sin \theta, \\
+  z &amp;= z .
+\end{aligned}\end{split}\]</div>
+<p>The Cartesian position vector is thus</p>
+<div class="math notranslate nohighlight">
+\[ \boldsymbol{x} = r \cos \theta \boldsymbol{i} + r \sin \theta \boldsymbol{j} + z \boldsymbol{k}.\]</div>
+<p>The unit vectors in cylindrical coordinates are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ \boldsymbol{i}_{r} &amp;= \frac{\frac{\partial \boldsymbol{x}}{\partial r}}{|\frac{\partial \boldsymbol{x}}{\partial r}|} = \cos \theta \boldsymbol{i} + \sin \theta \boldsymbol{j}, \\
+ \boldsymbol{i}_{\theta} &amp;= \frac{\frac{\partial \boldsymbol{x}}{\partial \theta}}{|\frac{\partial \boldsymbol{x}}{\partial \theta}|} = -\sin \theta \boldsymbol{i} + \cos \theta \boldsymbol{j}, \\
+ \boldsymbol{i}_{z} &amp;= \frac{\frac{\partial \boldsymbol{x}}{\partial z}}{|\frac{\partial  \boldsymbol{x}}{\partial z}|} = \boldsymbol{k}.
+\end{aligned}\end{split}\]</div>
+<p>The velocity vectors in Cartesian and cylindrical coordinates read respectively</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \boldsymbol{u}(x,y,z,t) &amp;= u_x \boldsymbol{i} + u_y \boldsymbol{j} + u_z \boldsymbol{k} \\
+  \boldsymbol{u}(r,\theta,z,t) &amp;= u_{r} \boldsymbol{i}_r + u_{\theta} \boldsymbol{i}_{\theta} + u_z \boldsymbol{i}_z
+\end{aligned}\end{split}\]</div>
+<p>The divergence of the velocity vector <span class="math notranslate nohighlight">\(\nabla \cdot \boldsymbol{u}\)</span> in Cartesian and cylindrical coordinates are given respectively by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \nabla \cdot \boldsymbol{u} &amp;= \frac{\partial u_x}{\partial x} + \frac{\partial u_y}{\partial y} + \frac{\partial u_z}{\partial z} \\
+  \nabla \cdot \boldsymbol{u} &amp;= \frac{1}{r}\frac{\partial r u_r}{\partial r} + \frac{1}{r}\frac{\partial u_{\theta}}{\partial \theta} + \frac{\partial u_z}{\partial z}
+\end{aligned}\end{split}\]</div>
+<p>The Laplacian in Cartesian and cylindrical coordinates are given, respectively, as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ \nabla^2 &amp;= \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \\
+ \nabla^2 &amp;= \frac{1}{r}\frac{\partial}{\partial r}\left( r\frac{\partial}{\partial r} \right) + \frac{1}{r^2}\frac{\partial^2}{\partial \theta ^2} + \frac{\partial^2}{\partial z^2}
+\end{aligned}\end{split}\]</div>
+<p>The advection <span class="math notranslate nohighlight">\((\boldsymbol{u} \cdot \nabla)\)</span> is given in Cartesian and cylindrical coordinates, respectively, as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\boldsymbol{u} \cdot \nabla  &amp;= u_i \frac{\partial }{\partial x_i}  \\
+\boldsymbol{u} \cdot \nabla  &amp;= u_r\frac{\partial}{\partial r} + \frac{1}{r}u_{\theta}\frac{\partial}{\partial \theta} + u_z \frac{\partial}{\partial z}
+\end{aligned}\end{split}\]</div>
+<p>See <a class="reference external" href="https://mikaem.github.io/mek2200/">mek2200 notes on notation</a> for a more thorough discussion about notation.</p>
+<p><font size=5> Suggested assignment Navier-Stokes </font></p>
+<p>Start from Navier-Stokes and derive the momentum equations for Cylindrical coordinates. The results are given in App B of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id2">[Whi06]</a>.</p>
+<p id="bibtex-bibliography-content/chapter3/intro-0"><dl class="citation">
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="planeshearflow.html" title="next page">Parallel shear flows</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

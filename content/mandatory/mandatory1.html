@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First mandatory assignments due 12 October &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fenics/intro.html">
+   FEniCS
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/mandatory/mandatory1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/mandatory/mandatory1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="first-mandatory-assignments-due-12-october">
+<h1>First mandatory assignments due 12 October<a class="headerlink" href="#first-mandatory-assignments-due-12-october" title="Permalink to this headline">¶</a></h1>
+<ol>
+<li><p>Verify the analytical solutions (3-47), (3-49) and (3-52) in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>. Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <em>errornorm</em>. Report tables of the error vs mesh size (<code class="docutils literal notranslate"><span class="pre">mesh.hmin()</span></code>) and comment on the order of accuracy. See <a class="reference external" href="../chapter3/poiseuille.html#Analysing-the-error">Analysing the error</a> and <a class="reference external" href="../solutions/poiseuille.html#Solutions-computer-exercises-Poiseuille">the solution for a triangle</a>.</p></li>
+<li><p>Solve the normalized equations for <a class="reference external" href="../chapter3/similarity.html#mjx-eqn-eq:StagnationNonNorm">plane stagnation flow</a> and <a class="reference external" href="../chapter3/similarity.html#mjx-eqn-eq:AxiStagnationNonNorm">axissymmetric stagnation flow</a> using both Picard and Newton iterations. Hint: Define a new variable <span class="math notranslate nohighlight">\(H = F'\)</span> and solve a coupled system of equations for <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. Start by creating a mixed function space, with test and trial-functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>from dolfin import *
+L = 10
+x = IntervalMesh(50, 0, L)
+Ve = FiniteElement(‘CG’, x.ufl_cell(), 1)
+V = FunctionSpace(x, Ve)
+VV = FunctionSpace(x, Ve * Ve)
+hf = TrialFunction(VV)
+h, f = split(hf)
+vh, vf = TestFunctions(VV)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+3. Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow for a driven cavity. The domain of the cavity is $[0, 1]\times[0, 1]$ and the dynamic viscosity $\mu=100$. The domain consists of 4 solid walls, where the top lid ($y=1$ and $ 0 &lt; x &lt; 1$) is moving at speed $\boldsymbol{u}=(1, 0)$. The remaining 3 walls are not moving. Compute the streamfunction and find the center of the vortex, i.e., the point where the streamfunction goes through a minimum. For the driven cavity the value of the streamfunction can be set to zero on the entire exterior domain.
+
+Note that the boundary condition on $\psi$ follows from the very [definition of the streamfunction](../chapter3/similarity.html#mjx-eqn-eq:streamfunction2D), where it should be understood that the variable $\psi$ will only need to be known up to an arbitrary constant. If $\psi$ is a solution, then $\psi+C$ gives exactly the same velocity field since the partial derivative of a constant (here $C$) is zero. As such we can put an &quot;anchor&quot; on the solution by specifying that $\psi=0$ at the corner where $x=0, y=0$. It then follows that $\psi$ will be zero on the entire domain.  Along the left hand border, where $x=0$ and $0 \leq y \leq 1$, we have the boundary condition on velocity stating that $u=\partial \psi / \partial y = 0$. Since the gradient of $\psi$ is 0 along the border it follows that $\psi=0$ along this border. Similarly, for the top lid $v=-\partial \psi / \partial x=0$, and thus $\psi$ must be equal to $0$ for the entire top lid. The same procedure applies to the last two borders and consequently $\psi=0$ for the entire border. Note that the value does not have to be zero, any constant value may be chosen.
+
+4. Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow creeping past a step (see Fig. 3-37 in {cite}`white06`. A mesh for the geometry is shown below
+
+&lt;img src=&quot;../images/Backstep_mesh.png&quot; width=&quot;400&quot; height=&quot;300&quot; title=&quot;Backwards facing step&quot; id=&quot;backstep&quot;/&gt;
+
+The height of the step is $0.1L$. The height and width of the rectangular geometry is $0.5L$ and $L$ respectively. Use $\mathrm{Re}=UL/\mu = 0.01$ (setting density to unity) as in Fig. 3-37 in {cite}`white06`. Set the velocity of the top (at $y=0.5L$) to constant $\boldsymbol{u}=(1, 0)$. Use pseudo-traction for the inlet located at $x=0$ and the outlet located at $x=L$. No-slip for the bottom wall.
+
+Create a suitable mesh using for example [Gmsh](http://geuz.org/gmsh). It is also possible to create this mesh directly using [mshr](https://bitbucket.org/fenics-project/mshr).
+
+a) Compute the streamfunction. Note that you cannot use homogeneous Dirichlet on the entire domain for this case. Hint: enforce boundary conditions weakly. Use definition of [the streamfunction](../chapter3/similarity.html#mjx-eqn-eq:streamfunction2D) and `n=FacetNormal(mesh)` to implement the weak boundary form (second term on left of [weak form](../chapter3/stokes.html#mjx-eqn-eq:FormStreamfunction)).
+
+b) Make a contour plot, similar to Fig. 3-27 in {cite}`white06`, of the streamfunction. Hint: Dump result to VTK-format  and plot contours using [paraview](http://www.paraview.org/). To create a VTK-file for the streamfunction solution `Function psi`:
+
+   ```python
+f = File(&quot;psi.pvd&quot;)
+f &lt;&lt; psi
+   ```
+
+c) Compute the velocity flux in and out of the domain. Is mass being conserved? Hint: to compute the flow through left and right domains we need to integrate the solution over these domains only
+
+   $$
+\begin{equation*}
+\overline{u} = \int_{\Gamma} u \mathrm{d}A.
+\end{equation*}
+   $$
+   
+   Surface integrals like this can be computed in FEniCS by making use of `SubDomain`s and a `MeshFunction` over the facets (the edges of the mesh):
+   
+   ```python
+def left(x, on_boundary):
+    return x[0] &lt; 1e-12 and on_boundary
+Left = AutoSubDomain(left)
+mf = MeshFunction(&quot;size_t&quot;, mesh, 1)
+mf.set_all(0)
+Left.mark(mf, 1)
+ds = ds(subdomain_data=mf, domain=mesh)
+   ```
+
+   Briefly, this code creates a Function that has an integer value on all facets (in 2D that means all the edges) in the mesh. The `SubDomain` `Left` is created by feeding an inside function (left) to the `AutoSubDomain` function. `Left.mark(mf, 1)` sets the value of all facets on the left boundary to 1. Using these tools we can now integrate over the left boundary exclusively. For example, to compute the area of the inlet do
+
+   ```python
+A = assemble(Constant(1)*ds(1))
+   ```
+
+d) Reverse the direction of the flow using $\boldsymbol{u}=(-1, 0)$ for the top boundary. Does this change the location of the vortex? Explain the result.
+
+e) Compute the normal stress on the bottom wall. Is there any difference depending on the direction of the flow? Is this realistic for real flows of moderate Reynolds numbers?
+
+   The normal stress on the wall is computed as
+
+   $$
+\begin{equation*}
+\int_{\Gamma} (\tau \cdot \boldsymbol{n}) \cdot \boldsymbol{n}\, \mathrm{d}s,
+\end{equation*}
+   $$
+   
+   where the stress tensor $\tau = -p\boldsymbol{I}+\mu(\nabla \boldsymbol{u} + \nabla \boldsymbol{u}^T)$.
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>{% bibliography –cited %}</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/mandatory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

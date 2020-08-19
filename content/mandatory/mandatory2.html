@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second mandatory assignment due 13 November &#8212; MEK4300 Lecture notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}, "extensions": ["cancel.js", "AMSmath.js"]}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/uio_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MEK4300 Lecture notes</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  White - Viscous Fluid Flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter6/turbulence.html">
+   Chapter 6
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Suggested solutions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter3/intro.html">
+   Chapter 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../solutions/chapter4/intro.html">
+   Chapter 4
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FEniCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fenics/intro.html">
+   FEniCS
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/mandatory/mandatory2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mikaem/MEK4300"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/mandatory/mandatory2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="second-mandatory-assignment-due-13-november">
+<h1>Second mandatory assignment due 13 November<a class="headerlink" href="#second-mandatory-assignment-due-13-november" title="Permalink to this headline">¶</a></h1>
+<ol>
+<li><p>Implement a nonlinear solver for <a class="reference external" href="../solutions/chapter4/falknerskan.html#mjx-eqn-eq:FalknerSkan">the Falkner-Skan equation</a>.</p>
+<p>a) Vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> and reproduce Fig. 4-11 (a) and (b) in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>.</p>
+<p>b) What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{''}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions. Show these in a plot for <span class="math notranslate nohighlight">\(\beta = -0.1\)</span>.</p>
+</li>
+<li><p>Perform benchmarks 2.2 a) and 2.2 b) of <a class="reference external" href="http://www.uio.no/studier/emner/matnat/math/MEK4300/v14/undervisningsmateriale/schaeferturek1996.pdf">Schaefer and Turek</a> and report your results comparing with Table 3 and 4 of the benchmark.</p></li>
+<li><p>Consider a fully developed turbulent plane channel flow. The wall friction velocity <span class="math notranslate nohighlight">\(v^*=\sqrt{\nu\partial \overline{u}/\partial y}_{wall}=0.05\)</span> and the turbulent Reynolds number <span class="math notranslate nohighlight">\(Re_{\tau} = v^*/\nu = 1000\)</span>.</p>
+<p>a) Use the Mixing length model and implement a solver for a plane turbulent channel flow.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned*}
+ 0 &amp;= \nu \frac{\partial^2 \overline{u}}{\partial y^2} - \frac{1}{\rho}
+\frac{\partial \overline{p}}{\partial x} - \frac{\partial
+\overline{u'v'}}{\partial y}, \\
+ \overline{u'v'} &amp;= -\nu_T \frac{\partial \overline{u}}{\partial y}, \\
+ \nu_t &amp;= l^2 |\frac{\partial \overline{u}}{\partial y}|, \\
+ l &amp;= \kappa y \left(1 - \exp\left( -\frac{y^+}{A}\right) \right), \\
+ y^+ &amp;= \frac{y v^*}{\nu}.
+ \end{aligned*}
+   \end{split}\]</div>
+<p>The constants <span class="math notranslate nohighlight">\(\kappa=0.41\)</span> and <span class="math notranslate nohighlight">\(A=26\)</span>.</p>
+<p>Hint 1: the pressure gradient is constant and can be computed from <span class="math notranslate nohighlight">\(v^*\)</span> by integrating the momentum equation across the channel.</p>
+<p>Hint 2: use a mesh skewed towards the walls. You should resolve the solution up to at least <span class="math notranslate nohighlight">\(y^+=1\)</span> (or <span class="math notranslate nohighlight">\(y\approx\nu/v^*\)</span> for the first inner node of the computational mesh). To compute a skewed mesh you could for example do something like this</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arctan</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()</span>
+<span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arctan</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span> <span class="o">/</span> <span class="n">arctan</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives <span class="math notranslate nohighlight">\(y^+=2.31\)</span> for first internal node and thus is not dense enough!
+Modify the mesh and check the location of the first inner node to ensure that
+it’s less than <span class="math notranslate nohighlight">\(\nu/v^*\)</span>. How many nodes do you need to ensure <span class="math notranslate nohighlight">\(y^+&lt;1\)</span> if you
+use a regularly spaced mesh that is not skewed towards the wall?</p>
+<p>b) Verify that the solution approximates the theoretical results</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned*}
+ y^+ &amp;= u^+\quad \mathrm{for} \quad y^+ &lt; 5, \\
+ u^+ &amp;= \frac{1}{\kappa} \ln y^+ + B \quad \mathrm{for} \quad y^+ &gt; 30,
+\end{aligned*}
+   \end{split}\]</div>
+<p>where the “constant” <span class="math notranslate nohighlight">\(B=5.5\)</span>. Can you improve the agreement with the computational results by modifying the constants? What is the value of the turbulent viscosity <span class="math notranslate nohighlight">\(\nu_T\)</span> at the center of the channel? Do you believe this value is reasonable?</p>
+</li>
+<li><p>Derive from first principles</p>
+<p>a) the Reynolds Averaged Navier Stokes equations (Eq. 6-13 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id2">[Whi06]</a>).</p>
+<p>b) the turbulence kinetic energy equation (Eq. 6.17 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id3">[Whi06]</a>).</p>
+<p>c) the Reynolds stress equation (Eq. 6-18 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id4">[Whi06]</a>).</p>
+<p>See, e.g., <a class="reference external" href="http://turbulence-online.com/Publications/Lecture_Notes/Turbulence_Lille/TB_16January2013.pdf">this book</a> for more details about derivation.</p>
+</li>
+</ol>
+<p>{% bibliography –cited %}</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mikaem/MEK4300",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/mandatory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Mikael Mortensen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -329,7 +329,7 @@
   \nabla ^2 u &amp;= 0,    \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
 <div class="math notranslate nohighlight" id="equation-eq-exactcouette">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
 <p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
@@ -475,29 +475,35 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 <p>The next example in Chapter 3-2.2 is the flow between axially moving concentric cylinders. The equation is the same as for the regular Couette flow in 3-2.1, but the coordinate system is cylindrical.
 There is no applied pressure gradient and the flow is described by the Poisson equation with no source.</p>
 <div class="math notranslate nohighlight" id="equation-eq-poissoncyl">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align}
   \nabla^2 u &amp;= 0, \\
   \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r} \right) &amp;= 0. 
-\end{aligned}\end{split}\]</div>
+\end{align}\end{split}\]</div>
 <p>The two cylinders have diameters <span class="math notranslate nohighlight">\(r_0\)</span> and <span class="math notranslate nohighlight">\(r_1\)</span>, where <span class="math notranslate nohighlight">\(r_0&lt;r_1\)</span>. The Dirichlet boundary conditions are <span class="math notranslate nohighlight">\(u(r=r_0)=u_0\)</span> and <span class="math notranslate nohighlight">\(u(r=r_1)=u_1\)</span>. The solution to <a class="reference internal" href="#equation-eq-poissoncyl">(8)</a> can be found by integrating twice</p>
 <div class="math notranslate nohighlight" id="equation-eq-ustep1">
 <span class="eqno">(9)<a class="headerlink" href="#equation-eq-ustep1" title="Permalink to this equation">¶</a></span>\[  u(r) = C_1 \ln(r) + C_2,\]</div>
 <p>where the two integration constants are found using the boundary conditions leading to</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align}
  C_1 &amp;= \frac{U_1-U_0}{\ln(r_1/r_0)} \\
  C_2 &amp;= U_0\frac{\ln(r_1)}{\ln(r_1/r_0)} - U_1 \frac{\ln(r_0)}{\ln(r_1/r_0)}
-\end{aligned}\end{split}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>which inserted into <a class="reference internal" href="#equation-eq-ustep1">(9)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-eq-uaxcyl">
 <span class="eqno">(10)<a class="headerlink" href="#equation-eq-uaxcyl" title="Permalink to this equation">¶</a></span>\[ u(r) = U_0\frac{\ln(r_1/r)}{\ln(r_1/r_0)} + U_1\frac{\ln(r/r_0)}{\ln(r_1/r_0)}.\]</div>
 <p>Eq. <a class="reference internal" href="#equation-eq-uaxcyl">(10)</a> is exactly the sum of Eqs.~(3-18) and (3-19), which is a result of the governing equation being linear.</p>
 <p>The variational formulation of the problem reads</p>
 <div class="math notranslate nohighlight">
-\[-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,\]</div>
+\[
+-\int_\Omega \nabla u \cdot \nabla v \, \mathrm{d}x = \int_\Omega fv \, \mathrm{d}x\thinspace ,
+\]</div>
 <p>but in Cylindrical coordinates the volume integral needs to be transformed (<span class="math notranslate nohighlight">\(\mathrm{d}x = r\mathrm{d}r2\pi L\)</span>, assuming the cylinder has length <span class="math notranslate nohighlight">\(L\)</span>) and the variational problem becomes</p>
 <div class="math notranslate nohighlight">
-\[-\int_\Omega \nabla u \cdot \nabla v \, r \mathrm{d}r = \int_\Omega fv r \, \mathrm{d}r\thinspace.\]</div>
+\[
+-\int_\Omega \nabla u \cdot \nabla v \, r \mathrm{d}r = \int_\Omega fv r \, \mathrm{d}r\thinspace.
+\]</div>
 <p>Note that the gradient requires no special treatment since the gradient component in the <span class="math notranslate nohighlight">\(r\)</span>-direction is unchanged in cylindrical coordinates.</p>
 <p>A FEniCS implementation for axially moving concentric cylinders is shown below.</p>
 <div class="cell docutils container">
@@ -568,7 +574,9 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </ol>
 <p>The governing equation for these types of flow is the homogeneous heat equation</p>
 <div class="math notranslate nohighlight">
-\[  \frac{\partial \boldsymbol{u}}{\partial t} = \nu \nabla^2 \boldsymbol{u}.\]</div>
+\[
+  \frac{\partial \boldsymbol{u}}{\partial t} = \nu \nabla^2 \boldsymbol{u}.
+\]</div>
 <p>We consider only parallel shear flows in Cartesian coordinates, where the velocity vector is
 <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y, t), 0, 0)\)</span> and the equation is reduced to</p>
 <div class="math notranslate nohighlight" id="equation-eq-heat1d">
@@ -577,42 +585,64 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>As a first example of flow that is suddenly accelerated to  a constant velocity, consider a infinite plane normal to the <span class="math notranslate nohighlight">\(y\)</span>-axis located at <span class="math notranslate nohighlight">\(y=0\)</span> and initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. The plane is then suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(U_0\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction and remains at this velocity for all <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Above the plane, for <span class="math notranslate nohighlight">\(y&gt;0\)</span>, the fluid is initially at rest. Friction and the no-slip boundary condition will make the flow above the plane increase in speed. Far away from the plane the velocity will be zero, i.e., <span class="math notranslate nohighlight">\(u(\infty, t)=0\)</span>. This means that the velocity will never reach a steady state, and the boundary layer over the plane will continue to grow for all time.</p>
 <p>We can find the solution as before using a separation of variables, but first we normalize the velocity</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = \frac{u-U_0}{U_0},\]</div>
+\[
+  v(y, t) = \frac{u-U_0}{U_0},
+\]</div>
 <p>such that the boundary condition at <span class="math notranslate nohighlight">\(y=0\)</span> becomes homogeneous, i.e., <span class="math notranslate nohighlight">\(v(0, t)=0\)</span> for <span class="math notranslate nohighlight">\(t&gt;0\)</span>. The PDE for <span class="math notranslate nohighlight">\(v\)</span> is still <a class="reference internal" href="#equation-eq-heat1d">(11)</a>.</p>
 <p>Start by separating variables</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = T(t)V(y).\]</div>
+\[
+  v(y, t) = T(t)V(y).
+\]</div>
 <p>Inserted into <a class="reference internal" href="#equation-eq-heat1d">(11)</a> we get</p>
 <div class="math notranslate nohighlight">
-\[  \frac{\dot{T}}{\nu T} = \frac{V''}{V} = K,\]</div>
+\[
+  \frac{\dot{T}}{\nu T} = \frac{V''}{V} = K,
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(K\)</span> is a constant. To obtain physically realistic solutions, the constant needs to be negative. This can be understood looking first at the transient part:</p>
 <div class="math notranslate nohighlight">
-\[  \dot{T} = K \nu T,\]</div>
+\[
+  \dot{T} = K \nu T,
+\]</div>
 <p>with solution</p>
 <div class="math notranslate nohighlight">
-\[  T(t) = e^{K \nu t}.\]</div>
+\[
+  T(t) = e^{K \nu t}.
+\]</div>
 <p>If <span class="math notranslate nohighlight">\(K\)</span> is positive, then the velocity will grow without bounds and without energy being added to the system. For the second equation we have</p>
 <div class="math notranslate nohighlight">
-\[  V'' - K V = 0.\]</div>
+\[
+  V'' - K V = 0.
+\]</div>
 <p>If <span class="math notranslate nohighlight">\(K\)</span> is positive, then the solution is</p>
 <div class="math notranslate nohighlight">
-\[  V(y) = A \sinh(\sqrt{K} y) + B \cosh (\sqrt{K} y).\]</div>
+\[
+  V(y) = A \sinh(\sqrt{K} y) + B \cosh (\sqrt{K} y).
+\]</div>
 <p>The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> requires <span class="math notranslate nohighlight">\(B=0\)</span>. The remaining term <span class="math notranslate nohighlight">\(A\sinh (\sqrt{K} y)\)</span> grows without bounds as <span class="math notranslate nohighlight">\(y \longrightarrow \infty\)</span>, which is not in agreement with <span class="math notranslate nohighlight">\(v(\infty, t)=-1\)</span> and we have to assume that <span class="math notranslate nohighlight">\(K\)</span> is a negative constant that we can write as <span class="math notranslate nohighlight">\(K=-\lambda^2\)</span>. The solutions to the separated ordinary differential equations become</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   T(t) &amp;= e^{-\lambda^2 \nu t}, \\
   V(y) &amp;= A \sin(\lambda y) + B \cos(\lambda y).
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>The constants need to be found using boundary and initial conditions. The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> leads to <span class="math notranslate nohighlight">\(B=0\)</span> and as such one solution reads</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = A \sin (\lambda y) e^{-\lambda^2 \nu t}.\]</div>
+\[
+  v(y, t) = A \sin (\lambda y) e^{-\lambda^2 \nu t}.
+\]</div>
 <p>To satisfy the initial condition we need to use more than one solution and through the superposition principle we can simply add solutions. A periodic Fourier series for <span class="math notranslate nohighlight">\(v\)</span> reads</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = \sum_{k=1}^{\infty} A_k \sin (\lambda_k y) e^{-\lambda_k^2 \nu t},\]</div>
+\[
+  v(y, t) = \sum_{k=1}^{\infty} A_k \sin (\lambda_k y) e^{-\lambda_k^2 \nu t},
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(A_k\)</span> are constants, <span class="math notranslate nohighlight">\(\lambda_k = k \pi / L\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the length of the periodic domain.</p>
 <p>However, our domain is not periodic and it is unbounded for <span class="math notranslate nohighlight">\(y\longrightarrow \infty\)</span>. It turns out that for infinite domains and non-periodic solution, it is advantageous to work with Fourier integrals instead. A Fourier integral for our problem reads</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = \int_{0}^{\infty} A(\lambda) \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda.\]</div>
+\[
+  v(y, t) = \int_{0}^{\infty} A(\lambda) \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda.
+\]</div>
 <div class="figure align-default" id="heaviside">
 <a class="reference internal image-reference" href="../../_images/Heaviside.png"><img alt="../../_images/Heaviside.png" src="../../_images/Heaviside.png" style="width: 300px; height: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The Heaviside function.</span><a class="headerlink" href="#heaviside" title="Permalink to this image">¶</a></p>
@@ -625,57 +655,80 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{H(y)}\)</span> is the Heaviside function.</p>
 <p>This way <span class="math notranslate nohighlight">\(v(y, 0) = 1\)</span> for <span class="math notranslate nohighlight">\(y&lt;0\)</span>, <span class="math notranslate nohighlight">\(v(y, 0)=-1\)</span> for <span class="math notranslate nohighlight">\(y&gt;0\)</span> and by symmetry <span class="math notranslate nohighlight">\(v(0, 0)=0\)</span>. Through orthogonality and the initial condition we can find <span class="math notranslate nohighlight">\(A(\lambda)\)</span> as (see <a class="bibtex reference internal" href="#kreyszig" id="id3">[Kre99]</a>)</p>
 <div class="math notranslate nohighlight">
-\[ A(\lambda) = -\frac{2}{\pi}\int_{0}^{\infty} \sin(\lambda y') dy' .\]</div>
+\[
+ A(\lambda) = -\frac{2}{\pi}\int_{0}^{\infty} \sin(\lambda y') dy' .
+\]</div>
 <p>Inserted into the total solution we get</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') dy' \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda,\]</div>
+\[
+  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') dy' \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda,
+\]</div>
 <p>which can be rewritten by changing the order of integration as</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda dy'.\]</div>
+\[
+  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} \sin(\lambda y') \sin (\lambda y) e^{-\lambda^2 \nu t} d\lambda dy'.
+\]</div>
 <p>The inner integral can be transformed using <span class="math notranslate nohighlight">\(\sin(\lambda y)\sin(\lambda y') = 0.5 (\cos \lambda(y-y') - \cos \lambda(y+y'))\)</span></p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \frac{1}{2} \left(\cos \lambda(y-y') - \cos \lambda(y+y') \right) d\lambda dy'.\]</div>
+\[
+  v(y, t) = -\frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \frac{1}{2} \left(\cos \lambda(y-y') - \cos \lambda(y+y') \right) d\lambda dy'.
+\]</div>
 <p>The inner integrals can then be computed exactly since</p>
 <div class="math notranslate nohighlight">
-\[  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y-y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2},\]</div>
+\[
+  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y-y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2},
+\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
-\[  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y+y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}.\]</div>
+\[
+  \int_{0}^{\infty}  e^{-\lambda^2 \nu t} \cos \lambda(y+y') \mathrm{d} \lambda = \sqrt{\frac{\pi}{4 \nu t}} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}.
+\]</div>
 <p>The solution now reads</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = -\sqrt{\frac{1}{4 \pi \nu t}} \int_{0}^{\infty} \left( e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2} - e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2} \right)  dy'.\]</div>
+\[
+  v(y, t) = -\sqrt{\frac{1}{4 \pi \nu t}} \int_{0}^{\infty} \left( e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2} - e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2} \right)  dy'.
+\]</div>
 <p>Using integration by substitution, the integrals can be reorganized into error functions</p>
 <div class="math notranslate nohighlight">
-\[  \mathrm{erf}(z) = \frac{2}{\sqrt{\pi}} \int_0^{z} e^{-u^2} \mathrm{d}u,\]</div>
+\[
+  \mathrm{erf}(z) = \frac{2}{\sqrt{\pi}} \int_0^{z} e^{-u^2} \mathrm{d}u,
+\]</div>
 <p>if we simply use a change of variables</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align}
   u &amp;= \frac{y-y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = -\frac{1}{2\sqrt{\nu t}} \\
   u' &amp;= \frac{y+y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = \frac{1}{2\sqrt{\nu t}}
-\end{aligned}\end{split}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>The integrals become</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align}
 \int_{0}^{\infty} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= -2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{-\infty} e^{-u^2} \mathrm{d}u,\\
     &amp;= -\sqrt{\nu t \pi}\left(1+ \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right)
-\end{aligned}\end{split}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align}
 \int_{0}^{\infty} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= 2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{\infty} e^{-u^2} \mathrm{d}u,\\
     &amp;= \sqrt{\nu t \pi}\left(1- \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right).
-\end{aligned}\end{split}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>Putting it all together we finally obtain</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align}
   v(y, t) &amp;= -\sqrt{\frac{1}{4 \pi \nu t}} \left(-\sqrt{\nu t \pi} \right) (-2) \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right), \\
   &amp;= -\mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right).
-\end{aligned}\end{split}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>The original unnormalized velocity becomes</p>
-<div class="math notranslate nohighlight">
-\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),
-  \label{eq:Stokesfirst}\]</div>
-<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<div class="math notranslate nohighlight" id="equation-eq-stokesfirst">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-stokesfirst" title="Permalink to this equation">¶</a></span>\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),\]</div>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -702,8 +755,17 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/couette_25_0.png" src="../../_images/couette_25_0.png" />
+<div class="stderr docutils container">
+<pre class="stderr literal-block">&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: invalid value encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+</pre>
+</div>
 <img alt="../../_images/couette_25_1.png" src="../../_images/couette_25_1.png" />
+<img alt="../../_images/couette_25_2.png" src="../../_images/couette_25_2.png" />
 </div>
 </div>
 </div>
@@ -715,60 +777,82 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 \[  u(y, t) = f(y) e^{i \omega t} .\]</div>
 <p>Inserted into the unsteady 1D heat equation we obtain</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   f i \omega \cancel{e^{i \omega t}} - \nu f^{''} \cancel{e^{i \omega t}} &amp;= 0, \\
   f^{''} - \frac{i \omega}{\nu}f &amp;= 0
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>A general solution to this problem is</p>
 <div class="math notranslate nohighlight">
-\[  f(y) = Ae^{-\sqrt{\frac{i\omega}{\nu}}y} + Be^{\sqrt{\frac{i\omega}{\nu}}y},\]</div>
+\[
+  f(y) = Ae^{-\sqrt{\frac{i\omega}{\nu}}y} + Be^{\sqrt{\frac{i\omega}{\nu}}y},
+\]</div>
 <p>where only the first leads to physically realistic real solutions for <span class="math notranslate nohighlight">\(y\longrightarrow \infty\)</span>, such that <span class="math notranslate nohighlight">\(B=0\)</span>. The boundary condition at <span class="math notranslate nohighlight">\(y=0\)</span> leads to</p>
 <div class="math notranslate nohighlight">
-\[  u(0, t) = f(0)e^{i \omega t} = A e^{i \omega t},\]</div>
+\[
+  u(0, t) = f(0)e^{i \omega t} = A e^{i \omega t},
+\]</div>
 <p>where the real part then requires <span class="math notranslate nohighlight">\(A=U_0\)</span> and as such</p>
 <div class="math notranslate nohighlight">
-\[ u(y, t) = U_0  e^{ -\sqrt{\frac{i\omega}{\nu}} y + i \omega t}\]</div>
+\[
+ u(y, t) = U_0  e^{ -\sqrt{\frac{i\omega}{\nu}} y + i \omega t}
+\]</div>
 </div>
 <div class="section" id="unsteady-flow-between-two-infinite-plates">
 <h2>Unsteady flow between two infinite plates<a class="headerlink" href="#unsteady-flow-between-two-infinite-plates" title="Permalink to this headline">¶</a></h2>
 <p>Consider two infinite plates separated by a distance <span class="math notranslate nohighlight">\(h\)</span> containing fluid initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. At <span class="math notranslate nohighlight">\(t=0\)</span> the velocity of the lower plate at <span class="math notranslate nohighlight">\(y=0\)</span> is suddenly accelerated to a velocity of <span class="math notranslate nohighlight">\(U_0\)</span> and the fluid above the plate starts to move due to friction and the no-slip boundary condition. The flow will approximate the steady linear Couette solution <span class="math notranslate nohighlight">\(U_0(1-y/h)\)</span> as <span class="math notranslate nohighlight">\(t \longrightarrow \infty\)</span>. Find the velocity between the plates as a function of time and space.</p>
 <p>The velocity, <span class="math notranslate nohighlight">\(\boldsymbol{u}=(u(y), 0, 0)\)</span>, is parallel to the walls and described by the 1D heat equation</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
   u(y, 0) &amp;= 0, \quad 0 &lt; y &lt; h \\
   u(0, t) &amp;= U_0, \\
   u(h, t) &amp;= 0
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>Through a shift of variables and using the steady Couette solution <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - U_0(1-y/h)\)</span>, the problem can be redefined with homogeneous boundary conditions</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
   v(y, 0) &amp;= -U_0(1-y/h), \quad 0 &lt; y &lt; h \\
   v(0, t) &amp;= 0, \\
   v(h, t) &amp;= 0
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>We can solve this problem easily using separation of variables <span class="math notranslate nohighlight">\(v(y, t) = T(t) V(y)\)</span>. Inserted into the heat equation we obtain as before</p>
 <div class="math notranslate nohighlight">
-\[ \frac{\dot{T}}{\nu T} = \frac{V''}{V} = -\lambda^2\]</div>
+\[
+ \frac{\dot{T}}{\nu T} = \frac{V''}{V} = -\lambda^2
+\]</div>
 <p>and two ordinary differential equations for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   T(t) &amp;= e^{-\lambda^2 \nu t}, \\
   V(y) &amp;= A\sin(\lambda y) + B \cos(\lambda y).
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>The boundary conditions give us <span class="math notranslate nohighlight">\(B=0\)</span> and <span class="math notranslate nohighlight">\(\lambda = \lambda_n = n \pi / h\)</span> for <span class="math notranslate nohighlight">\(n=1,2,\ldots\)</span>. Using superposition we get the total solution for <span class="math notranslate nohighlight">\(v(y, t)\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[  v(y, t) = \sum_{n=1}^{\infty} A_n \sin(\lambda_n y) e^{-\lambda_n^2 \nu t},\]</div>
+\[
+  v(y, t) = \sum_{n=1}^{\infty} A_n \sin(\lambda_n y) e^{-\lambda_n^2 \nu t},
+\]</div>
 <p>where the coefficients are found using the initial condition and orthogonality. That is,  multiply <span class="math notranslate nohighlight">\(v(y, 0)\)</span> by <span class="math notranslate nohighlight">\(\sin(\lambda_m)\)</span>, integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(h\)</span> and isolate <span class="math notranslate nohighlight">\(A_n\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{align*}
   A_n &amp;= -\frac{2U_0}{h}\int_0^h \sin(\lambda_n y)(1-y/h) \mathrm{d}y \\
   A_n &amp;= -\frac{2 U_0}{n \pi}
-\end{aligned}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>The total solution is then</p>
 <div class="math notranslate nohighlight">
-\[  u(y, t) = U_0(1-y/h) - \frac{2U_0}{\pi}\sum_{n=1}^{\infty} \frac{\sin(\lambda_n y)}{n} e^{-\lambda_n^2 \nu t}.\]</div>
+\[
+  u(y, t) = U_0(1-y/h) - \frac{2U_0}{\pi}\sum_{n=1}^{\infty} \frac{\sin(\lambda_n y)}{n} e^{-\lambda_n^2 \nu t}.
+\]</div>
 </div>
 <div class="section" id="suggested-assignments-couette">
 <h2>Suggested assignments Couette<a class="headerlink" href="#suggested-assignments-couette" title="Permalink to this headline">¶</a></h2>
@@ -864,7 +948,7 @@ The integral is zero since the integrand $S(t-s)f(y, s)$ is known to be a soluti
 <h2>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>Rotating cylinders. <a id='c-computer-1'></a></p>
-<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
 </li>
 <li><p>Implement <a class="reference external" href="couette.html#problem-6">problem 6</a>. <a id='c-computer-2'></a></p>
 <p>Consider <a class="reference external" href="couette.html#problem-6">problem 6</a> with suitable <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> and compare the analytical solution from the written assignment with a numerical implementation.</p>

@@ -349,11 +349,11 @@ Now, if the coins are identical then the arithmetic average is obviously the sam
 <p>For a statistically steady flow this will be identical to the time average and the left hand side will not  be dependent on time.</p>
 <p>By using the ensemble average the instantaneous velocity and pressure may be decomposed into a mean and fluctuating component</p>
 <div class="math notranslate nohighlight" id="equation-eq-reynoldsaverage">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq-reynoldsaverage" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-reynoldsaverage" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \boldsymbol{u}(\boldsymbol{x}, t) &amp;= \overline{\boldsymbol{u}}(\boldsymbol{x}, t) + \boldsymbol{u}'(\boldsymbol{x}, t), \notag \\
   p(\boldsymbol{x}, t) &amp;= \overline{p}(\boldsymbol{x}, t) + p'(\boldsymbol{x}, t).
 \end{aligned}\end{split}\]</div>
-<p>Note that both the instantaneous velocity <span class="math notranslate nohighlight">\(\boldsymbol{u}(\boldsymbol{x}, t)\)</span> and the fluctuating velocity <span class="math notranslate nohighlight">\(\boldsymbol{u}'(\boldsymbol{x}, t)\)</span> should be considered as random variables, whereas the mean velocity <span class="math notranslate nohighlight">\(\overline{\boldsymbol{u}}(\boldsymbol{x}, t)\)</span> is deterministic. Consider any random variable decomposed as <span class="math notranslate nohighlight">\(\phi = \overline{\phi} + \phi'\)</span>. By definition we have <span class="math notranslate nohighlight">\(\overline{\phi'}=0\)</span>. This follows since we can take the average of both sides of Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(46)</a> leading to</p>
+<p>Note that both the instantaneous velocity <span class="math notranslate nohighlight">\(\boldsymbol{u}(\boldsymbol{x}, t)\)</span> and the fluctuating velocity <span class="math notranslate nohighlight">\(\boldsymbol{u}'(\boldsymbol{x}, t)\)</span> should be considered as random variables, whereas the mean velocity <span class="math notranslate nohighlight">\(\overline{\boldsymbol{u}}(\boldsymbol{x}, t)\)</span> is deterministic. Consider any random variable decomposed as <span class="math notranslate nohighlight">\(\phi = \overline{\phi} + \phi'\)</span>. By definition we have <span class="math notranslate nohighlight">\(\overline{\phi'}=0\)</span>. This follows since we can take the average of both sides of Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(47)</a> leading to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
  \overline{\phi} &amp;= \overline{\overline{\phi} + \phi'},\\
@@ -372,7 +372,7 @@ Now, if the coins are identical then the arithmetic average is obviously the sam
 </div>
 <div class="section" id="derivation-of-reynolds-averaged-navier-stokes-rans-equations">
 <h2>Derivation of Reynolds averaged Navier-Stokes (RANS) equations<a class="headerlink" href="#derivation-of-reynolds-averaged-navier-stokes-rans-equations" title="Permalink to this headline">¶</a></h2>
-<p>Having defined the average velocity and pressure we are now in a need of equations that can be used to predict them. Equations for any statistical measure can be derived directly by manipulating the Navier-Stokes equations. The equations for <span class="math notranslate nohighlight">\(\overline{\boldsymbol{u}}\)</span> and <span class="math notranslate nohighlight">\(\overline{p}\)</span> are found simply by averaging NS and introducing Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(46)</a>. Averaging the continuity equation leads to</p>
+<p>Having defined the average velocity and pressure we are now in a need of equations that can be used to predict them. Equations for any statistical measure can be derived directly by manipulating the Navier-Stokes equations. The equations for <span class="math notranslate nohighlight">\(\overline{\boldsymbol{u}}\)</span> and <span class="math notranslate nohighlight">\(\overline{p}\)</span> are found simply by averaging NS and introducing Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(47)</a>. Averaging the continuity equation leads to</p>
 <div class="math notranslate nohighlight">
 \[ \overline{\nabla \cdot \boldsymbol{u}} = \nabla \cdot \overline{\boldsymbol{u}} = 0\]</div>
 <p>simply because averaging and differentiation commutes. The average of the momentum equation can be written</p>
@@ -391,7 +391,7 @@ Now, if the coins are identical then the arithmetic average is obviously the sam
  \overline{u_j \frac{\partial u_i}{\partial x_j}} &amp;= \overline{ \frac{\partial u_i u_j}{\partial x_j}} - \cancel{\overline{u_i \frac{\partial u_j}{\partial x_j}}}  \\
  &amp;= \frac{\partial \overline{u_i u_j}}{\partial x_j}.
 \end{aligned}\end{split}\]</div>
-<p>Inserting now for Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(46)</a> we have</p>
+<p>Inserting now for Eq. <a class="reference internal" href="#equation-eq-reynoldsaverage">(47)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[ \overline{u_i u_j} = \overline{(\overline{u}_i + u_i')(\overline{u}_j + u_j')} = \overline{u}_i \overline{u}_j + \overline{u_i' u_j'}\]</div>
 <p>and thus</p>
@@ -402,14 +402,14 @@ Now, if the coins are identical then the arithmetic average is obviously the sam
 \end{aligned}\end{split}\]</div>
 <p>Putting it all together we obtain the Reynolds averaged Navier-Stokes equations</p>
 <div class="math notranslate nohighlight" id="equation-eq-rans">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq-rans" title="Permalink to this equation">¶</a></span>\[  \frac{\partial \overline{\boldsymbol{u}}}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla)\overline{\boldsymbol{u}} = -\frac{1}{\rho}\nabla \overline{p} + \nu \nabla ^2 \overline{\boldsymbol{u}} - \frac{\partial \overline{u_i' u_j'}}{\partial x_j} + \overline{\boldsymbol{f}},\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-rans" title="Permalink to this equation">¶</a></span>\[  \frac{\partial \overline{\boldsymbol{u}}}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla)\overline{\boldsymbol{u}} = -\frac{1}{\rho}\nabla \overline{p} + \nu \nabla ^2 \overline{\boldsymbol{u}} - \frac{\partial \overline{u_i' u_j'}}{\partial x_j} + \overline{\boldsymbol{f}},\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-ranscont">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eq-ranscont" title="Permalink to this equation">¶</a></span>\[  \nabla \cdot \overline{\boldsymbol{u}} = 0\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-ranscont" title="Permalink to this equation">¶</a></span>\[  \nabla \cdot \overline{\boldsymbol{u}} = 0\]</div>
 </div>
 <div class="section" id="derivation-of-equation-for-average-turbulent-kinetic-energy">
 <h2>Derivation of equation for average turbulent kinetic energy<a class="headerlink" href="#derivation-of-equation-for-average-turbulent-kinetic-energy" title="Permalink to this headline">¶</a></h2>
 <p>The Reynolds averaged Navier-Stokes equations are derived in the previous section. To derive the turbulent kinetic energy equation it can be advantageous to first derive an equation for the fluctuating velocity <span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span>. Such an equation can be derived by subtracting
-Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the instantaneous momentum equation. All terms are trivial except from the convection</p>
+Eq. <a class="reference internal" href="#equation-eq-rans">(48)</a> from the instantaneous momentum equation. All terms are trivial except from the convection</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   \frac{\partial \boldsymbol{u} - \overline{\boldsymbol{u}}}{\partial t} + (\boldsymbol{u} \cdot \nabla)\boldsymbol{u} - (\overline{\boldsymbol{u}} \cdot \nabla)\overline{\boldsymbol{u}} &amp;= -\frac{1}{\rho}\nabla (p- \overline{p}) + \nu \nabla ^2 (\boldsymbol{u} - \overline{\boldsymbol{u}}) +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} + \boldsymbol{f} - \overline{\boldsymbol{f}}, \\
@@ -423,11 +423,11 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 \end{aligned}\end{split}\]</div>
 <p>which gives us the final equation for the fluctuating velocity component</p>
 <div class="math notranslate nohighlight" id="equation-eq-fluctvel">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-fluctvel" title="Permalink to this equation">¶</a></span>\[  \frac{\partial \boldsymbol{u}'}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla) \boldsymbol{u}' = -\frac{1}{\rho}\nabla p' + \nu \nabla ^2 \boldsymbol{u}' - (\boldsymbol{u}' \cdot \nabla) (\overline{\boldsymbol{u}}+\boldsymbol{u}' ) +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} + \boldsymbol{f}'.\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-fluctvel" title="Permalink to this equation">¶</a></span>\[  \frac{\partial \boldsymbol{u}'}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla) \boldsymbol{u}' = -\frac{1}{\rho}\nabla p' + \nu \nabla ^2 \boldsymbol{u}' - (\boldsymbol{u}' \cdot \nabla) (\overline{\boldsymbol{u}}+\boldsymbol{u}' ) +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} + \boldsymbol{f}'.\]</div>
 <p>Using index notation throughout the equation reads</p>
 <div class="math notranslate nohighlight" id="equation-eq-fluctvelindex">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eq-fluctvelindex" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u_i'}{\partial t} + \overline{u}_j \frac{\partial u_i'}{\partial x_j} = -\frac{1}{\rho}\frac{\partial p'}{\partial x_i} + \nu \frac{\partial^2 u_i'}{\partial x_j \partial x_j} - u_j'\frac{\partial \overline{u}_i}{\partial x_j} - u_j'\frac{\partial u_i'}{\partial x_j} +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} + f_i'.\]</div>
-<p>We now want to use this equation to derive transport equations for the Reynolds stresses and the turbulent kinetic energy. The turbulent kinetic energy is <span class="math notranslate nohighlight">\(k = 0.5 \overline{\boldsymbol{u}' \cdot \boldsymbol{u}'} = 0.5 \overline{u_i'u_i'}\)</span>. An equation for <span class="math notranslate nohighlight">\(k\)</span> can be obtained by multiplying Eq. <a class="reference internal" href="#equation-eq-fluctvelindex">(50)</a> with <span class="math notranslate nohighlight">\(u_i'\)</span> and then taking the average of the resulting equation. However, here we will make the derivation of the Reynolds stress <span class="math notranslate nohighlight">\(\overline{u_i'u_j'}\)</span> first, because then we can get the equation for <span class="math notranslate nohighlight">\(\overline{u_i'u_i'}\)</span> simply by taking the trace of the Reynolds stress equation. Start the derivation by multiplying Eq. <a class="reference internal" href="#equation-eq-fluctvelindex">(50)</a> by <span class="math notranslate nohighlight">\(u_k'\)</span> and then perform an average of the entire resulting equation. For simplicity we neglect the body force <span class="math notranslate nohighlight">\(f_i\)</span></p>
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-fluctvelindex" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u_i'}{\partial t} + \overline{u}_j \frac{\partial u_i'}{\partial x_j} = -\frac{1}{\rho}\frac{\partial p'}{\partial x_i} + \nu \frac{\partial^2 u_i'}{\partial x_j \partial x_j} - u_j'\frac{\partial \overline{u}_i}{\partial x_j} - u_j'\frac{\partial u_i'}{\partial x_j} +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} + f_i'.\]</div>
+<p>We now want to use this equation to derive transport equations for the Reynolds stresses and the turbulent kinetic energy. The turbulent kinetic energy is <span class="math notranslate nohighlight">\(k = 0.5 \overline{\boldsymbol{u}' \cdot \boldsymbol{u}'} = 0.5 \overline{u_i'u_i'}\)</span>. An equation for <span class="math notranslate nohighlight">\(k\)</span> can be obtained by multiplying Eq. <a class="reference internal" href="#equation-eq-fluctvelindex">(51)</a> with <span class="math notranslate nohighlight">\(u_i'\)</span> and then taking the average of the resulting equation. However, here we will make the derivation of the Reynolds stress <span class="math notranslate nohighlight">\(\overline{u_i'u_j'}\)</span> first, because then we can get the equation for <span class="math notranslate nohighlight">\(\overline{u_i'u_i'}\)</span> simply by taking the trace of the Reynolds stress equation. Start the derivation by multiplying Eq. <a class="reference internal" href="#equation-eq-fluctvelindex">(51)</a> by <span class="math notranslate nohighlight">\(u_k'\)</span> and then perform an average of the entire resulting equation. For simplicity we neglect the body force <span class="math notranslate nohighlight">\(f_i\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \overline{  u_k'\left( \frac{\partial u_i'}{\partial t} + \overline{u}_j \frac{\partial u_i'}{\partial x_j} = -\frac{1}{\rho}\frac{\partial p'}{\partial x_i} + \nu \frac{\partial^2 u_i'}{\partial x_j \partial x_j} - u_j'\frac{\partial \overline{u}_i}{\partial x_j} - u_j'\frac{\partial u_i'}{\partial x_j} +\frac{\partial \overline{u_i' u_j'}}{\partial x_j} \right) }.\]</div>
 <p>Most terms are trivially manipulated, and the last term on the rhs disappears</p>
@@ -438,7 +438,7 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 \[\overline{  u_i' \frac{\partial u_k'}{\partial t}} + \overline{u}_j \overline{u_i'\frac{\partial u_k'}{\partial x_j}} = -\frac{1}{\rho}\overline{u_i'\frac{\partial p'}{\partial x_k}} + \nu \overline{u_i'\frac{\partial^2 u_k'}{\partial x_j \partial x_j}} - \overline{u_i'u_j'}\frac{\partial \overline{u}_k}{\partial x_j} - \overline{u_i' u_j'\frac{\partial u_k'}{\partial x_j}}.\]</div>
 <p>Noting that, e.g., <span class="math notranslate nohighlight">\(\partial u_i'u_k'/\partial t=u_i'\partial u_k'/\partial t + u_k'\partial u_i'/\partial t\)</span>, you should now be able to realize that the sum of the two previous equations will give us an equation for <span class="math notranslate nohighlight">\(\overline{u_i'u_k'}\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-reynoldsstressraw">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eq-reynoldsstressraw" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(52)<a class="headerlink" href="#equation-eq-reynoldsstressraw" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
  \frac{\partial \overline{ u_i'u_k'}}{\partial t} + \overline{u}_j \frac{\partial\overline{ u_i'u_k'}}{\partial x_j} =&amp; -\frac{1}{\rho}\left( \overline{u_i'\frac{\partial p'}{\partial x_k}} + \overline{u_k'\frac{\partial p'}{\partial x_i}} \right) \notag \\
 &amp;+ \nu \left( \overline{u_i'\frac{\partial^2 u_k'}{\partial x_j \partial x_j}} + \overline{u_k'\frac{\partial^2 u_i'}{\partial x_j \partial x_j}} \right) \notag\\
 &amp;- \overline{u_i'u_j'}\frac{\partial \overline{u}_k}{\partial x_j} -           \overline{u_k'u_j'}\frac{\partial \overline{u}_i}{\partial x_j} \notag \\
@@ -455,7 +455,7 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 <div class="math notranslate nohighlight">
 \[s_{ij}' = \frac{1}{2} \left( \frac{\partial u_i'}{\partial x_j} + \frac{\partial u_j'}{\partial x_i}\right)\]</div>
 <p>and the notation with the identity tensor is used to enable a divergence form (<span class="math notranslate nohighlight">\(\partial \overline{p'u_i'}/\partial x_k = \partial \overline{p' u_i'} /\partial x_j \delta_{kj}\)</span>). This notation is used to emphasize that the term is conservative, it can neither create nor destroy <span class="math notranslate nohighlight">\(\overline{u_i' u_k'}\)</span>, but simply serves to move it around. For this reason the term is often referred to as pressure diffusion.</p>
-<p>The two  Laplacian terms in Eq. <a class="reference internal" href="#equation-eq-reynoldsstressraw">(51)</a> can be simplified using the following identities</p>
+<p>The two  Laplacian terms in Eq. <a class="reference internal" href="#equation-eq-reynoldsstressraw">(52)</a> can be simplified using the following identities</p>
 <div class="math notranslate nohighlight">
 \[ u_i'\frac{\partial^2 u_k'}{\partial x_j \partial x_j} = \frac{\partial}{\partial x_j}\left( \frac{\partial u_i'u_k'}{\partial x_j} - u_k'\frac{\partial u_i'}{\partial x_j} \right) - \frac{\partial u_i'}{\partial x_j} \frac{\partial u_k'}{\partial x_j}\]</div>
 <p>and</p>
@@ -469,27 +469,27 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 \[  u_i' u_j' \frac{\partial u_k'}{\partial x_j} +  u_k' u_j' \frac{\partial u_i'}{\partial x_j} = \frac{\partial u_i' u_k' u_j'}{\partial x_j}.\]</div>
 <p>Inserting for all the simplifications above we obtain a final form for the Reynolds stress transport equation</p>
 <div class="math notranslate nohighlight" id="equation-eq-reynoldsstress">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eq-reynoldsstress" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(53)<a class="headerlink" href="#equation-eq-reynoldsstress" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 \frac{\partial \overline{ u_i'u_k'}}{\partial t} + \overline{u}_j \frac{\partial\overline{ u_i'u_k'}}{\partial x_j} =&amp; -\frac{2\overline{p' s_{ik}'}}{\rho} - \frac{\partial}{\partial x_j}\left( \frac{1}{\rho}(\overline{p' u_i'}\delta_{kj} + \overline{p' u_k'}\delta_{ij}) + \overline{u_i'u_k'u_j'} - \nu \frac{\partial \overline{u_i'u_k'}}{\partial x_j} \right) \notag \\
 &amp;- 2 \nu \overline{\frac{\partial u_i'}{\partial x_j} \frac{\partial u_k'}{\partial x_j}} - \overline{u_i'u_j'}\frac{\partial \overline{u}_k}{\partial x_j} -           \overline{u_k'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}.
 \end{aligned}\end{split}\]</div>
-<p>This is the same as Eq.~(6-18) in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>. Note that  on the right hand side only the last two terms on the bottom line and the last on the first line are closed since they only contain <span class="math notranslate nohighlight">\(\overline{u_i'u_k'}\)</span> and gradients of the mean velocity. This means that in our ambitious effort to find a closure for <span class="math notranslate nohighlight">\(\overline{u_i'u_k'}\)</span> from first principles we have ended up creating even more problems for our self.</p>
-<p>An equation for the turbulent kinetic energy <span class="math notranslate nohighlight">\(k\)</span> can be obtained by contracting the two free indices in Eq. <a class="reference internal" href="#equation-eq-reynoldsstress">(52)</a> (set index <span class="math notranslate nohighlight">\(k=i\)</span>). A few terms disappear due to continuity (<span class="math notranslate nohighlight">\(s_{ii}'=0\)</span>) and symmetry leading to</p>
+<p>This is the same as Eq.~(6-18) in <a class="bibtex reference internal" href="../chapter3/couette.html#white06" id="id1">[Whi06]</a>. Note that  on the right hand side only the last two terms on the bottom line and the last on the first line are closed since they only contain <span class="math notranslate nohighlight">\(\overline{u_i'u_k'}\)</span> and gradients of the mean velocity. This means that in our ambitious effort to find a closure for <span class="math notranslate nohighlight">\(\overline{u_i'u_k'}\)</span> from first principles we have ended up creating even more problems for our self.</p>
+<p>An equation for the turbulent kinetic energy <span class="math notranslate nohighlight">\(k\)</span> can be obtained by contracting the two free indices in Eq. <a class="reference internal" href="#equation-eq-reynoldsstress">(53)</a> (set index <span class="math notranslate nohighlight">\(k=i\)</span>). A few terms disappear due to continuity (<span class="math notranslate nohighlight">\(s_{ii}'=0\)</span>) and symmetry leading to</p>
 <div class="math notranslate nohighlight" id="equation-eq-uiuifirst">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eq-uiuifirst" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(54)<a class="headerlink" href="#equation-eq-uiuifirst" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 \frac{\partial \overline{ u_i'u_i'}}{\partial t} + \overline{u}_j \frac{\partial\overline{ u_i'u_i'}}{\partial x_j} =&amp; - \frac{\partial}{\partial x_j}\left( \frac{2}{\rho}\overline{p' u_i'}\delta_{ij}  + \overline{u_i'u_i'u_j'} - \nu \frac{\partial \overline{u_i'u_i'}}{\partial x_j} \right) \notag \\
 &amp;- 2 \nu \overline{\frac{\partial u_i'}{\partial x_j} \frac{\partial u_i'}{\partial x_j}} - 2\overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}.
 \end{aligned}\end{split}\]</div>
 <p>If we simplify this further using <span class="math notranslate nohighlight">\(k = 0.5 \overline{u_i'u_i'}\)</span> we obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-uiuisecond">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eq-uiuisecond" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(55)<a class="headerlink" href="#equation-eq-uiuisecond" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 \frac{\partial k}{\partial t} + \overline{u}_j \frac{\partial k}{\partial x_j} =&amp; - \frac{\partial}{\partial x_j}\left( \frac{1}{\rho}\overline{p' u_i'}\delta_{ij}  + \frac{1}{2}\overline{u_i'u_i'u_j'} - \nu \frac{\partial k}{\partial x_j} \right) \notag \\
 &amp;- \nu \overline{\frac{\partial u_i'}{\partial x_j} \frac{\partial u_i'}{\partial x_j}} - \overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}.
 \end{aligned}\end{split}\]</div>
-<p>Evidently this equation differs in a few places from Eq.~(6-17) in \cite{white06}. However, the difference is merely due to a few rearrangements and we will now derive also a slightly different form more similar to (6-17). Note that the Laplacian term, i.e., the last of the divergence terms on the rhs of Eq. <a class="reference internal" href="#equation-eq-uiuifirst">(53)</a>, can alternatively be rewritten using the identity</p>
+<p>Evidently this equation differs in a few places from Eq.~(6-17) in \cite{white06}. However, the difference is merely due to a few rearrangements and we will now derive also a slightly different form more similar to (6-17). Note that the Laplacian term, i.e., the last of the divergence terms on the rhs of Eq. <a class="reference internal" href="#equation-eq-uiuifirst">(54)</a>, can alternatively be rewritten using the identity</p>
 <div class="math notranslate nohighlight">
 \[ \nu \frac{\partial^2 u_i' u_i' }{\partial x_j \partial x_j} = 4\nu \frac{\partial s_{ij}'u_i'}{\partial x_j} - 2 \nu \frac{\partial u_i'}{\partial x_j} \frac{\partial u_j'}{\partial x_i}.\]</div>
-<p>Inserting this into Eq. <a class="reference internal" href="#equation-eq-uiuifirst">(53)</a> leads to</p>
+<p>Inserting this into Eq. <a class="reference internal" href="#equation-eq-uiuifirst">(54)</a> leads to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 \frac{\partial k}{\partial t} + \overline{u}_j \frac{\partial k}{\partial x_j} =&amp; - \frac{\partial}{\partial x_j}\left( \frac{1}{\rho}\overline{p' u_i'}\delta_{ij}  + \frac{1}{2}\overline{u_i'u_i'u_j'} - 2\nu  \overline{s_{ij}'u_i'} \right) \\
@@ -509,7 +509,7 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 \end{aligned}\end{split}\]</div>
 <p>The final form of the turbulent kinetic energy equation, which is also the one that is most often used in the literature, is thus</p>
 <div class="math notranslate nohighlight" id="equation-eq-kineticenergyeq">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eq-kineticenergyeq" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-kineticenergyeq" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 \frac{\partial k}{\partial t} + \overline{u}_j \frac{\partial k}{\partial x_j} =&amp; - \frac{\partial}{\partial x_j}\left( \frac{1}{\rho}\overline{p' u_i'}\delta_{ij}  + \frac{1}{2}\overline{u_i'u_i'u_j'} - 2\nu  \overline{s_{ij}'u_i'} \right) \notag \\
 &amp;- 2\nu \overline{s_{ij}' s_{ij}'} - \overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}.
 \end{aligned}\end{split}\]</div>
@@ -552,9 +552,9 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 <p>Turbulence modelling is all about finding suitable closures, or models, for the Reynolds stress tensor. The Reynolds stress tensor is symmetrical</p>
 <div class="math notranslate nohighlight">
 \[ \overline{u_i'u_j'} = \overline{u_j'u_i'}\]</div>
-<p>and thus contains 6 unknown quantities. The Reynolds stress is not really a stress, but it is so called because of the way it appears in the mean momentum equation <a class="reference internal" href="#equation-eq-rans">(47)</a>. The mean momentum equation can alternatively be rewritten as</p>
+<p>and thus contains 6 unknown quantities. The Reynolds stress is not really a stress, but it is so called because of the way it appears in the mean momentum equation <a class="reference internal" href="#equation-eq-rans">(48)</a>. The mean momentum equation can alternatively be rewritten as</p>
 <div class="math notranslate nohighlight" id="equation-eq-rans2">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eq-rans2" title="Permalink to this equation">¶</a></span>\[  \rho \left(\frac{\partial \overline{\boldsymbol{u}}}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla)\overline{\boldsymbol{u}} \right) = \nabla \cdot \overline{\tau} + \rho\overline{\boldsymbol{f}}, \]</div>
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-rans2" title="Permalink to this equation">¶</a></span>\[  \rho \left(\frac{\partial \overline{\boldsymbol{u}}}{\partial t} + (\overline{\boldsymbol{u}} \cdot \nabla)\overline{\boldsymbol{u}} \right) = \nabla \cdot \overline{\tau} + \rho\overline{\boldsymbol{f}}, \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\overline{\tau}_{ij} = -\overline{p}\delta_{ij} + 2 \mu \overline{S}_{ij} - \rho\overline{u_i'u_j'},\]</div>
@@ -565,13 +565,13 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 <p>The highest level of RANS modelling is usually considered the second moment closures that solve transport equations for <span class="math notranslate nohighlight">\(\overline{u_i'u_j'}\)</span> directly. Second moment closures are outside the scope of this course.</p>
 <p>The by far most commonly used turbulence model is the eddy viscosity (first moment) closure</p>
 <div class="math notranslate nohighlight" id="equation-eq-eddyviscosity">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eq-eddyviscosity" title="Permalink to this equation">¶</a></span>\[  \overline{u_i'u_j'} = -2\nu_T\overline{S}_{ij} + \frac{2}{3}k\delta_{ij},\]</div>
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-eddyviscosity" title="Permalink to this equation">¶</a></span>\[  \overline{u_i'u_j'} = -2\nu_T\overline{S}_{ij} + \frac{2}{3}k\delta_{ij},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\nu_T\)</span> is a ‘turbulent viscosity’. Turbulence models are usually classified by the number of additional PDE’s that are used to model the turbulent viscosity.</p>
-<p>The turbulent viscosity is a parameter of the flow and not the fluid. As mentioned before, one of the most important properties of a turbulent flow is its ability to efficiently mix momentum and scalars, like temperature. Mathematically, the enhanced mixing is manifested through the Reynolds stress and it is through Eq. <a class="reference internal" href="#equation-eq-eddyviscosity">(57)</a> sought modelled as a diffusion process using <span class="math notranslate nohighlight">\(\nu_T\)</span> as a positive (<span class="math notranslate nohighlight">\(\ge0\)</span>) mixing rate constant. Inserted into the momentum equation the eddy viscosity gives rise to the term</p>
+<p>The turbulent viscosity is a parameter of the flow and not the fluid. As mentioned before, one of the most important properties of a turbulent flow is its ability to efficiently mix momentum and scalars, like temperature. Mathematically, the enhanced mixing is manifested through the Reynolds stress and it is through Eq. <a class="reference internal" href="#equation-eq-eddyviscosity">(58)</a> sought modelled as a diffusion process using <span class="math notranslate nohighlight">\(\nu_T\)</span> as a positive (<span class="math notranslate nohighlight">\(\ge0\)</span>) mixing rate constant. Inserted into the momentum equation the eddy viscosity gives rise to the term</p>
 <div class="math notranslate nohighlight">
 \[  \frac{\partial \overline{u_i'u_j'}}{\partial x_j} = -\frac{\partial }{\partial x_j}\left[ \nu_t \left( \frac{\partial \overline{u}_i}{\partial x_j} + \frac{\partial \overline{u}_j}{\partial x_i} \right) \right] + \frac{2}{3} \frac{\partial k }{\partial x_i},\]</div>
 <p>and it can be seen that the first term on the right hand side will lead to enhanced mixing (or diffusion) of <span class="math notranslate nohighlight">\(\overline{u}_i\)</span> as long as <span class="math notranslate nohighlight">\(\nu_T\)</span> is positive.</p>
-<p>Having established an algebraic model for the Reynolds stress <a class="reference internal" href="#equation-eq-eddyviscosity">(57)</a>, we have reduced the number of unknowns from 6 to 2 (<span class="math notranslate nohighlight">\(\nu_T\)</span> and <span class="math notranslate nohighlight">\(k\)</span>). We will now discuss the most common strategies for closing the remaining terms.</p>
+<p>Having established an algebraic model for the Reynolds stress <a class="reference internal" href="#equation-eq-eddyviscosity">(58)</a>, we have reduced the number of unknowns from 6 to 2 (<span class="math notranslate nohighlight">\(\nu_T\)</span> and <span class="math notranslate nohighlight">\(k\)</span>). We will now discuss the most common strategies for closing the remaining terms.</p>
 <p>The turbulent viscosity is by dimensional reasoning the product of a velocityscale <span class="math notranslate nohighlight">\(\tilde{u}\)</span> and a lengthscale <span class="math notranslate nohighlight">\(l\)</span></p>
 <div class="math notranslate nohighlight">
 \[  \nu_T = \tilde{u} \cdot l,\]</div>
@@ -581,13 +581,13 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
 <h3>Zero-equation models<a class="headerlink" href="#zero-equation-models" title="Permalink to this headline">¶</a></h3>
 <p>Zero-equation turbulence models are models that use zero additional PDEs to model the turbulent viscosity. The Mixing length model was the first such turbulence model. For a simple plane shear flow where <span class="math notranslate nohighlight">\(\overline{u}\)</span> is the tangential velocity and <span class="math notranslate nohighlight">\(y\)</span> is the wall normal direction the model reads</p>
 <div class="math notranslate nohighlight" id="equation-eq-mixinglength">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eq-mixinglength" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(59)<a class="headerlink" href="#equation-eq-mixinglength" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
  \tilde{u} &amp;= l \left|\frac{\mathrm{d} \overline{u}}{\mathrm{d} y} \right|, \notag \\
  \nu_T &amp;= l^2 \left|\frac{\mathrm{d} \overline{u}}{\mathrm{d} y}\right|.
 \end{aligned}\end{split}\]</div>
 <p>For a plane shear flow the model is excellent as one may choose</p>
 <div class="math notranslate nohighlight" id="equation-eq-mixinglengthl">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eq-mixinglengthl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(60)<a class="headerlink" href="#equation-eq-mixinglengthl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   l &amp;\approx y^2, \quad \mathrm{for} \quad y^+ &lt; 5, \notag\\
   l &amp;\approx \kappa y, \quad \mathrm{for} \quad 30 &lt; y^+ &lt; 100, \notag \\
   l &amp;\approx 1, \quad \mathrm{for} \quad y^+ &gt; 100
@@ -599,26 +599,26 @@ Eq. <a class="reference internal" href="#equation-eq-rans">(47)</a> from the ins
   y^+ &amp;= \frac{y v^*}{\nu},
 \end{aligned}\end{split}\]</div>
 <p>are, respectively, the turbulent wall friction velocity and the distance to the wall in normalized ‘wall’ units. A Reynolds number based on the friction velocity, <span class="math notranslate nohighlight">\(Re_{\tau}=L\cdot v^*/\nu\)</span>, is often used to characterize flow in turbulent plane shear flows.</p>
-<p>Several models exist that merge the three domains in Eq. <a class="reference internal" href="#equation-eq-mixinglengthl">(59)</a> into one single continuous function. Van Driest provided a model that merged the first two inner layers using</p>
+<p>Several models exist that merge the three domains in Eq. <a class="reference internal" href="#equation-eq-mixinglengthl">(60)</a> into one single continuous function. Van Driest provided a model that merged the first two inner layers using</p>
 <div class="math notranslate nohighlight" id="equation-eq-vandriest">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eq-vandriest" title="Permalink to this equation">¶</a></span>\[ l = \kappa y \left(1 - \exp\left( -\frac{y^+}{A}\right) \right),\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> is a constant set to 26 for flat plate flow. This model should be merged with <span class="math notranslate nohighlight">\(l=\mathrm{constant}\)</span> far enough from the wall.  Far enough is often chosen when <span class="math notranslate nohighlight">\(l\)</span> from Eq. <a class="reference internal" href="#equation-eq-vandriest">(60)</a> becomes larger than a factor of the mixing layer thickness <span class="math notranslate nohighlight">\(\delta\)</span>. An often used estimate is when <span class="math notranslate nohighlight">\(\kappa y = 0.09\delta\)</span> or <span class="math notranslate nohighlight">\(y = 0.22 \delta\)</span>.</p>
-<p>The Mixing length model is not a good model for other flows than plane boundary layer flows. For example, in the center of a plane channel the mean velocity gradient is zero due to symmetry (<span class="math notranslate nohighlight">\(\mathrm{d} \overline{u} / \mathrm{d} y = 0\)</span>). The Mixing length model Eq. <a class="reference internal" href="#equation-eq-mixinglength">(58)</a> thus predicts that the turbulent viscosity should be zero in the center of the channel. This is contrary to the experimental observation and intuition, because the turbulent intensity is actually very large in the center.</p>
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-vandriest" title="Permalink to this equation">¶</a></span>\[ l = \kappa y \left(1 - \exp\left( -\frac{y^+}{A}\right) \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a constant set to 26 for flat plate flow. This model should be merged with <span class="math notranslate nohighlight">\(l=\mathrm{constant}\)</span> far enough from the wall.  Far enough is often chosen when <span class="math notranslate nohighlight">\(l\)</span> from Eq. <a class="reference internal" href="#equation-eq-vandriest">(61)</a> becomes larger than a factor of the mixing layer thickness <span class="math notranslate nohighlight">\(\delta\)</span>. An often used estimate is when <span class="math notranslate nohighlight">\(\kappa y = 0.09\delta\)</span> or <span class="math notranslate nohighlight">\(y = 0.22 \delta\)</span>.</p>
+<p>The Mixing length model is not a good model for other flows than plane boundary layer flows. For example, in the center of a plane channel the mean velocity gradient is zero due to symmetry (<span class="math notranslate nohighlight">\(\mathrm{d} \overline{u} / \mathrm{d} y = 0\)</span>). The Mixing length model Eq. <a class="reference internal" href="#equation-eq-mixinglength">(59)</a> thus predicts that the turbulent viscosity should be zero in the center of the channel. This is contrary to the experimental observation and intuition, because the turbulent intensity is actually very large in the center.</p>
 <p>This flaws of the mixing length model first led to the suggested improvement that the velocityscale should be proportional to the turbulence intensity and not the mean velocity gradient</p>
 <div class="math notranslate nohighlight" id="equation-eq-utilde">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eq-utilde" title="Permalink to this equation">¶</a></span>\[  \tilde{u} = \mathrm{const} \cdot \sqrt{k}.\]</div>
+<span class="eqno">(62)<a class="headerlink" href="#equation-eq-utilde" title="Permalink to this equation">¶</a></span>\[  \tilde{u} = \mathrm{const} \cdot \sqrt{k}.\]</div>
 <p>The problem now is that this model introduces a new unknown <span class="math notranslate nohighlight">\(k\)</span> that requires modelling (whereas the old model used known quantities <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(\overline{u}\)</span>). Thus one additional PDE is required for closure of the turbulent viscosity.</p>
 </div>
 <div class="section" id="one-equation-models">
 <h3>One-equation models<a class="headerlink" href="#one-equation-models" title="Permalink to this headline">¶</a></h3>
 <p>Most one-equation turbulence models solves a transport equation for <span class="math notranslate nohighlight">\(k\)</span>, the turbulent kinetic energy. The equation for <span class="math notranslate nohighlight">\(k\)</span> has already been derived in previous assignments  and it is evident that it contains even more unclosed terms. If we start by rewriting the <span class="math notranslate nohighlight">\(k\)</span>-equation as</p>
 <div class="math notranslate nohighlight" id="equation-eq-uiuisecond2">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eq-uiuisecond2" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(63)<a class="headerlink" href="#equation-eq-uiuisecond2" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
 \frac{\partial k}{\partial t} + \overline{u}_j \frac{\partial k}{\partial x_j} =&amp; - \frac{\partial T_j}{\partial x_j} \notag + P - \tilde{\varepsilon}
 \end{aligned}\]</div>
 <p>then the terms on the right hand side are</p>
 <div class="math notranslate nohighlight" id="equation-eq-oneequation">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eq-oneequation" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(64)<a class="headerlink" href="#equation-eq-oneequation" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 T_j &amp;= \frac{1}{\rho}\overline{p' u_i'}\delta_{ij}  + \frac{1}{2}\overline{u_i'u_i'u_j'} - \nu \frac{\partial k}{\partial x_j}, \\
 P &amp;= -\overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}, \\
 \tilde{\varepsilon} &amp;= \nu \overline{\frac{\partial u_i'}{\partial x_j} \frac{\partial u_i'}{\partial x_j}} .
@@ -637,7 +637,7 @@ P &amp;= -\overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}, \\
 <p>The ‘pseudo’-dissipation rate scales like</p>
 <div class="math notranslate nohighlight">
 \[ \tilde{\varepsilon} \approx \frac{\tilde{u}^3}{l}.\]</div>
-<p>Thus we can find a suitable model for <span class="math notranslate nohighlight">\(\tilde{\varepsilon}\)</span> simply by inserting for Eq. <a class="reference internal" href="#equation-eq-utilde">(61)</a></p>
+<p>Thus we can find a suitable model for <span class="math notranslate nohighlight">\(\tilde{\varepsilon}\)</span> simply by inserting for Eq. <a class="reference internal" href="#equation-eq-utilde">(62)</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   \tilde{\varepsilon} &amp;= \frac{(\mathrm{const} \cdot \sqrt{k})^3}{l}, \\
@@ -665,7 +665,7 @@ P &amp;= -\overline{u_i'u_j'}\frac{\partial \overline{u}_i}{\partial x_j}, \\
 \[  \nu_T = \mathrm{const} \cdot \tilde{u} \cdot l = \mathrm{const} \cdot \frac{k^2}{\tilde{\varepsilon}}.\]</div>
 <p>A transport equation for <span class="math notranslate nohighlight">\(\tilde{\varepsilon}\)</span> can be derived exactly from the Navier-Stokes equations. The resulting equation contains many new unknowns and here we will not go into detail. Instead we will here simply report the entire and closed <span class="math notranslate nohighlight">\(k-\tilde{\varepsilon}\)</span> model with its most common model ‘constants’</p>
 <div class="math notranslate nohighlight" id="equation-eq-standardkepsilon">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eq-standardkepsilon" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(65)<a class="headerlink" href="#equation-eq-standardkepsilon" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
 \frac{\partial \overline{u}_i}{\partial t} + \overline{u}_j \frac{\partial \overline{u}_i}{\partial x_j} &amp;= \frac{\partial}{\partial x_j}\left[ \left( \nu + \nu_T \right) \left(\frac{\partial \overline{u}_i}{\partial x_j} + \frac{\partial \overline{u}_j}{\partial x_i} \right) \right] - \frac{1}{\rho} \frac{\partial \overline{p} + \frac{2}{3} k}{\partial x_i}, \notag \\
 \frac{\partial k}{\partial t} + \overline{u}_j \frac{\partial k}{\partial x_j} &amp;= \frac{\partial}{\partial x_j}\left[ \left( \nu + \frac{\nu_T}{\sigma_k} \right) \frac{\partial k}{\partial x_j} \right] + P - \tilde{\varepsilon}, \notag \\
 \frac{\partial \tilde{\varepsilon}}{\partial t} + \overline{u}_j \frac{\partial \tilde{\varepsilon}}{\partial x_j} &amp;= \frac{\partial}{\partial x_j}\left[ \left( \nu + \frac{\nu_T}{\sigma_{\varepsilon}} \right) \frac{\partial \tilde{\varepsilon}}{\partial x_j} \right] + C_{\tilde{\varepsilon}_1} \frac{P \tilde{\varepsilon}}{k} - C_{\tilde{\varepsilon}_2}\frac{\tilde{\varepsilon}^2}{k},
@@ -679,7 +679,7 @@ C_{\mu} = 0.09, \quad C_{\tilde{\varepsilon}_1}&amp;=1.44, \quad C_{\tilde{\vare
 </div>
 <div class="section" id="boundary-conditions">
 <h3>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this headline">¶</a></h3>
-<p>The average statistics in a turbulent flow have sharp gradients in the near vicinity of a wall.  To properly resolve all statistics the location of the first inner computational node needs to be at approximately <span class="math notranslate nohighlight">\(y^+=1\)</span>. This restriction is quite demanding in terms of grid resolution, especially at high Reynolds number. The standard <span class="math notranslate nohighlight">\(k-\tilde{\varepsilon}\)</span> model, Eq. <a class="reference internal" href="#equation-eq-standardkepsilon">(64)</a>, is not very accurate close to walls and many modifications exist to handle this problem. Two main approaches are</p>
+<p>The average statistics in a turbulent flow have sharp gradients in the near vicinity of a wall.  To properly resolve all statistics the location of the first inner computational node needs to be at approximately <span class="math notranslate nohighlight">\(y^+=1\)</span>. This restriction is quite demanding in terms of grid resolution, especially at high Reynolds number. The standard <span class="math notranslate nohighlight">\(k-\tilde{\varepsilon}\)</span> model, Eq. <a class="reference internal" href="#equation-eq-standardkepsilon">(65)</a>, is not very accurate close to walls and many modifications exist to handle this problem. Two main approaches are</p>
 <ol class="simple">
 <li><p>Do not resolve the flow further than approximately <span class="math notranslate nohighlight">\(y^+=30\)</span> and use wall functions to prescribe boundary conditions inside the wall instead of at the wall.</p></li>
 <li><p>Resolve the flow completely (all the way up to <span class="math notranslate nohighlight">\(y^+=1\)</span>) and introduce damping functions.</p></li>

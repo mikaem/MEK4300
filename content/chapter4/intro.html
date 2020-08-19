@@ -264,7 +264,7 @@
                 
   <div class="section" id="chapter-4">
 <h1>Chapter 4<a class="headerlink" href="#chapter-4" title="Permalink to this headline">¶</a></h1>
-<p>Important topics of Chapter 4 <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>.</p>
+<p>Important topics of Chapter 4 <a class="bibtex reference internal" href="../chapter3/couette.html#white06" id="id1">[Whi06]</a>.</p>
 <ol class="simple">
 <li><p>Displacement thickness</p></li>
 <li><p>Momentum thickness</p></li>
@@ -279,7 +279,7 @@
 <div class="section" id="written-assignments-chapter-4">
 <h3>Written assignments chapter 4<a class="headerlink" href="#written-assignments-chapter-4" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Derive the boundary layer equations (Eq. (4-32) in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id2">[Whi06]</a>) starting from the Navier-Stokes equations.</p></li>
+<li><p>Derive the boundary layer equations (Eq. (4-32) in <a class="bibtex reference internal" href="../chapter3/couette.html#white06" id="id2">[Whi06]</a>) starting from the Navier-Stokes equations.</p></li>
 <li><p>Derive the Blasius equation.</p></li>
 <li><p>Derive the Falkner-Skan equation.</p></li>
 </ol>
@@ -287,7 +287,7 @@
 <div class="section" id="computer-assignments-chapter-4">
 <h3>Computer assignments chapter 4<a class="headerlink" href="#computer-assignments-chapter-4" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Implement a nonlinear solver for the Blasius equation. Do the same for the Falkner-Skan equation and vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> as shown in Fig. 4-11 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id3">[Whi06]</a>. What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{\prime \prime}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions.</p></li>
+<li><p>Implement a nonlinear solver for the Blasius equation. Do the same for the Falkner-Skan equation and vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> as shown in Fig. 4-11 in <a class="bibtex reference internal" href="../chapter3/couette.html#white06" id="id3">[Whi06]</a>. What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{\prime \prime}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions.</p></li>
 <li><p>Compute the flow past a rotating cylinder. Use a rectangular domain <span class="math notranslate nohighlight">\(\Omega = [0, 6] \times [-1, 1]\)</span> and place the cylinder at <span class="math notranslate nohighlight">\((x,y) = (1,0)\)</span> with a radius of 0.25. Assume at first steady creeping flow, walls at <span class="math notranslate nohighlight">\(y = \pm 1\)</span> and set the velocity on the left hand side (<span class="math notranslate nohighlight">\(x=0\)</span>) to <span class="math notranslate nohighlight">\(1-y^2\)</span>. Set the cylinder to rotate against the clock at a constant speed of 1. Compute lift and drag forces on the cylinder. Reverse the direction of the rotation and recompute lift and drag. Now include convection and solve the Steady (nonlinear) Navier-Stokes equations for the same problem. Set the rotation to oscillate with an angular speed of <span class="math notranslate nohighlight">\(\sin \pi t\)</span> and compute the unsteady creeping flow past the cylinder. Do the same for unsteady Navier-Stokes and attempt to find the <a class="reference external" href="https://en.wikipedia.org/wiki/K%C3%A1rm%C3%A1n_vortex_street">von Kármán street</a> for a steady cylinder.</p></li>
 </ol>
 <p id="bibtex-bibliography-content/chapter4/intro-0"><dl class="citation">

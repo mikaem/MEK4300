@@ -358,12 +358,6 @@ are treated as unknowns (<code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Quiver at 0x7fdb306fdc70&gt;
-</pre></div>
-</div>
-<img alt="../../_images/stokes_4_1.png" src="../../_images/stokes_4_1.png" />
-</div>
 </div>
 <p>The boundary conditions will of course depend on the problem being solved. Here we have set homogeneous Dirichlet (no-slip) on three walls and a parabolic profile on top, which corresponds to a modified lid driven cavity.
 Note that boundary conditions for velocity are set using <code class="docutils literal notranslate"><span class="pre">VQ.sub(0)</span></code>, where <code class="docutils literal notranslate"><span class="pre">sub(0)</span></code> corresponds to subspace 0 of the mixed <code class="docutils literal notranslate"><span class="pre">VQ</span></code> space. A Dirichlet boundary condition on pressure could have been set using <code class="docutils literal notranslate"><span class="pre">VQ.sub(1)</span></code>, but here that would be an over-specification.</p>

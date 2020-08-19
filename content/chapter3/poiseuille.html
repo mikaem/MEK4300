@@ -477,14 +477,6 @@ u(r) &amp;= \frac{r^2}{4\mu}\frac{\mathrm{d} p}{\mathrm{d} x} + C_1\ln(r)+ C_2,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>h=4.47E-01 E=6.41E-03 r=1.76
-h=2.24E-01 E=1.69E-03 r=1.93
-h=1.12E-01 E=4.28E-04 r=1.98
-h=7.45E-02 E=1.91E-04 r=1.99
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="analysing-the-error">
@@ -505,14 +497,6 @@ h=7.45E-02 E=1.91E-04 r=1.99
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">ln</span><span class="p">(</span><span class="n">E</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">E</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h=</span><span class="si">%2.2E</span><span class="s2"> E=</span><span class="si">%2.2E</span><span class="s2"> r=</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">E</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">r</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>h=4.47E-01 E=2.14E-04 r=3.13
-h=2.24E-01 E=2.63E-05 r=3.03
-h=1.12E-01 E=3.25E-06 r=3.02
-h=7.45E-02 E=9.41E-07 r=3.05
 </pre></div>
 </div>
 </div>
@@ -683,17 +667,6 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.0
-10.471975511965978
-20.943951023931955
-31.415926535897928
-41.88790204786391
-52.35987755982989
-</pre></div>
-</div>
-<img alt="../../_images/poiseuille_6_1.png" src="../../_images/poiseuille_6_1.png" />
 </div>
 </div>
 </div>

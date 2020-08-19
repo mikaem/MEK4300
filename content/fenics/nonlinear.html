@@ -366,15 +366,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.20207598526678652
-Iteration 2 Error = 0.006786044472018965
-Iteration 3 Error = 1.626130021884984e-05
-Iteration 4 Error = 1.1905550866645789e-10
-Iteration 5 Error = 8.698631493053902e-17
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that everything below the line with <code class="docutils literal notranslate"><span class="pre">solve(F</span> <span class="pre">==</span> <span class="pre">0,</span> <span class="pre">u_,</span> <span class="pre">[bc0,</span> <span class="pre">bc1])</span></code> actually can be replaced simply by using this very compact call. The part from <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">derivative(F,</span> <span class="pre">u_,</span> <span class="pre">u)</span></code> and out is included here simply to illustrate how Newton’s method works in practise.</p>
 </div>
@@ -397,23 +388,6 @@ Iteration 5 Error = 8.698631493053902e-17
     <span class="n">u_1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">u_</span><span class="p">)</span>
     <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">{}</span><span class="s2"> Error = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span>  <span class="n">error</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.6227202551171986
-Iteration 2 Error = 0.009279110924024897
-Iteration 3 Error = 0.0009571365383617912
-Iteration 4 Error = 7.170672306756823e-05
-Iteration 5 Error = 1.6196475252925717e-05
-Iteration 6 Error = 1.6051762319950847e-06
-Iteration 7 Error = 1.5867106937166712e-07
-Iteration 8 Error = 3.2011735458409474e-08
-Iteration 9 Error = 2.6184233711820267e-09
-Iteration 10 Error = 3.617146938878996e-10
-Iteration 11 Error = 6.066104630273271e-11
-Iteration 12 Error = 4.281972850229132e-12
-Iteration 13 Error = 8.043617961021526e-13
 </pre></div>
 </div>
 </div>

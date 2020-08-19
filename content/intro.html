@@ -257,14 +257,16 @@ However, if you do not have a proper jupyter environment, then there is also fir
 that the environment will have FEniCS installed for you.</p>
 <p>Please note that if you read these notes in jupyter, then some equations and figures will look weird, or unrendered, still in their source, or latex form. This is because all equations in need of reference (especially across different pages) must be written in <a class="reference external" href="https://jupyterbook.org/content/math.html#numbering-equations">MyST Markdown</a> format. This gives nice equations and references in html and pdf, but the notebooks unfortunately look unrendered. It is not wrong, it is just that jupyter still does not know how to render MyST Markdown.</p>
 <p>So what about these live computational cells? On most pages of these notes there are computational cells, where code can be typed and executed, like this:</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello world!&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Hello world!
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

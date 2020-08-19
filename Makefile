@@ -12,9 +12,7 @@ book:
 	jupyter-book build ./
 	python scripts/preprocess.py
 
-commit:
-	jupyter-book build ./
-	python scripts/preprocess.py
+commit: book pdf
 	ghp-import -n -p -f _build/html
 
 cleanall:

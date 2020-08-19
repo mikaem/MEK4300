@@ -17,8 +17,12 @@ commit:
 	python scripts/preprocess.py
 	ghp-import -n -p -f _build/html
 
+cleanall:
+	jupyter-book build ./ --all
+    
 clean:
-	python scripts/clean.py
+	jupyter-book build ./
 
 pdf:
-	jupyter-book build ./ --builder pdflatex
+	jupyter-book build ./ --builder pdfhtml
+	cp _build/pdf/book.pdf mek4300.pdf

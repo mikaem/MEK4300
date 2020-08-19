@@ -334,7 +334,7 @@
 <a class="reference internal image-reference" href="../../_images/channelprofile3.png"><img alt="../../_images/channelprofile3.png" src="../../_images/channelprofile3.png" style="width: 300px; height: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Channel flow is a pressure driven Poiseuille flow</span><a class="headerlink" href="#channel" title="Permalink to this image">¶</a></p>
 </div>
-<p>Poiseuille flows are driven by pumps that forces the fluid to flow by modifying the pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="couette.html#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
+<p>Poiseuille flows are driven by pumps that forces the fluid to flow by modifying the pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
 <div class="math notranslate nohighlight" id="equation-eq-planechannelns">
 <span class="eqno">(13)<a class="headerlink" href="#equation-eq-planechannelns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \frac{\partial u}{\partial t} &amp;= \nu \nabla ^2 u - \frac{1}{\rho}\frac{\mathrm{d} p}{\mathrm{d} x},  \\
@@ -600,7 +600,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>The final solution to starting flow in a cylinder, <a class="reference internal" href="#equation-eq-unsteadycyl">(20)</a>, becomes</p>
 <div class="math notranslate nohighlight">
 \[ u(\tilde{r}, \tilde{t}) = u_m(1 - \tilde{r}^2) - \sum_{k=1}^{\infty} \frac{8 u_m J_0(\lambda_k \tilde{r})}{\lambda_k^3 J_1(\lambda_k)} e^{-\lambda_k^2 \tilde{t}}\]</div>
-<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="couette.html#white06" id="id2">[Whi06]</a>.</p>
+<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id2">[Whi06]</a>.</p>
 </div>
 <div class="section" id="pipe-flow-due-to-an-oscillating-pressure-gradient">
 <h3>Pipe flow due to an oscillating pressure gradient<a class="headerlink" href="#pipe-flow-due-to-an-oscillating-pressure-gradient" title="Permalink to this headline">¶</a></h3>
@@ -651,7 +651,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = \frac{K e^{i\omega t}}{i \omega} \left( 1 - \frac{J_0(r \sqrt{-i \omega/\nu})}{J_0(r_0 \sqrt{-i \omega/\nu})} \right),\]</div>
-<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="couette.html#white06" id="id3">[Whi06]</a>.</p>
+<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id3">[Whi06]</a>.</p>
 <p>The Bessel function can be found in the toolbox <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code>. The solution is computed below for a relatively large normalized <span class="math notranslate nohighlight">\(\tilde{\omega}=\omega r_0^2/\nu = 10\)</span>. A smaller value of <span class="math notranslate nohighlight">\(\tilde{\omega}\)</span> will result in velocity profiles closer to the steady Poiseuille profile <span class="math notranslate nohighlight">\(u_{max}(1-\tilde{r}^2)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,7 +712,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <h3>Computer exercise Poiseuille<a class="headerlink" href="#computer-exercise-poiseuille" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Verify analytical solutions <a id='p-computer-1'></a></p>
-<p>In <a class="bibtex reference internal" href="couette.html#white06" id="id4">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
+<p>In <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id4">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
 </li>
 </ol>
 <p id="bibtex-bibliography-content/chapter3/poiseuille-0"><dl class="citation">

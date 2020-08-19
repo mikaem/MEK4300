@@ -1,0 +1,35 @@
+- file: content/intro
+
+- part: White - Viscous Fluid Flow
+  chapters:
+    - file: content/chapter3/intro    
+      sections:
+        - file: content/chapter3/planeshearflow
+          sections:
+            - file: content/chapter3/couette
+            - file: content/chapter3/poiseuille
+        - file: content/chapter3/similarity
+        - file: content/chapter3/stokes
+    - file: content/chapter4/intro
+    - file: content/chapter6/turbulence
+  
+- part: Suggested solutions
+  chapters:
+    - file: content/solutions/chapter3/intro
+      sections: 
+        - file: content/solutions/chapter3/couette
+        #- file: content/solutions/chapter3/poiseuille
+    - file: content/solutions/chapter4/intro
+      #sections: 
+        #- file: content/solutions/chapter4/boundarylayer
+        #- file: content/solutions/chapter4/blasius
+        #- file: content/solutions/chapter4/falknerskan
+    
+- part: FEniCS
+  chapters:
+    - file: content/fenics/intro
+      sections:
+        - file: content/fenics/nonlinear
+        - file: content/fenics/transient
+
+        

@@ -1,0 +1,8 @@
+# Requirements for the demo notebooks
+# Useful for MyBinder configuration
+numpy
+scipy
+matplotlib
+nbinteract
+#jupyter-book
+jupyter_contrib_nbextensions

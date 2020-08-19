@@ -27,6 +27,7 @@ files = ('chapter3/intro',
 
 def main():
     os.chdir(book_root)
+    os.system('cp content/images/*.svg _build/html/_static/images/')
 
     for f in files:
         try:

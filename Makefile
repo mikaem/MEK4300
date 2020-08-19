@@ -18,10 +18,10 @@ commit:
 	ghp-import -n -p -f _build/html
 
 cleanall:
-	jupyter-book build ./ --all
+	jupyter-book clean ./ --all
     
 clean:
-	jupyter-book build ./
+	jupyter-book clean ./
 
 pdf:
 	jupyter-book build ./ --builder pdfhtml

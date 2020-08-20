@@ -365,7 +365,7 @@ Note that boundary conditions for velocity are set using <code class="docutils l
 <p>By taking the curl of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> and using that the curl of a gradient is always zero, an equation for the vorticity vector <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> is obtained</p>
 <div class="math notranslate nohighlight">
 \[  \nabla^2 \boldsymbol{\omega} = 0.\]</div>
-<p>Likewise, by taking the divergence (not gradient as it says in White <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>) of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> we obtain an equation for the pressure</p>
+<p>Likewise, by taking the divergence (not gradient as it says in White <a class="bibtex reference internal" href="poiseuille.html#white06" id="id1">[Whi06]</a>) of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> we obtain an equation for the pressure</p>
 <div class="math notranslate nohighlight">
 \[  \nabla^2 p = 0,\]</div>
 <p>which follows since <span class="math notranslate nohighlight">\(\nabla \cdot \nabla^2 \boldsymbol{u} = \nabla^2 (\nabla \cdot \boldsymbol{u})=0\)</span>. For Stokes flow both the pressure and the vorticity are governed by homogeneous Laplace equations. For 2D flows we also know the equation for the streamfunction <span class="math notranslate nohighlight">\(\nabla^2 \psi = -\omega_z\)</span>. Inserting this into the Laplace equation for <span class="math notranslate nohighlight">\(\omega_z\)</span> we obtain</p>

@@ -353,7 +353,7 @@
   \nabla ^2 u &amp;= 0,    \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
 <div class="math notranslate nohighlight" id="equation-eq-exactcouette">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
 <p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
@@ -752,7 +752,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>The original unnormalized velocity becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-stokesfirst">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-stokesfirst" title="Permalink to this equation">¶</a></span>\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),\]</div>
-<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id5">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -763,7 +763,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <span class="k">for</span> <span class="n">y0</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Solution in extended domain&#39;</span><span class="p">,</span> <span class="s1">&#39;Solution in true domain&#39;</span><span class="p">)):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">200.</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">U0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">erf</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nu</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
@@ -779,17 +779,8 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
-  u = U0*(1-erf(y/2/sqrt(nu*t)))
-&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
-  u = U0*(1-erf(y/2/sqrt(nu*t)))
-&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: invalid value encountered in true_divide
-  u = U0*(1-erf(y/2/sqrt(nu*t)))
-</pre>
-</div>
+<img alt="../../_images/couette_25_0.png" src="../../_images/couette_25_0.png" />
 <img alt="../../_images/couette_25_1.png" src="../../_images/couette_25_1.png" />
-<img alt="../../_images/couette_25_2.png" src="../../_images/couette_25_2.png" />
 </div>
 </div>
 </div>
@@ -948,7 +939,7 @@ assignment are</p>
 <span id="id6"></span><h3>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="rotating-cylinders">
 <span id="id7"></span><h4>Rotating cylinders<a class="headerlink" href="#rotating-cylinders" title="Permalink to this headline">¶</a></h4>
-<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id8">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)?</p>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="poiseuille.html#white06" id="id8">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)?</p>
 </div>
 <div class="section" id="implement-eq-eq-heathominhom">
 <span id="implement-heat-equation"></span><h4>Implement Eq. <a class="reference internal" href="#equation-eq-heathominhom">(13)</a><a class="headerlink" href="#implement-eq-eq-heathominhom" title="Permalink to this headline">¶</a></h4>

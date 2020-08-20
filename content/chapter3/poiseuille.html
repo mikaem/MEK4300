@@ -305,16 +305,23 @@
   <a class="reference internal nav-link" href="#suggested-assignments-poiseuille">
    Suggested assignments Poiseuille
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#poiseuille-problems-from-white">
-   Poiseuille problems from White
-  </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poiseuille-problems-from-white">
+     Poiseuille problems from White
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#computer-exercise-poiseuille">
      Computer exercise Poiseuille
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verify-analytical-solutions">
+       Verify analytical solutions
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -334,23 +341,23 @@
 <a class="reference internal image-reference" href="../../_images/channelprofile3.png"><img alt="../../_images/channelprofile3.png" src="../../_images/channelprofile3.png" style="width: 300px; height: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Channel flow is a pressure driven Poiseuille flow</span><a class="headerlink" href="#channel" title="Permalink to this image">¶</a></p>
 </div>
-<p>Poiseuille flows are driven by pumps that forces the fluid to flow by modifying the pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
+<p>Poiseuille flows are driven by pumps that forces the fluid to flow by modifying the pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
 <div class="math notranslate nohighlight" id="equation-eq-planechannelns">
-<span class="eqno">(13)<a class="headerlink" href="#equation-eq-planechannelns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-planechannelns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \frac{\partial u}{\partial t} &amp;= \nu \nabla ^2 u - \frac{1}{\rho}\frac{\mathrm{d} p}{\mathrm{d} x},  \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
 <p>The equations are still linear because the flow is aligned in one direction and convection is thus zero. The only difference from Couette flow is that there is a non-zero source term in the pressure gradient. The transient term on the left hand side is zero for stationary flows.</p>
 <p>The total volume flow, <span class="math notranslate nohighlight">\(Q\)</span>, through any duct is found by integrating the velocity over the entire cross section, <span class="math notranslate nohighlight">\(C\)</span>, of the duct</p>
 <div class="math notranslate nohighlight" id="equation-eq-q">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eq-q" title="Permalink to this equation">¶</a></span>\[  Q = \displaystyle{\int_{\mathrm{C}}} u \mathrm{d}A.\]</div>
-<p>Using <a class="reference internal" href="#equation-eq-q">(14)</a> it is also possible to define an average velocity, <span class="math notranslate nohighlight">\(\overline{u}\)</span>, through the duct</p>
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-q" title="Permalink to this equation">¶</a></span>\[  Q = \displaystyle{\int_{\mathrm{C}}} u \mathrm{d}A.\]</div>
+<p>Using <a class="reference internal" href="#equation-eq-q">(17)</a> it is also possible to define an average velocity, <span class="math notranslate nohighlight">\(\overline{u}\)</span>, through the duct</p>
 <div class="math notranslate nohighlight">
 \[  \overline{u} = \frac{Q}{A}.\]</div>
 <p>The average velocity is subsequently used to define the Reynolds number and certain friction factors - engineering tools used to classify duct flow.</p>
 <div class="section" id="the-circular-pipe">
 <h2>The circular pipe<a class="headerlink" href="#the-circular-pipe" title="Permalink to this headline">¶</a></h2>
-<p>For a steady cylindrical pipe flow with radius <span class="math notranslate nohighlight">\(r_0\)</span> the solution to <a class="reference internal" href="#equation-eq-planechannelns">(13)</a> is found simply by integrating twice and applying boundary conditions:</p>
+<p>For a steady cylindrical pipe flow with radius <span class="math notranslate nohighlight">\(r_0\)</span> the solution to <a class="reference internal" href="#equation-eq-planechannelns">(16)</a> is found simply by integrating twice and applying boundary conditions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   \frac{\nu}{r}\frac{\mathrm{d}}{\mathrm{d} r}\left(r \frac{\mathrm{d} u}{\mathrm{d} r} \right) &amp;= \frac{1}{\rho}\frac{\mathrm{d} p}{\mathrm{d} x}, \\
@@ -364,28 +371,28 @@ u(r) &amp;= \frac{r^2}{4\mu}\frac{\mathrm{d} p}{\mathrm{d} x} + C_1\ln(r)+ C_2,
 \[  C_2 = -\frac{r_0^2}{4\mu}\frac{\partial p}{\partial x},\]</div>
 <p>which leads to the final expression for the pipe flow</p>
 <div class="math notranslate nohighlight" id="equation-eq-steadypoiseuille">
-<span class="eqno">(15)<a class="headerlink" href="#equation-eq-steadypoiseuille" title="Permalink to this equation">¶</a></span>\[  u(r) = -\frac{1}{4\mu}\frac{\partial p}{\partial x} \left(r_0^2 - r^2 \right)\]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-steadypoiseuille" title="Permalink to this equation">¶</a></span>\[  u(r) = -\frac{1}{4\mu}\frac{\partial p}{\partial x} \left(r_0^2 - r^2 \right)\]</div>
 </div>
 <div class="section" id="combined-couette-and-poiseuille-flow">
 <h2>Combined Couette and Poiseuille flow<a class="headerlink" href="#combined-couette-and-poiseuille-flow" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to combine an applied pressure gradient with moving walls. Such flows are termed combined Couette-Poiseuille flows and they are governed by the Poiseuille <a class="reference internal" href="#equation-eq-planechannelns">(13)</a>. The solution to a combined Couette-Poiseuille flow can be found as the sum of a Couette solution <span class="math notranslate nohighlight">\(u_c\)</span> using zero pressure gradient and a homogeneous Poiseuille solution <span class="math notranslate nohighlight">\(u_p\)</span> using zero velocity on walls. For a plane channel with <span class="math notranslate nohighlight">\(u(h) = U\)</span> and <span class="math notranslate nohighlight">\(u(-h)=0\)</span> the solution is thus found by solving the two problems, for Couette</p>
+<p>It is possible to combine an applied pressure gradient with moving walls. Such flows are termed combined Couette-Poiseuille flows and they are governed by the Poiseuille <a class="reference internal" href="#equation-eq-planechannelns">(16)</a>. The solution to a combined Couette-Poiseuille flow can be found as the sum of a Couette solution <span class="math notranslate nohighlight">\(u_c\)</span> using zero pressure gradient and a homogeneous Poiseuille solution <span class="math notranslate nohighlight">\(u_p\)</span> using zero velocity on walls. For a plane channel with <span class="math notranslate nohighlight">\(u(h) = U\)</span> and <span class="math notranslate nohighlight">\(u(-h)=0\)</span> the solution is thus found by solving the two problems, for Couette</p>
 <div class="math notranslate nohighlight" id="equation-eq-couettecomb">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-couettecomb" title="Permalink to this equation">¶</a></span>\[  \nabla^2 u_c = 0, \quad u_c(h)=U,\,u_c(-h)=0,\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-couettecomb" title="Permalink to this equation">¶</a></span>\[  \nabla^2 u_c = 0, \quad u_c(h)=U,\,u_c(-h)=0,\]</div>
 <p>and Poiseuille</p>
 <div class="math notranslate nohighlight" id="equation-eq-poiseuillecomb">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-poiseuillecomb" title="Permalink to this equation">¶</a></span>\[\nabla^2 u_p = \frac{1}{\mu}\frac{\mathrm{d}p}{\mathrm{d}x}, \quad u_p(\pm h)=0. \]</div>
-<p>The combined solution <span class="math notranslate nohighlight">\(u = u_c + u_p\)</span> is the solution to the original problem. This can be seen by summing <a class="reference internal" href="#equation-eq-couettecomb">(16)</a> and <a class="reference internal" href="#equation-eq-poiseuillecomb">(17)</a> and also evidently <span class="math notranslate nohighlight">\(u(h) = u_c(h)+u_p(h) = U\)</span> and similarily for <span class="math notranslate nohighlight">\(y=-h\)</span>. The superposition is possible simply because the governing equation is linear. The principle is used also for transient flows in both Chapters (3-4) and (3-5).</p>
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-poiseuillecomb" title="Permalink to this equation">¶</a></span>\[\nabla^2 u_p = \frac{1}{\mu}\frac{\mathrm{d}p}{\mathrm{d}x}, \quad u_p(\pm h)=0. \]</div>
+<p>The combined solution <span class="math notranslate nohighlight">\(u = u_c + u_p\)</span> is the solution to the original problem. This can be seen by summing <a class="reference internal" href="#equation-eq-couettecomb">(19)</a> and <a class="reference internal" href="#equation-eq-poiseuillecomb">(20)</a> and also evidently <span class="math notranslate nohighlight">\(u(h) = u_c(h)+u_p(h) = U\)</span> and similarily for <span class="math notranslate nohighlight">\(y=-h\)</span>. The superposition is possible simply because the governing equation is linear. The principle is used also for transient flows in both Chapters (3-4) and (3-5).</p>
 </div>
 <div class="section" id="noncircular-ducts">
 <h2>Noncircular ducts<a class="headerlink" href="#noncircular-ducts" title="Permalink to this headline">¶</a></h2>
 <p>For steady and fully developed duct flows the governing equation is simply the Poisson equation</p>
 <div class="math notranslate nohighlight" id="equation-eq-poisson">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-poisson" title="Permalink to this equation">¶</a></span>\[  \nabla ^2 u = \frac{1}{\mu} \frac{\mathrm{d}p}{\mathrm{d}x}.\]</div>
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-poisson" title="Permalink to this equation">¶</a></span>\[  \nabla ^2 u = \frac{1}{\mu} \frac{\mathrm{d}p}{\mathrm{d}x}.\]</div>
 <p>The equation is linear and very easy to solve numerically for any shape of the duct. There is also a great number of analytical solutions available for noncircular duct flows, solutions that can be used to verify the quality of the numerical software. The duct solutions are often used for specifying inlet profiles to much more complicating geometries, where the flow enters the geometry through a duct.</p>
-<p>In the code blelow we show a FEniCS code used to solve <a class="reference internal" href="#equation-eq-poisson">(18)</a> for a rectangular duct spanned as <span class="math notranslate nohighlight">\(-a \leqslant y \leqslant a\)</span> and <span class="math notranslate nohighlight">\(-b \leqslant z \leqslant b\)</span> . Of interest here is the computation of the very complicated analytical expression for the velocity given as</p>
+<p>In the code blelow we show a FEniCS code used to solve <a class="reference internal" href="#equation-eq-poisson">(21)</a> for a rectangular duct spanned as <span class="math notranslate nohighlight">\(-a \leqslant y \leqslant a\)</span> and <span class="math notranslate nohighlight">\(-b \leqslant z \leqslant b\)</span> . Of interest here is the computation of the very complicated analytical expression for the velocity given as</p>
 <div class="math notranslate nohighlight" id="equation-eq-rectangle">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-rectangle" title="Permalink to this equation">¶</a></span>\[  u(z,y) = \frac{16a^2}{\mu \pi^3}\left(-\frac{\mathrm{d}p}{\mathrm{d}x} \right) \sum_{i=1,3,5,...}^{\infty} (-1)^{\frac{i-1}{2}} \left[1-\frac{\cosh (i \pi z)/2a}{\cosh (i \pi b) / 2a} \right] \times \frac{\cos(i \pi y) / 2a}{i^3}.\]</div>
-<p>The FEniCS implementation of this exact solution overloads the <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> class and  you should recognize <a class="reference internal" href="#equation-eq-rectangle">(19)</a> in the overloaded <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. Here <span class="math notranslate nohighlight">\(x\)</span> is an array of the coordinates and <span class="math notranslate nohighlight">\(x[0]\)</span> and <span class="math notranslate nohighlight">\(x[1]\)</span> represent <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> respectively. Unfortunately, the Python <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> is quite slow to interpolate due to the non-vectorized for-loop. For this reason, a C++ version of the same <code class="docutils literal notranslate"><span class="pre">Expression</span></code> is implemented instead, which speeds up the program with approximately a factor of 45.</p>
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-rectangle" title="Permalink to this equation">¶</a></span>\[  u(z,y) = \frac{16a^2}{\mu \pi^3}\left(-\frac{\mathrm{d}p}{\mathrm{d}x} \right) \sum_{i=1,3,5,...}^{\infty} (-1)^{\frac{i-1}{2}} \left[1-\frac{\cosh (i \pi z)/2a}{\cosh (i \pi b) / 2a} \right] \times \frac{\cos(i \pi y) / 2a}{i^3}.\]</div>
+<p>The FEniCS implementation of this exact solution overloads the <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> class and  you should recognize <a class="reference internal" href="#equation-eq-rectangle">(22)</a> in the overloaded <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. Here <span class="math notranslate nohighlight">\(x\)</span> is an array of the coordinates and <span class="math notranslate nohighlight">\(x[0]\)</span> and <span class="math notranslate nohighlight">\(x[1]\)</span> represent <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> respectively. Unfortunately, the Python <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> is quite slow to interpolate due to the non-vectorized for-loop. For this reason, a C++ version of the same <code class="docutils literal notranslate"><span class="pre">Expression</span></code> is implemented instead, which speeds up the program with approximately a factor of 45.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
@@ -523,7 +530,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>Unsteady plane shear flows are experienced by fluids where the driving forces are suddenly or continuously changed. A fluid initially at rest will for example respond to a sudden increase in the pressure gradient (we suddenly start the pump) and the volume flow through the duct will then increase monotonically until steady state is reached. The applied pressure gradient may also vary in time. Another scenario is that a wall is suddenly or continuously set in motion, dragging with it the fluid initially at rest. Common for these flows is that the transient term in the Navier Stokes equations cannot be neglected.</p>
 <div class="section" id="starting-flow-in-a-cylindrical-pipe">
 <h3>Starting flow in a cylindrical pipe<a class="headerlink" href="#starting-flow-in-a-cylindrical-pipe" title="Permalink to this headline">¶</a></h3>
-<p>When a fluid initially at rest suddenly is exposed to a constant pressure gradient, the fluid will start to move as a response to the applied forces and the flow will increase for some time until the steady state Poiseuille flow profile <a class="reference internal" href="#equation-eq-steadypoiseuille">(15)</a> is reached. For convenience we modify this equation slightly here and write it for the steady velocity <span class="math notranslate nohighlight">\(u_s\)</span> as</p>
+<p>When a fluid initially at rest suddenly is exposed to a constant pressure gradient, the fluid will start to move as a response to the applied forces and the flow will increase for some time until the steady state Poiseuille flow profile <a class="reference internal" href="#equation-eq-steadypoiseuille">(18)</a> is reached. For convenience we modify this equation slightly here and write it for the steady velocity <span class="math notranslate nohighlight">\(u_s\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[  u_s = u_m \left(1-\tilde{r}^2 \right),\]</div>
 <p>where</p>
@@ -532,13 +539,13 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>and <span class="math notranslate nohighlight">\(\tilde{r}=r/r_0\)</span>. We use the superposition principle and split the equation into two contributions</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = v(r, t) + u_s(r),\]</div>
-<p>where <span class="math notranslate nohighlight">\(u(r,t)\)</span> is the complete solution and <span class="math notranslate nohighlight">\(v(r,t)\)</span> is the solution to the homogeneous <a class="reference internal" href="#equation-eq-planechannelns">(13)</a> in cylinder coordinates:</p>
+<p>where <span class="math notranslate nohighlight">\(u(r,t)\)</span> is the complete solution and <span class="math notranslate nohighlight">\(v(r,t)\)</span> is the solution to the homogeneous <a class="reference internal" href="#equation-eq-planechannelns">(16)</a> in cylinder coordinates:</p>
 <div class="math notranslate nohighlight" id="equation-eq-unsteadycyl">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-unsteadycyl" title="Permalink to this equation">¶</a></span>\[  \frac{\partial v}{\partial t} = \nu \left( \frac{\partial ^2 v}{\partial r^2} + \frac{1}{r} \frac{\partial v}{\partial r} \right), \]</div>
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-unsteadycyl" title="Permalink to this equation">¶</a></span>\[  \frac{\partial v}{\partial t} = \nu \left( \frac{\partial ^2 v}{\partial r^2} + \frac{1}{r} \frac{\partial v}{\partial r} \right), \]</div>
 <p>subject to boundary condition <span class="math notranslate nohighlight">\(v(r_0,t)=0\)</span> and initial condition <span class="math notranslate nohighlight">\(v(r,0) = -u_s(r)\)</span>. The equation can be non-dimensionalized by multiplying with <span class="math notranslate nohighlight">\(r_0^2/\nu\)</span> and using <span class="math notranslate nohighlight">\(\tilde{t}=t\nu/r_0^2\)</span> and <span class="math notranslate nohighlight">\(\tilde{r}=r/r_0\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-unsteadycylnorm">
-<span class="eqno">(21)<a class="headerlink" href="#equation-eq-unsteadycylnorm" title="Permalink to this equation">¶</a></span>\[  \frac{\partial v}{\partial \tilde{t}} = \frac{\partial ^2 v}{\partial \tilde{r}^2} + \frac{1}{\tilde{r}} \frac{\partial v}{\partial \tilde{r}}.\]</div>
-<p>Equation <a class="reference internal" href="#equation-eq-unsteadycylnorm">(21)</a> can be solved using a separation of variables <span class="math notranslate nohighlight">\(v(\tilde{r},\tilde{t}) = V(\tilde{r})T(\tilde{t})\)</span>. Inserted into <a class="reference internal" href="#equation-eq-unsteadycylnorm">(21)</a> we obtain</p>
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-unsteadycylnorm" title="Permalink to this equation">¶</a></span>\[  \frac{\partial v}{\partial \tilde{t}} = \frac{\partial ^2 v}{\partial \tilde{r}^2} + \frac{1}{\tilde{r}} \frac{\partial v}{\partial \tilde{r}}.\]</div>
+<p>Equation <a class="reference internal" href="#equation-eq-unsteadycylnorm">(24)</a> can be solved using a separation of variables <span class="math notranslate nohighlight">\(v(\tilde{r},\tilde{t}) = V(\tilde{r})T(\tilde{t})\)</span>. Inserted into <a class="reference internal" href="#equation-eq-unsteadycylnorm">(24)</a> we obtain</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
  V \frac{\mathrm{d} T}{\mathrm{d} \tilde{t}} &amp;= T \left( \frac{\mathrm{d}^2 V}{\mathrm{d}\tilde{r}^2} + \frac{1}{\tilde{r}} \frac{\mathrm{d}V}{\mathrm{d}\tilde{r}} \right), \\
@@ -556,8 +563,8 @@ h=7.45E-02 E=9.41E-07 r=3.05
 \[T(t) = e^{-\lambda^2 \tilde{t}}.\]</div>
 <p>The second equation can be rewritten using <span class="math notranslate nohighlight">\(x=\tilde{r}\lambda\)</span> and chain rule differentiation leading to</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselequation">
-<span class="eqno">(22)<a class="headerlink" href="#equation-eq-besselequation" title="Permalink to this equation">¶</a></span>\[ x^2 V^{''} + x V^{'} + x^2 V = 0,\]</div>
-<p>with the apostrophe here being a derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>. Equation <a class="reference internal" href="#equation-eq-besselequation">(22)</a> is Bessel’s differential equation of zero order. The solution to Bessel’s equation is the Bessel function of the first kind of order zero</p>
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-besselequation" title="Permalink to this equation">¶</a></span>\[ x^2 V^{''} + x V^{'} + x^2 V = 0,\]</div>
+<p>with the apostrophe here being a derivative with respect to <span class="math notranslate nohighlight">\(x\)</span>. Equation <a class="reference internal" href="#equation-eq-besselequation">(25)</a> is Bessel’s differential equation of zero order. The solution to Bessel’s equation is the Bessel function of the first kind of order zero</p>
 <div class="math notranslate nohighlight">
 \[ J_0(x).\]</div>
 <p>A solution to <span class="math notranslate nohighlight">\(V\)</span> becomes</p>
@@ -581,26 +588,26 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>We now have a solution consisting of many constants that satisfy the boundary condition. It remains to close these constants using the initial condition <span class="math notranslate nohighlight">\(v(\tilde{r}, 0) = -u_m(1-\tilde{r}^2)\)</span>.</p>
 <p>We have</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselinit">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eq-besselinit" title="Permalink to this equation">¶</a></span>\[  \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) = -u_m(1-\tilde{r}^2)\]</div>
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-besselinit" title="Permalink to this equation">¶</a></span>\[  \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) = -u_m(1-\tilde{r}^2)\]</div>
 <p>and we want to find <span class="math notranslate nohighlight">\(A_k\)</span>. To this end we use orthogonality</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselorthogonal">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eq-besselorthogonal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_m x) dx = 0 \quad \mathrm{for\,} k \neq m\]</div>
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-besselorthogonal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_m x) dx = 0 \quad \mathrm{for\,} k \neq m\]</div>
 <p>and orthonormality</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselorthonormal">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-besselorthonormal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_k x) dx = \frac{J_{n+1}^2(\lambda_k)}{2}.\]</div>
-<p>If <a class="reference internal" href="#equation-eq-besselinit">(23)</a> is multiplied by <span class="math notranslate nohighlight">\(\tilde{r} J_0(\lambda_m \tilde{r})\)</span> and integrated from zero to unity we get</p>
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-besselorthonormal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_k x) dx = \frac{J_{n+1}^2(\lambda_k)}{2}.\]</div>
+<p>If <a class="reference internal" href="#equation-eq-besselinit">(26)</a> is multiplied by <span class="math notranslate nohighlight">\(\tilde{r} J_0(\lambda_m \tilde{r})\)</span> and integrated from zero to unity we get</p>
 <div class="math notranslate nohighlight">
 \[  \int_0^1 \tilde{r} J_0(\lambda_m \tilde{r}) \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) \mathrm{d}\tilde{r} = -\int_0^1 u_m(1-\tilde{r}^2) \tilde{r} J_0(\lambda_m \tilde{r}) \mathrm{d}\tilde{r}.\]</div>
-<p>We now use <a class="reference internal" href="#equation-eq-besselorthogonal">(24)</a> to eliminate all terms on the left hand side where <span class="math notranslate nohighlight">\(k \neq m\)</span> and insert for <a class="reference internal" href="#equation-eq-besselorthonormal">(25)</a>. The result is a closed expression for <span class="math notranslate nohighlight">\(A_k\)</span></p>
+<p>We now use <a class="reference internal" href="#equation-eq-besselorthogonal">(27)</a> to eliminate all terms on the left hand side where <span class="math notranslate nohighlight">\(k \neq m\)</span> and insert for <a class="reference internal" href="#equation-eq-besselorthonormal">(28)</a>. The result is a closed expression for <span class="math notranslate nohighlight">\(A_k\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-besselak">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eq-besselak" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{2}{J_1^2(\lambda_k)} \int_0^1 \tilde{r} J_0(\lambda_k \tilde{r})u_m(1-\tilde{r}^2) \mathrm{d}\tilde{r}.\]</div>
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-besselak" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{2}{J_1^2(\lambda_k)} \int_0^1 \tilde{r} J_0(\lambda_k \tilde{r})u_m(1-\tilde{r}^2) \mathrm{d}\tilde{r}.\]</div>
 <p>The integral on the right hand side can be evaluated exactly (details left out for now) leading to</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselakfinal">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eq-besselakfinal" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{4 u_m J_2(\lambda_k)}{\lambda_k^2 J_1^2(\lambda_k)} = -\frac{8 u_m}{\lambda_k^3 J_1(\lambda_k)}\]</div>
-<p>The final solution to starting flow in a cylinder, <a class="reference internal" href="#equation-eq-unsteadycyl">(20)</a>, becomes</p>
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-besselakfinal" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{4 u_m J_2(\lambda_k)}{\lambda_k^2 J_1^2(\lambda_k)} = -\frac{8 u_m}{\lambda_k^3 J_1(\lambda_k)}\]</div>
+<p>The final solution to starting flow in a cylinder, <a class="reference internal" href="#equation-eq-unsteadycyl">(23)</a>, becomes</p>
 <div class="math notranslate nohighlight">
 \[ u(\tilde{r}, \tilde{t}) = u_m(1 - \tilde{r}^2) - \sum_{k=1}^{\infty} \frac{8 u_m J_0(\lambda_k \tilde{r})}{\lambda_k^3 J_1(\lambda_k)} e^{-\lambda_k^2 \tilde{t}}\]</div>
-<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="#white06" id="id2">[Whi06]</a>.</p>
+<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id2">[Whi06]</a>.</p>
 </div>
 <div class="section" id="pipe-flow-due-to-an-oscillating-pressure-gradient">
 <h3>Pipe flow due to an oscillating pressure gradient<a class="headerlink" href="#pipe-flow-due-to-an-oscillating-pressure-gradient" title="Permalink to this headline">¶</a></h3>
@@ -612,12 +619,12 @@ h=7.45E-02 E=9.41E-07 r=3.05
 \[  e^{i\omega t} = \cos \omega t + i \sin \omega t.\]</div>
 <p>The governing equation for the cylinder is thus</p>
 <div class="math notranslate nohighlight" id="equation-eq-unsteadycyl2">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eq-unsteadycyl2" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t} = K e^{i\omega t} + \nu \left( \frac{\partial ^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} \right).\]</div>
-<p>We now want solve <a class="reference internal" href="#equation-eq-unsteadycyl2">(28)</a> with no-slip boundary conditions on the cylinder walls. We will neglect the initial condition and look only for a long-term steady oscillatory solution on the form</p>
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-unsteadycyl2" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t} = K e^{i\omega t} + \nu \left( \frac{\partial ^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} \right).\]</div>
+<p>We now want solve <a class="reference internal" href="#equation-eq-unsteadycyl2">(31)</a> with no-slip boundary conditions on the cylinder walls. We will neglect the initial condition and look only for a long-term steady oscillatory solution on the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-oscpressuresol">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eq-oscpressuresol" title="Permalink to this equation">¶</a></span>\[  u(r, t) = e^{i\omega t} V(r).\]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-oscpressuresol" title="Permalink to this equation">¶</a></span>\[  u(r, t) = e^{i\omega t} V(r).\]</div>
 <p>That is, we look for a solution where all the transient behaviour is governed by an oscillating pressure gradient proportional to <span class="math notranslate nohighlight">\(e^{i\omega t}\)</span>.</p>
-<p>Inserting for <a class="reference internal" href="#equation-eq-oscpressuresol">(29)</a> in <a class="reference internal" href="#equation-eq-unsteadycyl2">(28)</a> and using the same nomenclature as in the previous section we obtain</p>
+<p>Inserting for <a class="reference internal" href="#equation-eq-oscpressuresol">(32)</a> in <a class="reference internal" href="#equation-eq-unsteadycyl2">(31)</a> and using the same nomenclature as in the previous section we obtain</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   V i\omega \cancel{e^{i\omega t}} &amp;= K  \cancel{e^{i\omega t}} + \nu \cancel{e^{i\omega t}} \left(V'' + \frac{1}{r} V'\right) \\
@@ -626,11 +633,11 @@ h=7.45E-02 E=9.41E-07 r=3.05
 \end{aligned}\end{split}\]</div>
 <p>Using <span class="math notranslate nohighlight">\(x=r\sqrt{i\omega/\nu}\)</span> and chain rule differentiation the equation can be rewritten as</p>
 <div class="math notranslate nohighlight" id="equation-eq-intermediatev">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eq-intermediatev" title="Permalink to this equation">¶</a></span>\[    x^2 V'' + x V' - x^2 V = - \frac{K x^2}{i \omega},\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-intermediatev" title="Permalink to this equation">¶</a></span>\[    x^2 V'' + x V' - x^2 V = - \frac{K x^2}{i \omega},\]</div>
 <p>where the apostrophe now represents differentiation with respect to <span class="math notranslate nohighlight">\(x\)</span>. This equation looks very much like a <a class="reference external" href="http://mathworld.wolfram.com/ModifiedBesselDifferentialEquation.html">modified Bessel equation</a> of zero order. The only difference is the right hand side, which should be zero. To get rid of the right hand side we use another change of variables</p>
 <div class="math notranslate nohighlight">
 \[  V =  \hat{V} + \frac{K}{i \omega}\]</div>
-<p>and insert this in <a class="reference internal" href="#equation-eq-intermediatev">(30)</a> such that</p>
+<p>and insert this in <a class="reference internal" href="#equation-eq-intermediatev">(33)</a> such that</p>
 <div class="math notranslate nohighlight">
 \[    x^2 \hat{V}'' + x \hat{V}' - x^2 \hat{V} = 0.\]</div>
 <p>The solution to the modified Bessel equation of zero order is the modified Bessel function of the first kind (the second kind cannot be used since this function is infinite for <span class="math notranslate nohighlight">\(x=0\)</span>) of zero order, <span class="math notranslate nohighlight">\(I_0\)</span>, so</p>
@@ -641,17 +648,17 @@ h=7.45E-02 E=9.41E-07 r=3.05
 \[  \hat{V}(x) = A J_0(-i x),\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\)</span> is a constant. With this result we can now express the total solution as</p>
 <div class="math notranslate nohighlight" id="equation-eq-intoscpressuresol">
-<span class="eqno">(31)<a class="headerlink" href="#equation-eq-intoscpressuresol" title="Permalink to this equation">¶</a></span>\[  u(r, t) = e^{i\omega t} \left(A I_0(r\sqrt{i\omega/\nu}) +  \frac{K}{i \omega} \right).\]</div>
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-intoscpressuresol" title="Permalink to this equation">¶</a></span>\[  u(r, t) = e^{i\omega t} \left(A I_0(r\sqrt{i\omega/\nu}) +  \frac{K}{i \omega} \right).\]</div>
 <p>The boundary condition requires <span class="math notranslate nohighlight">\(u(r_0, t)=0\)</span>, which determines <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[  A = -\frac{K}{i \omega I_0(r_0 \sqrt{i \omega/ \nu})}.\]</div>
-<p>Inserted into <a class="reference internal" href="#equation-eq-intoscpressuresol">(31)</a> we are left with</p>
+<p>Inserted into <a class="reference internal" href="#equation-eq-intoscpressuresol">(34)</a> we are left with</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = \frac{K e^{i\omega t}}{i \omega} \left( 1 - \frac{I_0(r \sqrt{i \omega})}{I_0(r_0 \sqrt{i \omega/\nu})} \right),\]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = \frac{K e^{i\omega t}}{i \omega} \left( 1 - \frac{J_0(r \sqrt{-i \omega/\nu})}{J_0(r_0 \sqrt{-i \omega/\nu})} \right),\]</div>
-<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="#white06" id="id3">[Whi06]</a>.</p>
+<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id3">[Whi06]</a>.</p>
 <p>The Bessel function can be found in the toolbox <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code>. The solution is computed below for a relatively large normalized <span class="math notranslate nohighlight">\(\tilde{\omega}=\omega r_0^2/\nu = 10\)</span>. A smaller value of <span class="math notranslate nohighlight">\(\tilde{\omega}\)</span> will result in velocity profiles closer to the steady Poiseuille profile <span class="math notranslate nohighlight">\(u_{max}(1-\tilde{r}^2)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,27 +722,22 @@ h=7.45E-02 E=9.41E-07 r=3.05
 </div>
 <div class="section" id="suggested-assignments-poiseuille">
 <h2>Suggested assignments Poiseuille<a class="headerlink" href="#suggested-assignments-poiseuille" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="poiseuille-problems-from-white">
-<h2>Poiseuille problems from White<a class="headerlink" href="#poiseuille-problems-from-white" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Problem 3-15 <a id='problem-3-15'></a></p></li>
-<li><p>Problem 3-16 <a id='problem-3-16'></a></p></li>
-<li><p>Problem 3-17 <a id='problem-3-17'></a></p></li>
-</ol>
+<span id="poiseuille-problems-white"></span><h3>Poiseuille problems from White<a class="headerlink" href="#poiseuille-problems-from-white" title="Permalink to this headline">¶</a></h3>
+<p>Problems 3-15, 3-16 and 3-17.</p>
+</div>
 <div class="section" id="computer-exercise-poiseuille">
-<h3>Computer exercise Poiseuille<a class="headerlink" href="#computer-exercise-poiseuille" title="Permalink to this headline">¶</a></h3>
-<ol>
-<li><p>Verify analytical solutions <a id='p-computer-1'></a></p>
-<p>In <a class="bibtex reference internal" href="#white06" id="id4">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
-</li>
-</ol>
+<span id="id4"></span><h3>Computer exercise Poiseuille<a class="headerlink" href="#computer-exercise-poiseuille" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="verify-analytical-solutions">
+<h4>Verify analytical solutions<a class="headerlink" href="#verify-analytical-solutions" title="Permalink to this headline">¶</a></h4>
+<p>In <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
 <p id="bibtex-bibliography-content/chapter3/poiseuille-0"><dl class="citation">
-<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id5">4</a>)</span></dt>
 <dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
 </dd>
 </dl>
 </p>
+</div>
 </div>
 </div>
 </div>

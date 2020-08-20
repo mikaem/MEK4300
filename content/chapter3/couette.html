@@ -303,13 +303,49 @@
     <a class="reference internal nav-link" href="#additional-couette-problems">
      Additional Couette problems:
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#homogeneous-heat-equation-with-inhomogeneous-boundary-conditions">
+       Homogeneous heat equation with inhomogeneous boundary conditions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hint-1">
+         Hint 1
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hint-2">
+         Hint 2
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-assignments-couette">
+     Computer assignments Couette
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rotating-cylinders">
+       Rotating cylinders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implement-eq-eq-heathominhom">
+       Implement Eq.
+       <code class="xref eq docutils literal notranslate">
+        <span class="pre">
+         eq:heathominhom
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computer-assignments-couette">
-   Computer assignments Couette
-  </a>
  </li>
 </ul>
 
@@ -329,7 +365,7 @@
   \nabla ^2 u &amp;= 0,    \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
 <div class="math notranslate nohighlight" id="equation-eq-exactcouette">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
 <p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
@@ -366,7 +402,7 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 <div class="math notranslate nohighlight" id="equation-eq-varcouette">
 <span class="eqno">(7)<a class="headerlink" href="#equation-eq-varcouette" title="Permalink to this equation">¶</a></span>\[-\int_{\Omega} \nabla u \cdot \nabla v \, \mathrm{d}x = \int_{\Omega} fv \, \mathrm{d}x \quad \forall v \in \hat{V}.\]</div>
 <div class="section" id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<span id="implementation-couette"></span><h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The entire implementation that solves the variational problem <a class="reference internal" href="#equation-eq-varcouette">(7)</a> is given below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -475,20 +511,20 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 <p>The next example in Chapter 3-2.2 is the flow between axially moving concentric cylinders. The equation is the same as for the regular Couette flow in 3-2.1, but the coordinate system is cylindrical.
 There is no applied pressure gradient and the flow is described by the Poisson equation with no source.</p>
 <div class="math notranslate nohighlight" id="equation-eq-poissoncyl">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \nabla^2 u &amp;= 0, \\
   \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r} \right) &amp;= 0. 
-\end{align}\end{split}\]</div>
+\end{aligned}\end{split}\]</div>
 <p>The two cylinders have diameters <span class="math notranslate nohighlight">\(r_0\)</span> and <span class="math notranslate nohighlight">\(r_1\)</span>, where <span class="math notranslate nohighlight">\(r_0&lt;r_1\)</span>. The Dirichlet boundary conditions are <span class="math notranslate nohighlight">\(u(r=r_0)=u_0\)</span> and <span class="math notranslate nohighlight">\(u(r=r_1)=u_1\)</span>. The solution to <a class="reference internal" href="#equation-eq-poissoncyl">(8)</a> can be found by integrating twice</p>
 <div class="math notranslate nohighlight" id="equation-eq-ustep1">
 <span class="eqno">(9)<a class="headerlink" href="#equation-eq-ustep1" title="Permalink to this equation">¶</a></span>\[  u(r) = C_1 \ln(r) + C_2,\]</div>
 <p>where the two integration constants are found using the boundary conditions leading to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
  C_1 &amp;= \frac{U_1-U_0}{\ln(r_1/r_0)} \\
  C_2 &amp;= U_0\frac{\ln(r_1)}{\ln(r_1/r_0)} - U_1 \frac{\ln(r_0)}{\ln(r_1/r_0)}
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>which inserted into <a class="reference internal" href="#equation-eq-ustep1">(9)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-eq-uaxcyl">
@@ -566,7 +602,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </div>
 </div>
 <div class="section" id="unsteady-couette-flows">
-<h2>Unsteady Couette flows<a class="headerlink" href="#unsteady-couette-flows" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Unsteady Couette flows<a class="headerlink" href="#unsteady-couette-flows" title="Permalink to this headline">¶</a></h2>
 <p>Transient behavior can be obtained for Couette type flows, where the velocity of the walls are either</p>
 <ol class="simple">
 <li><p>Suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(u_{wall}=U_0\)</span></p></li>
@@ -581,7 +617,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y, t), 0, 0)\)</span> and the equation is reduced to</p>
 <div class="math notranslate nohighlight" id="equation-eq-heat1d">
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-heat1d" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t} = \nu \frac{\partial^2 u}{\partial y^2}.\]</div>
-<p>There are many different solutions available for this 1D heat equation, depending on the boundary and initial conditions of the problem. Most solutions make use of the Fourier series, the Fourier integral or Fourier transforms, see, e.g., <a class="bibtex reference internal" href="#kreyszig" id="id2">[Kre99]</a>.</p>
+<p>There are many different solutions available for this 1D heat equation, depending on the boundary and initial conditions of the problem. Most solutions make use of the Fourier series, the Fourier integral or Fourier transforms, see, e.g., <a class="bibtex reference internal" href="#kreyszig" id="id3">[Kre99]</a>.</p>
 <p>As a first example of flow that is suddenly accelerated to  a constant velocity, consider a infinite plane normal to the <span class="math notranslate nohighlight">\(y\)</span>-axis located at <span class="math notranslate nohighlight">\(y=0\)</span> and initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. The plane is then suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(U_0\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction and remains at this velocity for all <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Above the plane, for <span class="math notranslate nohighlight">\(y&gt;0\)</span>, the fluid is initially at rest. Friction and the no-slip boundary condition will make the flow above the plane increase in speed. Far away from the plane the velocity will be zero, i.e., <span class="math notranslate nohighlight">\(u(\infty, t)=0\)</span>. This means that the velocity will never reach a steady state, and the boundary layer over the plane will continue to grow for all time.</p>
 <p>We can find the solution as before using a separation of variables, but first we normalize the velocity</p>
 <div class="math notranslate nohighlight">
@@ -622,10 +658,10 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> requires <span class="math notranslate nohighlight">\(B=0\)</span>. The remaining term <span class="math notranslate nohighlight">\(A\sinh (\sqrt{K} y)\)</span> grows without bounds as <span class="math notranslate nohighlight">\(y \longrightarrow \infty\)</span>, which is not in agreement with <span class="math notranslate nohighlight">\(v(\infty, t)=-1\)</span> and we have to assume that <span class="math notranslate nohighlight">\(K\)</span> is a negative constant that we can write as <span class="math notranslate nohighlight">\(K=-\lambda^2\)</span>. The solutions to the separated ordinary differential equations become</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   T(t) &amp;= e^{-\lambda^2 \nu t}, \\
   V(y) &amp;= A \sin(\lambda y) + B \cos(\lambda y).
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>The constants need to be found using boundary and initial conditions. The boundary condition <span class="math notranslate nohighlight">\(V(0)=0\)</span> leads to <span class="math notranslate nohighlight">\(B=0\)</span> and as such one solution reads</p>
 <div class="math notranslate nohighlight">
@@ -653,7 +689,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
   v(y, 0) = 1-2\boldsymbol{H}(y) = \int_{0}^{\infty} A(\lambda) \sin (\lambda y) d\lambda, \, \mathrm{for } -\infty &lt; y &lt; \infty,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{H(y)}\)</span> is the Heaviside function.</p>
-<p>This way <span class="math notranslate nohighlight">\(v(y, 0) = 1\)</span> for <span class="math notranslate nohighlight">\(y&lt;0\)</span>, <span class="math notranslate nohighlight">\(v(y, 0)=-1\)</span> for <span class="math notranslate nohighlight">\(y&gt;0\)</span> and by symmetry <span class="math notranslate nohighlight">\(v(0, 0)=0\)</span>. Through orthogonality and the initial condition we can find <span class="math notranslate nohighlight">\(A(\lambda)\)</span> as (see <a class="bibtex reference internal" href="#kreyszig" id="id3">[Kre99]</a>)</p>
+<p>This way <span class="math notranslate nohighlight">\(v(y, 0) = 1\)</span> for <span class="math notranslate nohighlight">\(y&lt;0\)</span>, <span class="math notranslate nohighlight">\(v(y, 0)=-1\)</span> for <span class="math notranslate nohighlight">\(y&gt;0\)</span> and by symmetry <span class="math notranslate nohighlight">\(v(0, 0)=0\)</span>. Through orthogonality and the initial condition we can find <span class="math notranslate nohighlight">\(A(\lambda)\)</span> as (see <a class="bibtex reference internal" href="#kreyszig" id="id4">[Kre99]</a>)</p>
 <div class="math notranslate nohighlight">
 \[
  A(\lambda) = -\frac{2}{\pi}\int_{0}^{\infty} \sin(\lambda y') dy' .
@@ -696,39 +732,39 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>if we simply use a change of variables</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
   u &amp;= \frac{y-y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = -\frac{1}{2\sqrt{\nu t}} \\
   u' &amp;= \frac{y+y'}{2 \sqrt{\nu t}}, \quad \frac{\mathrm{d}u}{\mathrm{d} y'} = \frac{1}{2\sqrt{\nu t}}
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The integrals become</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \int_{0}^{\infty} e^{-\left(\frac{y-y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= -2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{-\infty} e^{-u^2} \mathrm{d}u,\\
     &amp;= -\sqrt{\nu t \pi}\left(1+ \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right)
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \int_{0}^{\infty} e^{-\left(\frac{y+y'}{2 \sqrt{\nu t}}\right)^2}   dy' &amp;= 2\sqrt{\nu t} \int_{\frac{y}{2\sqrt{\nu t}}}^{\infty} e^{-u^2} \mathrm{d}u,\\
     &amp;= \sqrt{\nu t \pi}\left(1- \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}}\right) \right).
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Putting it all together we finally obtain</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
   v(y, t) &amp;= -\sqrt{\frac{1}{4 \pi \nu t}} \left(-\sqrt{\nu t \pi} \right) (-2) \mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right), \\
   &amp;= -\mathrm{erf}\left(\frac{y}{2\sqrt{\nu t}} \right).
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The original unnormalized velocity becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-stokesfirst">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-stokesfirst" title="Permalink to this equation">¶</a></span>\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),\]</div>
-<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -778,10 +814,10 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>Inserted into the unsteady 1D heat equation we obtain</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   f i \omega \cancel{e^{i \omega t}} - \nu f^{''} \cancel{e^{i \omega t}} &amp;= 0, \\
   f^{''} - \frac{i \omega}{\nu}f &amp;= 0
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>A general solution to this problem is</p>
 <div class="math notranslate nohighlight">
@@ -805,22 +841,22 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>The velocity, <span class="math notranslate nohighlight">\(\boldsymbol{u}=(u(y), 0, 0)\)</span>, is parallel to the walls and described by the 1D heat equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
   u(y, 0) &amp;= 0, \quad 0 &lt; y &lt; h \\
   u(0, t) &amp;= U_0, \\
   u(h, t) &amp;= 0
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>Through a shift of variables and using the steady Couette solution <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - U_0(1-y/h)\)</span>, the problem can be redefined with homogeneous boundary conditions</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
   v(y, 0) &amp;= -U_0(1-y/h), \quad 0 &lt; y &lt; h \\
   v(0, t) &amp;= 0, \\
   v(h, t) &amp;= 0
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>We can solve this problem easily using separation of variables <span class="math notranslate nohighlight">\(v(y, t) = T(t) V(y)\)</span>. Inserted into the heat equation we obtain as before</p>
 <div class="math notranslate nohighlight">
@@ -830,10 +866,10 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>and two ordinary differential equations for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   T(t) &amp;= e^{-\lambda^2 \nu t}, \\
   V(y) &amp;= A\sin(\lambda y) + B \cos(\lambda y).
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>The boundary conditions give us <span class="math notranslate nohighlight">\(B=0\)</span> and <span class="math notranslate nohighlight">\(\lambda = \lambda_n = n \pi / h\)</span> for <span class="math notranslate nohighlight">\(n=1,2,\ldots\)</span>. Using superposition we get the total solution for <span class="math notranslate nohighlight">\(v(y, t)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -843,10 +879,10 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>where the coefficients are found using the initial condition and orthogonality. That is,  multiply <span class="math notranslate nohighlight">\(v(y, 0)\)</span> by <span class="math notranslate nohighlight">\(\sin(\lambda_m)\)</span>, integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(h\)</span> and isolate <span class="math notranslate nohighlight">\(A_n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
   A_n &amp;= -\frac{2U_0}{h}\int_0^h \sin(\lambda_n y)(1-y/h) \mathrm{d}y \\
   A_n &amp;= -\frac{2 U_0}{n \pi}
-\end{align*}
+\end{aligned}
 \end{split}\]</div>
 <p>The total solution is then</p>
 <div class="math notranslate nohighlight">
@@ -857,112 +893,89 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <div class="section" id="suggested-assignments-couette">
 <h2>Suggested assignments Couette<a class="headerlink" href="#suggested-assignments-couette" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="couette-problems-from-white">
-<h3>Couette problems from White:<a class="headerlink" href="#couette-problems-from-white" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Problem 3-1 <a id='problem-3-1'></a></p></li>
-<li><p>Problem 3-2 <a id='problem-3-2'></a></p></li>
-<li><p>Problem 3-3 <a id='problem-3-3'></a></p></li>
-<li><p>Problem 3-4 <a id='problem-3-4'></a></p></li>
-<li><p>Problem 3-5 <a id='problem-3-5'></a></p></li>
-</ol>
+<span id="couette-problems-white"></span><h3>Couette problems from White:<a class="headerlink" href="#couette-problems-from-white" title="Permalink to this headline">¶</a></h3>
+<p>Problems 3-1, 3-2, 3-3, 3-4 and 3-5.</p>
 </div>
 <div class="section" id="additional-couette-problems">
-<h3>Additional Couette problems:<a class="headerlink" href="#additional-couette-problems" title="Permalink to this headline">¶</a></h3>
-<ol start='6'> 
-    <li> Homogeneous heat equation with inhomogeneous boundary conditions <a id='problem-6'></a>
+<span id="additional-couette-problem"></span><h3>Additional Couette problems:<a class="headerlink" href="#additional-couette-problems" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="homogeneous-heat-equation-with-inhomogeneous-boundary-conditions">
+<span id="homogeneous-heat-equation"></span><h4>Homogeneous heat equation with inhomogeneous boundary conditions<a class="headerlink" href="#homogeneous-heat-equation-with-inhomogeneous-boundary-conditions" title="Permalink to this headline">¶</a></h4>
 <p>Consider the homogeneous heat equation with inhomogeneous boundary conditions</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-eq-heathominhom">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-heathominhom" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq L \\
   u(y, 0) &amp;= \phi(y), \\
   u(0, t) &amp;= g, \\
   u(L, t) &amp;= h
-\end{aligned}
-   \end{split}\]</div>
+\end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are constants. Find the general solution <span class="math notranslate nohighlight">\(u(y, t)\)</span>. Hint: use a function <span class="math notranslate nohighlight">\(\boldsymbol{U}(y) =
-   1/L[(L-y)g + y h]\)</span> and find the solution of <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - \boldsymbol{U}(y)\)</span>. The equation for <span class="math notranslate nohighlight">\(v(y, t)\)</span> is
+1/L[(L-y)g + y h]\)</span> and find the solution of <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - \boldsymbol{U}(y)\)</span>. The equation for <span class="math notranslate nohighlight">\(v(y, t)\)</span> is
 the same as for <span class="math notranslate nohighlight">\(u(y, t)\)</span>, but now with homogeneous boundary conditions.</p>
 <p>Optional (difficult), find the general solution if <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are functions of time. Two hints to the optional
 assignment are</p>
-<ul>
-<li> 
-Hint 1: use a function $\boldsymbol{U}(y, t) = 1/L[(L-y)g(t) + y h(t)]$ and find the solution of $v(y, t) = u(y,t)-\boldsymbol{U}(y,t)$. The equation for $v(y, t)$ should be obtained as an inhomogeneous heat equation with homogeneous boundary conditions.
-</li>
-<li> <a id='problem-6-hint-2'></a>
-Hint 2: Use Duhamel's principle to solve the inhomogeneous heat equation. Duhamel's principle states that the solution to the inhomogeneous heat equation can be found through solving just the homogeneous part. An inhomogeneous heat equation for $v(y, t)$ reads
-<p></p> 
-$$
-\begin{aligned}
-  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &= f(y, t), \quad \mathrm{ for }\quad 0 \leq y \leq L   \label{eq:Heat1DInhomo} \\
-\notag  v(y, 0) &= \overline{\phi}(y), \\
-\notag  v(0, t) &= v(L, t) = 0,
-\end{aligned}
-$$
-<p></p>
-We can solve instead the homogeneous part
-<p></p>   
-$$
-\begin{aligned}
-  \frac{\partial v^h}{\partial t} - \nu \frac{\partial ^2 v^h}{\partial y^2} &= 0, \quad \mathrm{ for }\quad 0 \leq y \leq L   \label{eq:Heat1DHomo} \\
-\notag  v^h(y, 0) &= \overline{\phi}(y), \\
-\notag  v^h(0, t) &= v^h(L, t) =  0,
-\end{aligned}
-$$
-<p></p>
-using for example a separation of variables $v^h(y,t)=S(t)V(y)$. The solution will evolve from the initial condition $\overline{\phi}$ and we thus expect the solution in a small increment of time to be expressed as $v^h(y, t) = S(t)\overline{\phi}(y)$. Duhamel's principle then states that the solution to the inhomogeneous problem can be computed as
-<p></p>
-$$
-\begin{aligned}
+<div class="section" id="hint-1">
+<span id="problem-6-hint-1"></span><h5>Hint 1<a class="headerlink" href="#hint-1" title="Permalink to this headline">¶</a></h5>
+<p>Use a function <span class="math notranslate nohighlight">\(\boldsymbol{U}(y, t) = 1/L[(L-y)g(t) + y h(t)]\)</span> and find the solution of <span class="math notranslate nohighlight">\(v(y, t) = u(y,t)-\boldsymbol{U}(y,t)\)</span>. The equation for <span class="math notranslate nohighlight">\(v(y, t)\)</span> should be obtained as an inhomogeneous heat equation with homogeneous boundary conditions.</p>
+</div>
+<div class="section" id="hint-2">
+<span id="problem-6-hint-2"></span><h5>Hint 2<a class="headerlink" href="#hint-2" title="Permalink to this headline">¶</a></h5>
+<p>Use Duhamel’s principle to solve the inhomogeneous heat equation. Duhamel’s principle states that the solution to the inhomogeneous heat equation can be found through solving just the homogeneous part. An inhomogeneous heat equation for <span class="math notranslate nohighlight">\(v(y, t)\)</span> reads</p>
+<div class="math notranslate nohighlight" id="equation-eq-heat1dinhomo">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-heat1dinhomo" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= f(y, t), \quad \mathrm{ for }\quad 0 \leq y \leq L    \\
+\notag  v(y, 0) &amp;= \overline{\phi}(y), \\
+\notag  v(0, t) &amp;= v(L, t) = 0,
+\end{aligned}\end{split}\]</div>
+<p>We can solve instead the homogeneous part</p>
+<div class="math notranslate nohighlight" id="equation-eq-heat1dhomo">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-heat1dhomo" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \frac{\partial v^h}{\partial t} - \nu \frac{\partial ^2 v^h}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq L    \\
+\notag  v^h(y, 0) &amp;= \overline{\phi}(y), \\
+\notag  v^h(0, t) &amp;= v^h(L, t) =  0,
+\end{aligned}\end{split}\]</div>
+<p>using for example a separation of variables <span class="math notranslate nohighlight">\(v^h(y,t)=S(t)V(y)\)</span>. The solution will evolve from the initial condition <span class="math notranslate nohighlight">\(\overline{\phi}\)</span> and we thus expect the solution in a small increment of time to be expressed as <span class="math notranslate nohighlight">\(v^h(y, t) = S(t)\overline{\phi}(y)\)</span>. Duhamel’s principle then states that the solution to the inhomogeneous problem can be computed as</p>
+<div class="math notranslate nohighlight">
+\[
   v(y, t) = v^h(y, t) + \int_0^t S(t-s)f(y, s)\mathrm{d}s,
-\end{aligned}
-$$
-<p></p>
-where $S(t-s)f(y, s)$ is the homogeneous solution we found earlier, but computed from the initial condition $f(y, s)$ instead of $\overline{\phi}$. One may think of $\int_0^t S(t-s)f(y, s)\mathrm{d}s$ as a superposition in time. Initialize using $f(y, s)$ and then move the solution an infinitesimal time forward using the homogeneous solution. By linearity, or superposition in time, one may add up, or integrate, the solution in time.<br>
-<p></p>
-<p>    </p>Duhamel's principle can be justified by computation. Insert for the inhomogeneous solution in the inhomogeneous equation
-<p></p>
-$$
-\begin{aligned}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(S(t-s)f(y, s)\)</span> is the homogeneous solution we found earlier, but computed from the initial condition <span class="math notranslate nohighlight">\(f(y, s)\)</span> instead of <span class="math notranslate nohighlight">\(\overline{\phi}\)</span>. One may think of <span class="math notranslate nohighlight">\(\int_0^t S(t-s)f(y, s)\mathrm{d}s\)</span> as a superposition in time. Initialize using <span class="math notranslate nohighlight">\(f(y, s)\)</span> and then move the solution an infinitesimal time forward using the homogeneous solution. By linearity, or superposition in time, one may add up, or integrate, the solution in time.<br></p>
+<p>Duhamel’s principle can be justified by computation. Insert for the inhomogeneous solution in the inhomogeneous equation</p>
+<div class="math notranslate nohighlight">
+\[
   \frac{\partial v}{\partial t} - \nu \frac{\partial^2 v}{\partial y^2} = \cancel{\frac{\partial v^h}{\partial t} - \nu \frac{\partial^2 v^h}{\partial y^2}} + \left( \frac{\partial }{\partial t} - \nu \frac{\partial^2 }{\partial y^2}  \right) \left( \int_0^t S(t-s)f(y, s)\mathrm{d}s\right)
-\end{aligned}
-$$
-<p></p>
-Use Leibniz rule for differentiation under the integral sign on the last part
-<p></p>
-$$
+\]</div>
+<p>Use Leibniz rule for differentiation under the integral sign on the last part</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-  \frac{\partial v}{\partial t} - \nu \frac{\partial^2 v}{\partial y^2} &= S(t-t)f(y, t) + \int_0^t \left(\frac{\partial }{\partial t} - \nu \frac{\partial^2 }{\partial y^2}  \right) S(t-s)f(y, s)\mathrm{d}s, \\
- &= S(0)f(y, t) = f(y, t).
+  \frac{\partial v}{\partial t} - \nu \frac{\partial^2 v}{\partial y^2} &amp;= S(t-t)f(y, t) + \int_0^t \left(\frac{\partial }{\partial t} - \nu \frac{\partial^2 }{\partial y^2}  \right) S(t-s)f(y, s)\mathrm{d}s, \\
+ &amp;= S(0)f(y, t) = f(y, t).
 \end{aligned}
-$$
-<p></p>
-The integral is zero since the integrand $S(t-s)f(y, s)$ is known to be a solution of the homogeneous heat equation.
-</li>
-</ul>
-</li>
-</ol>
+\end{split}\]</div>
+<p>The integral is zero since the integrand <span class="math notranslate nohighlight">\(S(t-s)f(y, s)\)</span> is known to be a solution of the homogeneous heat equation.</p>
+</div>
 </div>
 </div>
 <div class="section" id="computer-assignments-couette">
-<h2>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Rotating cylinders. <a id='c-computer-1'></a></p>
-<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="poiseuille.html#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
-</li>
-<li><p>Implement <a class="reference external" href="couette.html#problem-6">problem 6</a>. <a id='c-computer-2'></a></p>
-<p>Consider <a class="reference external" href="couette.html#problem-6">problem 6</a> with suitable <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> and compare the analytical solution from the written assignment with a numerical implementation.</p>
-</li>
-</ol>
+<span id="id6"></span><h3>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="rotating-cylinders">
+<span id="id7"></span><h4>Rotating cylinders<a class="headerlink" href="#rotating-cylinders" title="Permalink to this headline">¶</a></h4>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id8">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)?</p>
+</div>
+<div class="section" id="implement-eq-eq-heathominhom">
+<span id="implement-heat-equation"></span><h4>Implement Eq. <a class="reference internal" href="#equation-eq-heathominhom">(13)</a><a class="headerlink" href="#implement-eq-eq-heathominhom" title="Permalink to this headline">¶</a></h4>
+<p>Consider <a class="reference internal" href="#equation-eq-heathominhom">(13)</a> with suitable <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> and compare the analytical solution from the written assignment with a numerical implementation.</p>
 <p id="bibtex-bibliography-content/chapter3/couette-0"><dl class="citation">
-<dt class="bibtex label" id="kreyszig"><span class="brackets">Kre99</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dt class="bibtex label" id="kreyszig"><span class="brackets">Kre99</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
 <dd><p>Erwin Kreyszig. <em>Advanced Engineering mathematics</em>. Wiley, 8 edition, 1999.</p>
 </dd>
-<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>)</span></dt>
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id5">2</a>,<a href="#id8">3</a>)</span></dt>
 <dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
 </dd>
 </dl>
 </p>
+</div>
+</div>
 </div>
 </div>
 

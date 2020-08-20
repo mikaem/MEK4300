@@ -14,7 +14,7 @@ book:
 	jupyter-book build ./
 	python scripts/preprocess.py
 
-commit: pdf book
+commit: pdf latexpdf book
 	ghp-import -n -p -f _build/html
 
 cleanall:
@@ -26,3 +26,13 @@ clean:
 pdf:
 	jupyter-book build ./ --builder pdfhtml
 	cp _build/pdf/book.pdf mek4300.pdf
+
+pdflatex:
+	jupyter-book build ./ --builder pdflatex
+	cp _build/latex/python.pdf mek4300_latex.pdf
+
+latexpdf:
+	jupyter-book build ./ --builder latex
+	python scripts/no_numbering.py
+	make -C _build/latex
+	cp _build/latex/python.pdf mek4300_latex.pdf

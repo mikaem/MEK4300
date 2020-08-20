@@ -13,17 +13,17 @@
     - file: content/chapter4/intro
     - file: content/chapter6/turbulence
   
-- part: Suggested solutions
-  chapters:
-    - file: content/solutions/chapter3/intro
-      sections: 
-        - file: content/solutions/chapter3/couette
-        #- file: content/solutions/chapter3/poiseuille
-    - file: content/solutions/chapter4/intro
-      #sections: 
-        #- file: content/solutions/chapter4/boundarylayer
-        #- file: content/solutions/chapter4/blasius
-        #- file: content/solutions/chapter4/falknerskan
+    - file: content/solutions/intro
+      sections:
+        - file: content/solutions/chapter3/intro
+          sections: 
+            - file: content/solutions/chapter3/couette
+            #- file: content/solutions/chapter3/poiseuille
+        - file: content/solutions/chapter4/intro
+          #sections: 
+            #- file: content/solutions/chapter4/boundarylayer
+            #- file: content/solutions/chapter4/blasius
+            #- file: content/solutions/chapter4/falknerskan
     
 - part: FEniCS
   chapters:

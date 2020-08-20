@@ -253,29 +253,43 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementation">
-   Implementation
+  <a class="reference internal nav-link" href="#steady-couette-flows">
+   Steady Couette flows
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#couette-flow-between-axially-moving-concentric-cylinders">
-   Couette flow between axially moving concentric cylinders
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flow-between-axially-moving-concentric-cylinders">
+     Flow between axially moving concentric cylinders
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unsteady-couette-flows">
    Unsteady Couette flows
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fluid-oscillation-above-an-infinite-plate">
-   Fluid oscillation above an infinite plate
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unsteady-flow-between-two-infinite-plates">
-   Unsteady flow between two infinite plates
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsteady-flow-between-two-infinite-plates">
+     Unsteady flow between two infinite plates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsteady-flow-over-moving-plate">
+     Unsteady flow over moving plate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fluid-oscillation-above-an-infinite-plate">
+     Fluid oscillation above an infinite plate
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#suggested-assignments-couette">
@@ -347,13 +361,16 @@
                 
   <div class="section" id="couette-flows">
 <h1>Couette flows<a class="headerlink" href="#couette-flows" title="Permalink to this headline">¶</a></h1>
+<p>Couette flows are driven by moving boundaries, like the surface of a car or a plane. We will consider two types of Couette flows, steady or unsteady, and start with the simpler steady flows.</p>
+<div class="section" id="steady-couette-flows">
+<h2>Steady Couette flows<a class="headerlink" href="#steady-couette-flows" title="Permalink to this headline">¶</a></h2>
 <p>We will first look at a steady plane Couette flow, like in Chapter 3-2.1, where the height of the plane channel is <span class="math notranslate nohighlight">\(2h\)</span>. There is no applied pressure and no gravitational forces in the <span class="math notranslate nohighlight">\(x\)</span>-direction, so the Navier-Stokes equations reduce further to</p>
 <div class="math notranslate nohighlight" id="equation-eq-couettepde">
 <span class="eqno">(2)<a class="headerlink" href="#equation-eq-couettepde" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \nabla ^2 u &amp;= 0,    \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
 <div class="math notranslate nohighlight" id="equation-eq-exactcouette">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
 <p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
@@ -390,7 +407,7 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 <div class="math notranslate nohighlight" id="equation-eq-varcouette">
 <span class="eqno">(7)<a class="headerlink" href="#equation-eq-varcouette" title="Permalink to this equation">¶</a></span>\[-\int_{\Omega} \nabla u \cdot \nabla v \, \mathrm{d}x = \int_{\Omega} fv \, \mathrm{d}x \quad \forall v \in \hat{V}.\]</div>
 <div class="section" id="implementation">
-<span id="implementation-couette"></span><h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<span id="implementation-couette"></span><h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>The entire implementation that solves the variational problem <a class="reference internal" href="#equation-eq-varcouette">(7)</a> is given below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,9 +511,9 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Function</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> will now contain <span class="math notranslate nohighlight">\(\mathrm{N}+1\)</span> values, just like <code class="docutils literal notranslate"><span class="pre">u_</span></code>, and if we have computed correctly these values should be more or less the same as in <code class="docutils literal notranslate"><span class="pre">u_</span></code>. The plot above of the numerical solution minus the exact solution (<code class="docutils literal notranslate"><span class="pre">plot(u_</span> <span class="pre">-</span> <span class="pre">u_exact,</span> <span class="pre">title=&quot;Error</span> <span class="pre">couette</span> <span class="pre">flow&quot;)</span></code>) shows that the computed solution is exact down to machine precision <span class="math notranslate nohighlight">\(\approx 10^{-16}\)</span>. This is to be expected since the solution is linear and we are assuming a piecewise linear finite element solution.</p>
 </div>
-<div class="section" id="couette-flow-between-axially-moving-concentric-cylinders">
-<h2>Couette flow between axially moving concentric cylinders<a class="headerlink" href="#couette-flow-between-axially-moving-concentric-cylinders" title="Permalink to this headline">¶</a></h2>
-<p>The next example in Chapter 3-2.2 is the flow between axially moving concentric cylinders. The equation is the same as for the regular Couette flow in 3-2.1, but the coordinate system is cylindrical.
+<div class="section" id="flow-between-axially-moving-concentric-cylinders">
+<h3>Flow between axially moving concentric cylinders<a class="headerlink" href="#flow-between-axially-moving-concentric-cylinders" title="Permalink to this headline">¶</a></h3>
+<p>The next steady example in Chapter 3-2.2 is the flow between axially moving concentric cylinders. The equation is the same as for the regular Couette flow in 3-2.1, but the coordinate system is cylindrical.
 There is no applied pressure gradient and the flow is described by the Poisson equation with no source.</p>
 <div class="math notranslate nohighlight" id="equation-eq-poissoncyl">
 <span class="eqno">(8)<a class="headerlink" href="#equation-eq-poissoncyl" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
@@ -589,6 +606,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="unsteady-couette-flows">
 <span id="id2"></span><h2>Unsteady Couette flows<a class="headerlink" href="#unsteady-couette-flows" title="Permalink to this headline">¶</a></h2>
 <p>Transient behavior can be obtained for Couette type flows, where the velocity of the walls are either</p>
@@ -606,7 +624,64 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <div class="math notranslate nohighlight" id="equation-eq-heat1d">
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-heat1d" title="Permalink to this equation">¶</a></span>\[  \frac{\partial u}{\partial t} = \nu \frac{\partial^2 u}{\partial y^2}.\]</div>
 <p>There are many different solutions available for this 1D heat equation, depending on the boundary and initial conditions of the problem. Most solutions make use of the Fourier series, the Fourier integral or Fourier transforms, see, e.g., <a class="bibtex reference internal" href="#kreyszig" id="id3">[Kre99]</a>.</p>
-<p>As a first example of flow that is suddenly accelerated to  a constant velocity, consider a infinite plane normal to the <span class="math notranslate nohighlight">\(y\)</span>-axis located at <span class="math notranslate nohighlight">\(y=0\)</span> and initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. The plane is then suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(U_0\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction and remains at this velocity for all <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Above the plane, for <span class="math notranslate nohighlight">\(y&gt;0\)</span>, the fluid is initially at rest. Friction and the no-slip boundary condition will make the flow above the plane increase in speed. Far away from the plane the velocity will be zero, i.e., <span class="math notranslate nohighlight">\(u(\infty, t)=0\)</span>. This means that the velocity will never reach a steady state, and the boundary layer over the plane will continue to grow for all time.</p>
+<div class="section" id="unsteady-flow-between-two-infinite-plates">
+<h3>Unsteady flow between two infinite plates<a class="headerlink" href="#unsteady-flow-between-two-infinite-plates" title="Permalink to this headline">¶</a></h3>
+<p>As a first example consider two infinite plates separated by a distance <span class="math notranslate nohighlight">\(h\)</span> containing fluid initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. At <span class="math notranslate nohighlight">\(t=0\)</span> the velocity of the lower plate at <span class="math notranslate nohighlight">\(y=0\)</span> is suddenly accelerated to a velocity of <span class="math notranslate nohighlight">\(U_0\)</span> and the fluid above the plate starts to move due to friction and the no-slip boundary condition. The flow will approximate the steady linear Couette solution <span class="math notranslate nohighlight">\(U_0(1-y/h)\)</span> as <span class="math notranslate nohighlight">\(t \longrightarrow \infty\)</span>. Find the velocity between the plates as a function of time and space.</p>
+<p>The velocity, <span class="math notranslate nohighlight">\(\boldsymbol{u}=(u(y), 0, 0)\)</span>, is parallel to the walls and described by the 1D heat equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
+  u(y, 0) &amp;= 0, \quad 0 &lt; y &lt; h \\
+  u(0, t) &amp;= U_0, \\
+  u(h, t) &amp;= 0
+\end{aligned}
+\end{split}\]</div>
+<p>Through a shift of variables and using the steady Couette solution <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - U_0(1-y/h)\)</span>, the problem can be redefined with homogeneous boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
+  v(y, 0) &amp;= -U_0(1-y/h), \quad 0 &lt; y &lt; h \\
+  v(0, t) &amp;= 0, \\
+  v(h, t) &amp;= 0
+\end{aligned}
+\end{split}\]</div>
+<p>We can solve this problem easily using separation of variables <span class="math notranslate nohighlight">\(v(y, t) = T(t) V(y)\)</span>. Inserted into the heat equation we obtain as before</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\dot{T}}{\nu T} = \frac{V''}{V} = -\lambda^2
+\]</div>
+<p>and two ordinary differential equations for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  T(t) &amp;= e^{-\lambda^2 \nu t}, \\
+  V(y) &amp;= A\sin(\lambda y) + B \cos(\lambda y).
+\end{aligned}
+\end{split}\]</div>
+<p>The boundary conditions give us <span class="math notranslate nohighlight">\(B=0\)</span> and <span class="math notranslate nohighlight">\(\lambda = \lambda_n = n \pi / h\)</span> for <span class="math notranslate nohighlight">\(n=1,2,\ldots\)</span>. Using superposition we get the total solution for <span class="math notranslate nohighlight">\(v(y, t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  v(y, t) = \sum_{n=1}^{\infty} A_n \sin(\lambda_n y) e^{-\lambda_n^2 \nu t},
+\]</div>
+<p>where the coefficients are found using the initial condition and orthogonality. That is,  multiply <span class="math notranslate nohighlight">\(v(y, 0)\)</span> by <span class="math notranslate nohighlight">\(\sin(\lambda_m)\)</span>, integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(h\)</span> and isolate <span class="math notranslate nohighlight">\(A_n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  A_n &amp;= -\frac{2U_0}{h}\int_0^h \sin(\lambda_n y)(1-y/h) \mathrm{d}y \\
+  A_n &amp;= -\frac{2 U_0}{n \pi}
+\end{aligned}
+\end{split}\]</div>
+<p>The total solution is then</p>
+<div class="math notranslate nohighlight">
+\[
+  u(y, t) = U_0(1-y/h) - \frac{2U_0}{\pi}\sum_{n=1}^{\infty} \frac{\sin(\lambda_n y)}{n} e^{-\lambda_n^2 \nu t}.
+\]</div>
+</div>
+<div class="section" id="unsteady-flow-over-moving-plate">
+<h3>Unsteady flow over moving plate<a class="headerlink" href="#unsteady-flow-over-moving-plate" title="Permalink to this headline">¶</a></h3>
+<p>As a second example of flow that is suddenly accelerated by a moving wall, consider a infinite plane normal to the <span class="math notranslate nohighlight">\(y\)</span>-axis located at <span class="math notranslate nohighlight">\(y=0\)</span> and initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. The plane is then suddenly accelerated to a constant velocity <span class="math notranslate nohighlight">\(U_0\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction and remains at this velocity for all <span class="math notranslate nohighlight">\(t&gt;0\)</span>. Above the plane, for <span class="math notranslate nohighlight">\(y&gt;0\)</span>, the fluid is initially at rest. Friction and the no-slip boundary condition will make the flow above the plane increase in speed. Far away from the plane the velocity will be zero, i.e., <span class="math notranslate nohighlight">\(u(\infty, t)=0\)</span>. This means that the velocity will never reach a steady state, and the boundary layer over the plane will continue to grow for all time.</p>
 <p>We can find the solution as before using a separation of variables, but first we normalize the velocity</p>
 <div class="math notranslate nohighlight">
 \[
@@ -752,7 +827,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>The original unnormalized velocity becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-stokesfirst">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-stokesfirst" title="Permalink to this equation">¶</a></span>\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),\]</div>
-<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id5">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="#white06" id="id5">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -779,13 +854,13 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/couette_25_0.png" src="../../_images/couette_25_0.png" />
-<img alt="../../_images/couette_25_1.png" src="../../_images/couette_25_1.png" />
+<img alt="../../_images/couette_27_0.png" src="../../_images/couette_27_0.png" />
+<img alt="../../_images/couette_27_1.png" src="../../_images/couette_27_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="fluid-oscillation-above-an-infinite-plate">
-<h2>Fluid oscillation above an infinite plate<a class="headerlink" href="#fluid-oscillation-above-an-infinite-plate" title="Permalink to this headline">¶</a></h2>
+<h3>Fluid oscillation above an infinite plate<a class="headerlink" href="#fluid-oscillation-above-an-infinite-plate" title="Permalink to this headline">¶</a></h3>
 <p>An infinite plate oscillates with a velocity <span class="math notranslate nohighlight">\(u(0, t) = U_0 \cos (\omega t)\)</span>, which is the boundary condition to the fluid flow set in motion above the plate. We look for a “steady state” solution <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, meaning that we look for a solution independent of initial conditions. This problem is also referred to as Stokes second problem.</p>
 <p>Since the plate oscillates with frequency <span class="math notranslate nohighlight">\(\cos (\omega t)\)</span> a justified guessed solution is</p>
 <div class="math notranslate nohighlight">
@@ -814,60 +889,6 @@ There is no applied pressure gradient and the flow is described by the Poisson e
  u(y, t) = U_0  e^{ -\sqrt{\frac{i\omega}{\nu}} y + i \omega t}
 \]</div>
 </div>
-<div class="section" id="unsteady-flow-between-two-infinite-plates">
-<h2>Unsteady flow between two infinite plates<a class="headerlink" href="#unsteady-flow-between-two-infinite-plates" title="Permalink to this headline">¶</a></h2>
-<p>Consider two infinite plates separated by a distance <span class="math notranslate nohighlight">\(h\)</span> containing fluid initially at rest at <span class="math notranslate nohighlight">\(t=0\)</span>. At <span class="math notranslate nohighlight">\(t=0\)</span> the velocity of the lower plate at <span class="math notranslate nohighlight">\(y=0\)</span> is suddenly accelerated to a velocity of <span class="math notranslate nohighlight">\(U_0\)</span> and the fluid above the plate starts to move due to friction and the no-slip boundary condition. The flow will approximate the steady linear Couette solution <span class="math notranslate nohighlight">\(U_0(1-y/h)\)</span> as <span class="math notranslate nohighlight">\(t \longrightarrow \infty\)</span>. Find the velocity between the plates as a function of time and space.</p>
-<p>The velocity, <span class="math notranslate nohighlight">\(\boldsymbol{u}=(u(y), 0, 0)\)</span>, is parallel to the walls and described by the 1D heat equation</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-  \frac{\partial u}{\partial t} - \nu \frac{\partial ^2 u}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
-  u(y, 0) &amp;= 0, \quad 0 &lt; y &lt; h \\
-  u(0, t) &amp;= U_0, \\
-  u(h, t) &amp;= 0
-\end{aligned}
-\end{split}\]</div>
-<p>Through a shift of variables and using the steady Couette solution <span class="math notranslate nohighlight">\(v(y, t) = u(y, t) - U_0(1-y/h)\)</span>, the problem can be redefined with homogeneous boundary conditions</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-  \frac{\partial v}{\partial t} - \nu \frac{\partial ^2 v}{\partial y^2} &amp;= 0, \quad \mathrm{ for }\quad 0 \leq y \leq h \\
-  v(y, 0) &amp;= -U_0(1-y/h), \quad 0 &lt; y &lt; h \\
-  v(0, t) &amp;= 0, \\
-  v(h, t) &amp;= 0
-\end{aligned}
-\end{split}\]</div>
-<p>We can solve this problem easily using separation of variables <span class="math notranslate nohighlight">\(v(y, t) = T(t) V(y)\)</span>. Inserted into the heat equation we obtain as before</p>
-<div class="math notranslate nohighlight">
-\[
- \frac{\dot{T}}{\nu T} = \frac{V''}{V} = -\lambda^2
-\]</div>
-<p>and two ordinary differential equations for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-  T(t) &amp;= e^{-\lambda^2 \nu t}, \\
-  V(y) &amp;= A\sin(\lambda y) + B \cos(\lambda y).
-\end{aligned}
-\end{split}\]</div>
-<p>The boundary conditions give us <span class="math notranslate nohighlight">\(B=0\)</span> and <span class="math notranslate nohighlight">\(\lambda = \lambda_n = n \pi / h\)</span> for <span class="math notranslate nohighlight">\(n=1,2,\ldots\)</span>. Using superposition we get the total solution for <span class="math notranslate nohighlight">\(v(y, t)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-  v(y, t) = \sum_{n=1}^{\infty} A_n \sin(\lambda_n y) e^{-\lambda_n^2 \nu t},
-\]</div>
-<p>where the coefficients are found using the initial condition and orthogonality. That is,  multiply <span class="math notranslate nohighlight">\(v(y, 0)\)</span> by <span class="math notranslate nohighlight">\(\sin(\lambda_m)\)</span>, integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(h\)</span> and isolate <span class="math notranslate nohighlight">\(A_n\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-  A_n &amp;= -\frac{2U_0}{h}\int_0^h \sin(\lambda_n y)(1-y/h) \mathrm{d}y \\
-  A_n &amp;= -\frac{2 U_0}{n \pi}
-\end{aligned}
-\end{split}\]</div>
-<p>The total solution is then</p>
-<div class="math notranslate nohighlight">
-\[
-  u(y, t) = U_0(1-y/h) - \frac{2U_0}{\pi}\sum_{n=1}^{\infty} \frac{\sin(\lambda_n y)}{n} e^{-\lambda_n^2 \nu t}.
-\]</div>
 </div>
 <div class="section" id="suggested-assignments-couette">
 <h2>Suggested assignments Couette<a class="headerlink" href="#suggested-assignments-couette" title="Permalink to this headline">¶</a></h2>
@@ -939,7 +960,7 @@ assignment are</p>
 <span id="id6"></span><h3>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="rotating-cylinders">
 <span id="id7"></span><h4>Rotating cylinders<a class="headerlink" href="#rotating-cylinders" title="Permalink to this headline">¶</a></h4>
-<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="poiseuille.html#white06" id="id8">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)?</p>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="#white06" id="id8">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)?</p>
 </div>
 <div class="section" id="implement-eq-eq-heathominhom">
 <span id="implement-heat-equation"></span><h4>Implement Eq. <a class="reference internal" href="#equation-eq-heathominhom">(13)</a><a class="headerlink" href="#implement-eq-eq-heathominhom" title="Permalink to this headline">¶</a></h4>

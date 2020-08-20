@@ -253,24 +253,33 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-circular-pipe">
-   The circular pipe
+  <a class="reference internal nav-link" href="#steady-poiseuille-flows">
+   Steady Poiseuille flows
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combined-couette-and-poiseuille-flow">
-   Combined Couette and Poiseuille flow
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#noncircular-ducts">
-   Noncircular ducts
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysing-the-error">
-   Analysing the error
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-circular-pipe">
+     The circular pipe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noncircular-ducts">
+     Noncircular ducts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analysing-the-error">
+       Analysing the error
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combined-couette-and-poiseuille-flow">
+     Combined Couette and Poiseuille flow
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unsteady-duct-flows">
@@ -329,7 +338,7 @@
 <a class="reference internal image-reference" href="../../_images/channelprofile3.png"><img alt="../../_images/channelprofile3.png" src="../../_images/channelprofile3.png" style="width: 300px; height: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Channel flow is a pressure driven Poiseuille flow</span><a class="headerlink" href="#channel" title="Permalink to this image">¶</a></p>
 </div>
-<p>Poiseuille flows are driven by pumps that forces the fluid to flow by modifying the pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
+<p>Poiseuille flows are driven by pumps that forces the fluid to flow through pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="couette.html#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
 <div class="math notranslate nohighlight" id="equation-eq-planechannelns">
 <span class="eqno">(16)<a class="headerlink" href="#equation-eq-planechannelns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \frac{\partial u}{\partial t} &amp;= \nu \nabla ^2 u - \frac{1}{\rho}\frac{\mathrm{d} p}{\mathrm{d} x},  \\
@@ -343,8 +352,10 @@
 <div class="math notranslate nohighlight">
 \[  \overline{u} = \frac{Q}{A}.\]</div>
 <p>The average velocity is subsequently used to define the Reynolds number and certain friction factors - engineering tools used to classify duct flow.</p>
+<div class="section" id="steady-poiseuille-flows">
+<h2>Steady Poiseuille flows<a class="headerlink" href="#steady-poiseuille-flows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-circular-pipe">
-<h2>The circular pipe<a class="headerlink" href="#the-circular-pipe" title="Permalink to this headline">¶</a></h2>
+<h3>The circular pipe<a class="headerlink" href="#the-circular-pipe" title="Permalink to this headline">¶</a></h3>
 <p>For a steady cylindrical pipe flow with radius <span class="math notranslate nohighlight">\(r_0\)</span> the solution to <a class="reference internal" href="#equation-eq-planechannelns">(16)</a> is found simply by integrating twice and applying boundary conditions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -361,26 +372,16 @@ u(r) &amp;= \frac{r^2}{4\mu}\frac{\mathrm{d} p}{\mathrm{d} x} + C_1\ln(r)+ C_2,
 <div class="math notranslate nohighlight" id="equation-eq-steadypoiseuille">
 <span class="eqno">(18)<a class="headerlink" href="#equation-eq-steadypoiseuille" title="Permalink to this equation">¶</a></span>\[  u(r) = -\frac{1}{4\mu}\frac{\partial p}{\partial x} \left(r_0^2 - r^2 \right)\]</div>
 </div>
-<div class="section" id="combined-couette-and-poiseuille-flow">
-<h2>Combined Couette and Poiseuille flow<a class="headerlink" href="#combined-couette-and-poiseuille-flow" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to combine an applied pressure gradient with moving walls. Such flows are termed combined Couette-Poiseuille flows and they are governed by the Poiseuille <a class="reference internal" href="#equation-eq-planechannelns">(16)</a>. The solution to a combined Couette-Poiseuille flow can be found as the sum of a Couette solution <span class="math notranslate nohighlight">\(u_c\)</span> using zero pressure gradient and a homogeneous Poiseuille solution <span class="math notranslate nohighlight">\(u_p\)</span> using zero velocity on walls. For a plane channel with <span class="math notranslate nohighlight">\(u(h) = U\)</span> and <span class="math notranslate nohighlight">\(u(-h)=0\)</span> the solution is thus found by solving the two problems, for Couette</p>
-<div class="math notranslate nohighlight" id="equation-eq-couettecomb">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-couettecomb" title="Permalink to this equation">¶</a></span>\[  \nabla^2 u_c = 0, \quad u_c(h)=U,\,u_c(-h)=0,\]</div>
-<p>and Poiseuille</p>
-<div class="math notranslate nohighlight" id="equation-eq-poiseuillecomb">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-poiseuillecomb" title="Permalink to this equation">¶</a></span>\[\nabla^2 u_p = \frac{1}{\mu}\frac{\mathrm{d}p}{\mathrm{d}x}, \quad u_p(\pm h)=0. \]</div>
-<p>The combined solution <span class="math notranslate nohighlight">\(u = u_c + u_p\)</span> is the solution to the original problem. This can be seen by summing <a class="reference internal" href="#equation-eq-couettecomb">(19)</a> and <a class="reference internal" href="#equation-eq-poiseuillecomb">(20)</a> and also evidently <span class="math notranslate nohighlight">\(u(h) = u_c(h)+u_p(h) = U\)</span> and similarily for <span class="math notranslate nohighlight">\(y=-h\)</span>. The superposition is possible simply because the governing equation is linear. The principle is used also for transient flows in both Chapters (3-4) and (3-5).</p>
-</div>
 <div class="section" id="noncircular-ducts">
-<h2>Noncircular ducts<a class="headerlink" href="#noncircular-ducts" title="Permalink to this headline">¶</a></h2>
+<h3>Noncircular ducts<a class="headerlink" href="#noncircular-ducts" title="Permalink to this headline">¶</a></h3>
 <p>For steady and fully developed duct flows the governing equation is simply the Poisson equation</p>
 <div class="math notranslate nohighlight" id="equation-eq-poisson">
-<span class="eqno">(21)<a class="headerlink" href="#equation-eq-poisson" title="Permalink to this equation">¶</a></span>\[  \nabla ^2 u = \frac{1}{\mu} \frac{\mathrm{d}p}{\mathrm{d}x}.\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-poisson" title="Permalink to this equation">¶</a></span>\[  \nabla ^2 u = \frac{1}{\mu} \frac{\mathrm{d}p}{\mathrm{d}x}.\]</div>
 <p>The equation is linear and very easy to solve numerically for any shape of the duct. There is also a great number of analytical solutions available for noncircular duct flows, solutions that can be used to verify the quality of the numerical software. The duct solutions are often used for specifying inlet profiles to much more complicating geometries, where the flow enters the geometry through a duct.</p>
-<p>In the code blelow we show a FEniCS code used to solve <a class="reference internal" href="#equation-eq-poisson">(21)</a> for a rectangular duct spanned as <span class="math notranslate nohighlight">\(-a \leqslant y \leqslant a\)</span> and <span class="math notranslate nohighlight">\(-b \leqslant z \leqslant b\)</span> . Of interest here is the computation of the very complicated analytical expression for the velocity given as</p>
+<p>In the code blelow we show a FEniCS code used to solve <a class="reference internal" href="#equation-eq-poisson">(19)</a> for a rectangular duct spanned as <span class="math notranslate nohighlight">\(-a \leqslant y \leqslant a\)</span> and <span class="math notranslate nohighlight">\(-b \leqslant z \leqslant b\)</span> . Of interest here is the computation of the very complicated analytical expression for the velocity given as</p>
 <div class="math notranslate nohighlight" id="equation-eq-rectangle">
-<span class="eqno">(22)<a class="headerlink" href="#equation-eq-rectangle" title="Permalink to this equation">¶</a></span>\[  u(z,y) = \frac{16a^2}{\mu \pi^3}\left(-\frac{\mathrm{d}p}{\mathrm{d}x} \right) \sum_{i=1,3,5,...}^{\infty} (-1)^{\frac{i-1}{2}} \left[1-\frac{\cosh (i \pi z)/2a}{\cosh (i \pi b) / 2a} \right] \times \frac{\cos(i \pi y) / 2a}{i^3}.\]</div>
-<p>The FEniCS implementation of this exact solution overloads the <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> class and  you should recognize <a class="reference internal" href="#equation-eq-rectangle">(22)</a> in the overloaded <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. Here <span class="math notranslate nohighlight">\(x\)</span> is an array of the coordinates and <span class="math notranslate nohighlight">\(x[0]\)</span> and <span class="math notranslate nohighlight">\(x[1]\)</span> represent <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> respectively. Unfortunately, the Python <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> is quite slow to interpolate due to the non-vectorized for-loop. For this reason, a C++ version of the same <code class="docutils literal notranslate"><span class="pre">Expression</span></code> is implemented instead, which speeds up the program with approximately a factor of 45.</p>
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-rectangle" title="Permalink to this equation">¶</a></span>\[  u(z,y) = \frac{16a^2}{\mu \pi^3}\left(-\frac{\mathrm{d}p}{\mathrm{d}x} \right) \sum_{i=1,3,5,...}^{\infty} (-1)^{\frac{i-1}{2}} \left[1-\frac{\cosh (i \pi z)/2a}{\cosh (i \pi b) / 2a} \right] \times \frac{\cos(i \pi y) / 2a}{i^3}.\]</div>
+<p>The FEniCS implementation of this exact solution overloads the <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> class and  you should recognize <a class="reference internal" href="#equation-eq-rectangle">(20)</a> in the overloaded <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. Here <span class="math notranslate nohighlight">\(x\)</span> is an array of the coordinates and <span class="math notranslate nohighlight">\(x[0]\)</span> and <span class="math notranslate nohighlight">\(x[1]\)</span> represent <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> respectively. Unfortunately, the Python <code class="docutils literal notranslate"><span class="pre">UserExpression</span></code> <code class="docutils literal notranslate"><span class="pre">u_exact</span></code> is quite slow to interpolate due to the non-vectorized for-loop. For this reason, a C++ version of the same <code class="docutils literal notranslate"><span class="pre">Expression</span></code> is implemented instead, which speeds up the program with approximately a factor of 45.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
@@ -481,9 +482,8 @@ h=7.45E-02 E=1.91E-04 r=1.99
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="analysing-the-error">
-<h2>Analysing the error<a class="headerlink" href="#analysing-the-error" title="Permalink to this headline">¶</a></h2>
+<h4>Analysing the error<a class="headerlink" href="#analysing-the-error" title="Permalink to this headline">¶</a></h4>
 <p>In the code for the rectangular duct we compute the errornorm that compares the computed finite element solution with the exact solution. This error will depend on the mesh size and the order of the polynomial approximation. The error should disappear in the limit of a highly resolved mesh or for very high order polynomials. Given the polynomial order, the rate at which the error disappears can be computed by performing experiments with meshes of different resolution. We assume that the error for a mesh of element size <span class="math notranslate nohighlight">\(h_i\)</span> can be written as <span class="math notranslate nohighlight">\(E_i=Ch_i^r\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is a constant. We now want to find the order <span class="math notranslate nohighlight">\(r\)</span> of which the error disappears with mesh refinement. The order <span class="math notranslate nohighlight">\(r\)</span> can be found by computing <span class="math notranslate nohighlight">\(E_i\)</span> for two different <span class="math notranslate nohighlight">\(h_i\)</span>’s, i.e., <span class="math notranslate nohighlight">\(E_i=h_i^r\)</span> and <span class="math notranslate nohighlight">\(E_{i-1}=h_{i-1}^r\)</span>, and then isolate <span class="math notranslate nohighlight">\(r\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{\ln (E_i/E_{i-1})}{\ln (h_i/h_{i-1})}.\]</div>
@@ -511,6 +511,18 @@ h=7.45E-02 E=9.41E-07 r=3.05
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="combined-couette-and-poiseuille-flow">
+<h3>Combined Couette and Poiseuille flow<a class="headerlink" href="#combined-couette-and-poiseuille-flow" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to combine an applied pressure gradient with moving walls. Such flows are termed combined Couette-Poiseuille flows and they are governed by the Poiseuille <a class="reference internal" href="#equation-eq-planechannelns">(16)</a>. The solution to a combined Couette-Poiseuille flow can be found as the sum of a Couette solution <span class="math notranslate nohighlight">\(u_c\)</span> using zero pressure gradient and a homogeneous Poiseuille solution <span class="math notranslate nohighlight">\(u_p\)</span> using zero velocity on walls. For a plane channel with <span class="math notranslate nohighlight">\(u(h) = U\)</span> and <span class="math notranslate nohighlight">\(u(-h)=0\)</span> the solution is thus found by solving the two problems, for Couette</p>
+<div class="math notranslate nohighlight" id="equation-eq-couettecomb">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-couettecomb" title="Permalink to this equation">¶</a></span>\[  \nabla^2 u_c = 0, \quad u_c(h)=U,\,u_c(-h)=0,\]</div>
+<p>and Poiseuille</p>
+<div class="math notranslate nohighlight" id="equation-eq-poiseuillecomb">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-poiseuillecomb" title="Permalink to this equation">¶</a></span>\[\nabla^2 u_p = \frac{1}{\mu}\frac{\mathrm{d}p}{\mathrm{d}x}, \quad u_p(\pm h)=0. \]</div>
+<p>The combined solution <span class="math notranslate nohighlight">\(u = u_c + u_p\)</span> is the solution to the original problem. This can be seen by summing <a class="reference internal" href="#equation-eq-couettecomb">(21)</a> and <a class="reference internal" href="#equation-eq-poiseuillecomb">(22)</a> and also evidently <span class="math notranslate nohighlight">\(u(h) = u_c(h)+u_p(h) = U\)</span> and similarily for <span class="math notranslate nohighlight">\(y=-h\)</span>. The superposition is possible simply because the governing equation is linear. The principle is used also for transient flows in both Chapters (3-4) and (3-5).</p>
 </div>
 </div>
 <div class="section" id="unsteady-duct-flows">
@@ -595,7 +607,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>The final solution to starting flow in a cylinder, <a class="reference internal" href="#equation-eq-unsteadycyl">(23)</a>, becomes</p>
 <div class="math notranslate nohighlight">
 \[ u(\tilde{r}, \tilde{t}) = u_m(1 - \tilde{r}^2) - \sum_{k=1}^{\infty} \frac{8 u_m J_0(\lambda_k \tilde{r})}{\lambda_k^3 J_1(\lambda_k)} e^{-\lambda_k^2 \tilde{t}}\]</div>
-<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="#white06" id="id2">[Whi06]</a>.</p>
+<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="couette.html#white06" id="id2">[Whi06]</a>.</p>
 </div>
 <div class="section" id="pipe-flow-due-to-an-oscillating-pressure-gradient">
 <h3>Pipe flow due to an oscillating pressure gradient<a class="headerlink" href="#pipe-flow-due-to-an-oscillating-pressure-gradient" title="Permalink to this headline">¶</a></h3>
@@ -646,7 +658,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = \frac{K e^{i\omega t}}{i \omega} \left( 1 - \frac{J_0(r \sqrt{-i \omega/\nu})}{J_0(r_0 \sqrt{-i \omega/\nu})} \right),\]</div>
-<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="#white06" id="id3">[Whi06]</a>.</p>
+<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="couette.html#white06" id="id3">[Whi06]</a>.</p>
 <p>The Bessel function can be found in the toolbox <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code>. The solution is computed below for a relatively large normalized <span class="math notranslate nohighlight">\(\tilde{\omega}=\omega r_0^2/\nu = 10\)</span>. A smaller value of <span class="math notranslate nohighlight">\(\tilde{\omega}\)</span> will result in velocity profiles closer to the steady Poiseuille profile <span class="math notranslate nohighlight">\(u_{max}(1-\tilde{r}^2)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,7 +700,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 52.35987755982989
 </pre></div>
 </div>
-<img alt="../../_images/poiseuille_6_1.png" src="../../_images/poiseuille_6_1.png" />
+<img alt="../../_images/poiseuille_7_1.png" src="../../_images/poiseuille_7_1.png" />
 </div>
 </div>
 </div>
@@ -703,7 +715,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <span id="id4"></span><h3>Computer exercise Poiseuille<a class="headerlink" href="#computer-exercise-poiseuille" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="verify-analytical-solutions">
 <h4>Verify analytical solutions<a class="headerlink" href="#verify-analytical-solutions" title="Permalink to this headline">¶</a></h4>
-<p>In <a class="bibtex reference internal" href="#white06" id="id5">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
+<p>In <a class="bibtex reference internal" href="couette.html#white06" id="id5">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
 <p id="bibtex-bibliography-content/chapter3/poiseuille-0"><dl class="citation">
 <dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id5">4</a>)</span></dt>
 <dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>

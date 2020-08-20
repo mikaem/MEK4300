@@ -276,7 +276,7 @@
                 
   <div class="section" id="numerical-solution-of-nonlinear-equations">
 <h1>Numerical solution of nonlinear equations<a class="headerlink" href="#numerical-solution-of-nonlinear-equations" title="Permalink to this headline">¶</a></h1>
-<p>Several derived equations in <a class="reference external" href="../chapter3/similarity.html#Similarity-solutions">Similarity solutions</a> (e.g., Eq. <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(42)</a>) are nonlinear and no analytical solutions are known. Very few techniques are actually available for solving nonlinear equations analytically and as such we usually have to rely on numerical methods to obtain solutions for real fluid flows. Reynolds Averaged Navier-Stokes equations, that will be discussed thoroughly in chapter 6 of White <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, are basically Navier-Stokes equations with a nonlinear viscosity coefficient. In this section we will consider two of the most important techniques for iteratively solving nonlinear equations: Picard and Newton iterations.</p>
+<p>Several derived equations in <a class="reference external" href="../chapter3/similarity.html#similarity-solutions">Similarity solutions</a> (e.g., Eq. <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(42)</a>) are nonlinear and no analytical solutions are known. Very few techniques are actually available for solving nonlinear equations analytically and as such we usually have to rely on numerical methods to obtain solutions for real fluid flows. Reynolds Averaged Navier-Stokes equations, that will be discussed thoroughly in chapter 6 of White <a class="bibtex reference internal" href="../chapter3/poiseuille.html#white06" id="id1">[Whi06]</a>, are basically Navier-Stokes equations with a nonlinear viscosity coefficient. In this section we will consider two of the most important techniques for iteratively solving nonlinear equations: Picard and Newton iterations.</p>
 <p>The general procedure for obtaining solutions to nonlinear equations is to guess an initial solution and then successively recompute new and hopefully better approximations to the solution.  This is illustrated nicely with Newton’s method (also called Newton-Raphson’s method). Consider a nonlinear function <span class="math notranslate nohighlight">\(f(x)\)</span> of one variable <span class="math notranslate nohighlight">\(x\)</span> (e.g., <span class="math notranslate nohighlight">\(f(x)=x^2-1\)</span> or <span class="math notranslate nohighlight">\(f(x)=x \sin(x)-1\)</span>), where one is interested in finding the roots <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(f(x)=0\)</span>. Newton’s method boils down to making an initial guess <span class="math notranslate nohighlight">\(x_0\)</span> that does not satisfy our equation (i.e., <span class="math notranslate nohighlight">\(f(x_0) \neq 0\)</span>) and from this initial guess we successively compute better approximations to the final root:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -366,6 +366,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Calling FFC just-in-time (JIT) compiler, this may take some time.
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Calling FFC just-in-time (JIT) compiler, this may take some time.
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.20207598526678652
+Iteration 2 Error = 0.006786044472018965
+Iteration 3 Error = 1.626130021884984e-05
+Iteration 4 Error = 1.1905550866645789e-10
+Iteration 5 Error = 8.698631493053902e-17
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that everything below the line with <code class="docutils literal notranslate"><span class="pre">solve(F</span> <span class="pre">==</span> <span class="pre">0,</span> <span class="pre">u_,</span> <span class="pre">[bc0,</span> <span class="pre">bc1])</span></code> actually can be replaced simply by using this very compact call. The part from <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">derivative(F,</span> <span class="pre">u_,</span> <span class="pre">u)</span></code> and out is included here simply to illustrate how Newton’s method works in practise.</p>
 </div>
@@ -388,6 +403,26 @@
     <span class="n">u_1</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">u_</span><span class="p">)</span>
     <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">{}</span><span class="s2"> Error = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span>  <span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Calling FFC just-in-time (JIT) compiler, this may take some time.
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Iteration 1 Error = 0.6227202551171986
+Iteration 2 Error = 0.009279110924024897
+Iteration 3 Error = 0.0009571365383617912
+Iteration 4 Error = 7.170672306756823e-05
+Iteration 5 Error = 1.6196475252925717e-05
+Iteration 6 Error = 1.6051762319950847e-06
+Iteration 7 Error = 1.5867106937166712e-07
+Iteration 8 Error = 3.2011735458409474e-08
+Iteration 9 Error = 2.6184233711820267e-09
+Iteration 10 Error = 3.617146938878996e-10
+Iteration 11 Error = 6.066104630273271e-11
+Iteration 12 Error = 4.281972850229132e-12
+Iteration 13 Error = 8.043617961021526e-13
 </pre></div>
 </div>
 </div>

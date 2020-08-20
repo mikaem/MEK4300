@@ -377,7 +377,7 @@
 <h2>Solutions computer exercises Poiseuille<a class="headerlink" href="#solutions-computer-exercises-poiseuille" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>Verify analytical solutions (<a class="reference external" href="../../chapter3/poiseuille.ipynb#p-computer-1">computer problem 1</a>)</p>
-<p>In the script below we compute the solution for the triangle case, i.e., we verify Eq. (3-49) in <a class="bibtex reference internal" href="../../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>. We create a script that computes the L2 error norm for a given mesh refinement and order of approximating polynomials.</p>
+<p>In the script below we compute the solution for the triangle case, i.e., we verify Eq. (3-49) in <a class="bibtex reference internal" href="../../chapter3/poiseuille.html#white06" id="id1">[Whi06]</a>. We create a script that computes the L2 error norm for a given mesh refinement and order of approximating polynomials.</p>
 </li>
 </ol>
 <div class="cell docutils container">
@@ -463,6 +463,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Refinement level =  1
+Order =  1
+Computed volume flow =  0.005363091530815116
+Exact volume flow    =  0.005412658773652741
+Computed error = 2.21121021e-05 3.12500000e-02 
+</pre></div>
+</div>
+<img alt="../../../_images/poiseuille-2_3_1.png" src="../../../_images/poiseuille-2_3_1.png" />
+</div>
 </div>
 <p>We see that the mesh is inhomogeneous, i.e., the cells are not all the same size. Let’s try again with a different value for the <code class="docutils literal notranslate"><span class="pre">mesh_density</span></code></p>
 <div class="cell docutils container">
@@ -470,6 +480,16 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u_error</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">poisson_triangle</span><span class="p">(</span><span class="n">refinement</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Refinement level =  1
+Order =  1
+Computed volume flow =  0.0038057757002245857
+Exact volume flow    =  0.005412658773652741
+Computed error = 6.03994049e-18 2.50000000e-01 
+</pre></div>
+</div>
+<img alt="../../../_images/poiseuille-2_5_1.png" src="../../../_images/poiseuille-2_5_1.png" />
 </div>
 </div>
 <p>Wow! What happened here? We seem to approximate the solution exactly, or at least up to machine precision. If you look at the exact solution, you’ll see that it’s a third order polynomial. But we used piecewise linear elements, so how can the numerical solution be exact? An important observation is that the mesh now is uniform, i.e.,  all elements have the same size. And what we observe is actually something called superconvergence, that only happens for uniform meshes. If we make the mesh non-uniform, then we get what is expected and we need to use third order elements to achive machine precision, because the solution is a third order polynomial. Change the order to 3 and mesh_density to 4 to see the expected behaviour.</p>
@@ -495,6 +515,15 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="o">/</span><span class="n">errors</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">hs</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Error          hmin           r       
+8.65100113e-05 6.25000000e-02 0.00000000
+2.20610135e-05 3.12500000e-02 1.97136803
+5.51642912e-06 1.56250000e-02 1.99969248
+1.38727966e-06 7.81250000e-03 1.99147604
 </pre></div>
 </div>
 </div>

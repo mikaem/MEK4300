@@ -329,7 +329,7 @@
   \nabla ^2 u &amp;= 0,    \\
   \frac{\partial u}{\partial x} &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(-h)=0\)</span> and <span class="math notranslate nohighlight">\(u(h)=U\)</span> (see Fig. 3-1 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id1">[Whi06]</a>). The exact solution of these equations is</p>
 <div class="math notranslate nohighlight" id="equation-eq-exactcouette">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-exactcouette" title="Permalink to this equation">¶</a></span>\[ u(y) = \frac{U}{2}\left( 1 + \frac{y}{h} \right).\]</div>
 <p>We will now solve the Couette flow numerically using <a class="reference external" href="http://fenicsproject.org">FEniCS</a>, which is a software used for solving differential equations with the finite element method. There is an excellent <a class="reference external" href="http://fenicsproject.org/documentation/tutorial">tutorial</a> for quickly getting started with FEniCS.</p>
@@ -410,6 +410,9 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/couette_1_0.png" src="../../_images/couette_1_0.png" />
+</div>
 </div>
 <p>A more thorough tutorial for the Poisson equation is given in <a class="reference external" href="https://fenicsproject.org/docs/dolfin/dev/python/demos/poisson/demo_poisson.py.html">the online tutorial</a>. Here we will repeat only the most necessary steps. The first thing we need to do is to import all basic FEniCS functionality into the python environment</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
@@ -452,6 +455,11 @@ The test and trial spaces <span class="math notranslate nohighlight">\(\hat{V}\)
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[1.  0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0. ]
 </pre></div>
 </div>
 </div>
@@ -548,6 +556,12 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Error  2.7838640479591485e-05
+</pre></div>
+</div>
+<img alt="../../_images/couette_20_1.png" src="../../_images/couette_20_1.png" />
 </div>
 </div>
 </div>
@@ -714,7 +728,7 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <p>The original unnormalized velocity becomes</p>
 <div class="math notranslate nohighlight" id="equation-eq-stokesfirst">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-stokesfirst" title="Permalink to this equation">¶</a></span>\[  u(y, t) = U_0\left(1-\mathrm{erf} \left(\frac{y}{2\sqrt{\nu t}} \right) \right),\]</div>
-<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
+<p>in agreement with Eq. 3-107 in <a class="bibtex reference internal" href="poiseuille.html#white06" id="id4">[Whi06]</a>. Profiles for the velocity above the plane is computed below, where the first plot includes the unphysical (mirror) domain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -739,6 +753,19 @@ There is no applied pressure gradient and the flow is described by the Poisson e
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: divide by zero encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+&lt;ipython-input-4-d4d1f923fc3d&gt;:11: RuntimeWarning: invalid value encountered in true_divide
+  u = U0*(1-erf(y/2/sqrt(nu*t)))
+</pre>
+</div>
+<img alt="../../_images/couette_25_1.png" src="../../_images/couette_25_1.png" />
+<img alt="../../_images/couette_25_2.png" src="../../_images/couette_25_2.png" />
 </div>
 </div>
 </div>
@@ -921,7 +948,7 @@ The integral is zero since the integrand $S(t-s)f(y, s)$ is known to be a soluti
 <h2>Computer assignments Couette<a class="headerlink" href="#computer-assignments-couette" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>Rotating cylinders. <a id='c-computer-1'></a></p>
-<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
+<p>Validate the analytical results (3-22) and (3-23) in Chapter 3-2.3 of <a class="bibtex reference internal" href="poiseuille.html#white06" id="id5">[Whi06]</a>, for flow between rotating concentric cylinders. Can you reproduce Eq.~(3-23)? <span class="xref std std-ref">problem6</span></p>
 </li>
 <li><p>Implement <a class="reference external" href="couette.html#problem-6">problem 6</a>. <a id='c-computer-2'></a></p>
 <p>Consider <a class="reference external" href="couette.html#problem-6">problem 6</a> with suitable <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> and compare the analytical solution from the written assignment with a numerical implementation.</p>

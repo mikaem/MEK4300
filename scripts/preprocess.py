@@ -5,7 +5,8 @@ from copy import copy
 
 book_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
-files = ('chapter3/intro',
+files = ('intro',
+         'chapter3/intro',
          'chapter3/planeshearflow',
          'chapter3/couette',
          'chapter3/poiseuille',
@@ -34,7 +35,11 @@ def main():
             b = open('_build/html/content/{}.html'.format(f))
             bs = b.read()
             b.close()
-            bs = re.sub('.ipynb#', '.html#', bs)
+            #bs = re.sub('.ipynb#', '.html#', bs)
+            # jupyter-book makes all target html references lowercase, but do not change the actual references
+            bs = re.sub('.html#([\w\d-]*)', lambda f: '.html#'+f.group().split('#')[1].lower(), bs)
+            # jupyter-book for some reason do not capture all ipynb references - help here
+            bs = re.sub('.ipynb#([\w\d-]*)', lambda f: '.html#'+f.group().split('#')[1].lower(), bs)
             b = open('_build/html/content/{}.html'.format(f), 'w')
             b.write(bs)
             b.close()

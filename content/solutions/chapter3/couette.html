@@ -252,6 +252,16 @@
      Problem 3-1 in White
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-2-white">
+     Problem 3-2 White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-3-white">
+     Problem 3-3 White
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -302,6 +312,29 @@ The momentum equation for any stress tensor in a Couette flow is</p>
  u = K_3 y + K_4.
 \]</div>
 <p>The solution is the same as for Newtonian flows regardless of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="section" id="problem-3-2-white">
+<h3>Problem 3-2 White<a class="headerlink" href="#problem-3-2-white" title="Permalink to this headline">¶</a></h3>
+<p>The analytical solution has already been computed in Eq. <a class="reference internal" href="../../chapter3/couette.html#equation-eq-uaxcyl">(10)</a> in <a class="reference internal" href="../../chapter3/couette.html"><span class="doc std std-doc">Couette flows</span></a>.</p>
+</div>
+<div class="section" id="problem-3-3-white">
+<h3>Problem 3-3 White<a class="headerlink" href="#problem-3-3-white" title="Permalink to this headline">¶</a></h3>
+<p>The temperature equation reduces to</p>
+<div class="math notranslate nohighlight">
+\[
+ 0 = \frac{\kappa}{r}\frac{\mathrm{d}}{\mathrm{d} r}\left(r \frac{\mathrm{d} T}{\mathrm{d} r} \right) + \mu \left(\frac{\mathrm{d} u_z}{\mathrm{d}r} \right)^2.
+\]</div>
+<p>Inserting for Eq. <a class="reference internal" href="../../chapter3/couette.html#equation-eq-uaxcyl">(10)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\mathrm{d}}{\mathrm{d} r}\left(r \frac{\mathrm{d} T}{\mathrm{d} r} \right) = -\frac{\mu U_0^2}{\kappa r \ln^2(r_1/r_0)}.
+\]</div>
+<p>Integrate twice to obtain</p>
+<div class="math notranslate nohighlight">
+\[
+ T = -\frac{\mu U_0^2}{2 \kappa \ln^2(r_1/r_0)} \ln^2(r) + C_1\ln(r) + C_2,
+\]</div>
+<p>and determine constants using the two boundary conditions.</p>
 </div>
 </div>
 </div>

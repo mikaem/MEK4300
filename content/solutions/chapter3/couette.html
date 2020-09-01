@@ -253,13 +253,28 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-3-2-white">
-     Problem 3-2 White
+    <a class="reference internal nav-link" href="#problem-3-2-in-white">
+     Problem 3-2 in White
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-3-3-white">
-     Problem 3-3 White
+    <a class="reference internal nav-link" href="#problem-3-3-in-white">
+     Problem 3-3 in White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-4-in-white">
+     Problem 3-4 in White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-5-in-white">
+     Problem 3-5 in White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flow-between-rotating-concentric-cylinders">
+     Flow between rotating concentric cylinders
     </a>
    </li>
   </ul>
@@ -313,12 +328,12 @@ The momentum equation for any stress tensor in a Couette flow is</p>
 \]</div>
 <p>The solution is the same as for Newtonian flows regardless of <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div>
-<div class="section" id="problem-3-2-white">
-<h3>Problem 3-2 White<a class="headerlink" href="#problem-3-2-white" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="problem-3-2-in-white">
+<h3>Problem 3-2 in White<a class="headerlink" href="#problem-3-2-in-white" title="Permalink to this headline">¶</a></h3>
 <p>The analytical solution has already been computed in Eq. <a class="reference internal" href="../../chapter3/couette.html#equation-eq-uaxcyl">(10)</a> in <a class="reference internal" href="../../chapter3/couette.html"><span class="doc std std-doc">Couette flows</span></a>.</p>
 </div>
-<div class="section" id="problem-3-3-white">
-<h3>Problem 3-3 White<a class="headerlink" href="#problem-3-3-white" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="problem-3-3-in-white">
+<h3>Problem 3-3 in White<a class="headerlink" href="#problem-3-3-in-white" title="Permalink to this headline">¶</a></h3>
 <p>The temperature equation reduces to</p>
 <div class="math notranslate nohighlight">
 \[
@@ -335,6 +350,160 @@ The momentum equation for any stress tensor in a Couette flow is</p>
  T = -\frac{\mu U_0^2}{2 \kappa \ln^2(r_1/r_0)} \ln^2(r) + C_1\ln(r) + C_2,
 \]</div>
 <p>and determine constants using the two boundary conditions.</p>
+</div>
+<div class="section" id="problem-3-4-in-white">
+<h3>Problem 3-4 in White<a class="headerlink" href="#problem-3-4-in-white" title="Permalink to this headline">¶</a></h3>
+<p>The problem reads: solve the Laplace equation in cylindrical coordinates <a class="reference internal" href="../../chapter3/couette.html#equation-eq-poissoncyl">(8)</a> with boundary conditions <span class="math notranslate nohighlight">\(u(0)=U\)</span> and <span class="math notranslate nohighlight">\(u(\infty)=0\)</span>. The solution for the velocity is given in Eq. <a class="reference internal" href="../../chapter3/couette.html#equation-eq-ustep1">(9)</a> and inserted for the boundary conditions we need to find <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  u(0) = U &amp;= C_1 \ln(0) + C_2, \\
+  u(\infty) = 0 &amp;= C_1 \ln(\infty) + C_2.
+\end{aligned}
+\end{split}\]</div>
+<p>The first condition requires <span class="math notranslate nohighlight">\(C_1=0\)</span> and thus <span class="math notranslate nohighlight">\(C_2=U\)</span>. The second condition requires <span class="math notranslate nohighlight">\(C_2=0\)</span>, which is a contradiction. It is not possible to satisfy both boundary conditions. Physically, the boundary layer that is being dragged by the rod will continue to grow indefinitely and there is no steady state solution possible for this problem.</p>
+</div>
+<div class="section" id="problem-3-5-in-white">
+<h3>Problem 3-5 in White<a class="headerlink" href="#problem-3-5-in-white" title="Permalink to this headline">¶</a></h3>
+<p>Solve the momentum equation for the angular velocity</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{\mathrm{d}^2 u_{\theta}}{\mathrm{d} r^2} + \frac{\mathrm{d} u_{\theta}/r}{\mathrm{d}r} = 0
+  \label{eq:AngularVel}
+\]</div>
+<p>with boundary conditions <span class="math notranslate nohighlight">\(u(R)=\omega R\)</span> and <span class="math notranslate nohighlight">\(u(\infty)=0\)</span>. The solution to this equation is given by <a class="bibtex reference internal" href="../../chapter3/couette.html#white06" id="id1">[Whi06]</a></p>
+<div class="math notranslate nohighlight">
+\[
+  u_{\theta}(r) = C_1 r + \frac{C_2}{r}
+\]</div>
+<p>The boundary conditions are then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  u_{\theta}(R) = \omega R &amp;= C_1 R + \frac{C_2}{R}, \\
+  u_{\theta}(\infty) = 0 &amp;= C_1 \infty + \frac{C_2}{\infty}
+\end{aligned}
+\end{split}\]</div>
+<p>which leads to <span class="math notranslate nohighlight">\(C_1=0\)</span> and <span class="math notranslate nohighlight">\(C_2=\omega R^2\)</span> and thus the angular velocity</p>
+<div class="math notranslate nohighlight">
+\[
+  u_{\theta} = \frac{\omega R^2}{r},
+\]</div>
+<p>which agrees with the solution of a potential vortex.
+The pressure is found from the r-momentum equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+ \frac{\mathrm{d} p}{\mathrm{d} r} &amp;= \frac{\rho u_{\theta}^2}{r}, \\
+ \frac{\mathrm{d} p}{\mathrm{d} r} &amp;= \frac{\rho \omega^2 R^4}{r^3}
+\end{aligned}
+\end{split}\]</div>
+<p>which can be integrated to</p>
+<div class="math notranslate nohighlight">
+\[
+ p(r) = -\frac{\rho \omega^2 R^4}{2 r^2} + C_1
+\]</div>
+<p>and where the constant can be found by assuming <span class="math notranslate nohighlight">\(p(R)=p_0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+ p(r) = p_0 + \frac{\rho \omega^2 R^2}{2}\left(1 - \frac{R^2}{r^2} \right),
+\]</div>
+<p>which is what we would find using Bernoulli’s equation for a potential vortex (<span class="math notranslate nohighlight">\(p_0+0.5\rho (\omega R)^2 = p + 0.5 \rho u^2\)</span>).</p>
+</div>
+<div class="section" id="flow-between-rotating-concentric-cylinders">
+<h3>Flow between rotating concentric cylinders<a class="headerlink" href="#flow-between-rotating-concentric-cylinders" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Flow between rotating concentric cylinders</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">r0</span><span class="p">,</span> <span class="n">r1</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;x[0]&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">w0</span><span class="p">,</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">T0</span><span class="p">,</span> <span class="n">T1</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">k</span>  <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">T_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">F</span>  <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">x</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">FT</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">dx</span> <span class="o">-</span> <span class="n">mu</span><span class="o">/</span><span class="n">k</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">u_</span><span class="o">.</span><span class="n">dx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">u_</span><span class="o">/</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span>
+
+<span class="k">def</span> <span class="nf">inner_bnd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_bnd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">on_bnd</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">r0</span><span class="o">+</span><span class="n">DOLFIN_EPS</span>
+
+<span class="k">def</span> <span class="nf">outer_bnd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_bnd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">on_bnd</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">-</span><span class="n">DOLFIN_EPS</span>
+
+<span class="n">bci</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">r0</span><span class="o">*</span><span class="n">w0</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;std::abs(x[0]-</span><span class="si">{}</span><span class="s2">) &lt; 1.e-12&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r0</span><span class="p">))</span>
+<span class="n">bco</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">r1</span><span class="o">*</span><span class="n">w1</span><span class="p">,</span> <span class="n">outer_bnd</span><span class="p">)</span>
+<span class="n">bcTi</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">inner_bnd</span><span class="p">)</span>
+<span class="n">bcTo</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">outer_bnd</span><span class="p">)</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">(</span><span class="n">F</span><span class="p">),</span> <span class="n">u_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bci</span><span class="p">,</span> <span class="n">bco</span><span class="p">])</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">(</span><span class="n">FT</span><span class="p">)</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">(</span><span class="n">FT</span><span class="p">),</span> <span class="n">T_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bcTi</span><span class="p">,</span> <span class="n">bcTo</span><span class="p">])</span>
+
+<span class="c1"># Compute exact solution given in (3.22)</span>
+<span class="n">ue</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">r0</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">r1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="o">-</span><span class="n">r0</span><span class="o">/</span><span class="n">r1</span><span class="p">)</span> <span class="o">+</span>
+             <span class="n">r1</span><span class="o">*</span><span class="n">w1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">r0</span><span class="o">-</span><span class="n">r0</span><span class="o">/</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="o">-</span><span class="n">r0</span><span class="o">/</span><span class="n">r1</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+
+<span class="c1"># Compute exact solution given in (3.23)</span>
+<span class="n">Tn</span> <span class="o">=</span> <span class="n">project</span><span class="p">((</span><span class="n">T_</span><span class="o">-</span><span class="n">T0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T0</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+<span class="n">PrEc</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">w0</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">k</span><span class="o">/</span><span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T0</span><span class="p">)</span>
+<span class="n">Te</span> <span class="o">=</span> <span class="n">PrEc</span><span class="o">*</span><span class="n">r1</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="p">(</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">ln</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="p">))</span> <span class="o">+</span> <span class="n">ln</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span>
+<span class="n">Te</span> <span class="o">=</span> <span class="n">project</span><span class="p">(</span><span class="n">Te</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error velocity    = &quot;</span><span class="p">,</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">ue</span><span class="p">,</span> <span class="n">degree_rise</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error temperature = &quot;</span><span class="p">,</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">Tn</span><span class="p">,</span> <span class="n">Te</span><span class="p">,</span> <span class="n">degree_rise</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;??? Should be close to zero.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u_</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ue</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Angular velocity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Computed&#39;</span><span class="p">,</span> <span class="s1">&#39;Exact&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tn</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Te</span><span class="o">.</span><span class="n">vector</span><span class="p">()</span><span class="o">.</span><span class="n">get_local</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature (?wrong?)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Computed&#39;</span><span class="p">,</span> <span class="s1">&#39;Exact&#39;</span><span class="p">))</span>
+
+<span class="c1"># Since I cannot reproduce the temperature I have recomputed</span>
+<span class="c1"># (3.23) analytically. I plot that result here</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">w0</span><span class="o">-</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">w1</span><span class="o">-</span><span class="n">w0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">w1</span><span class="o">-</span><span class="n">w0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">C3</span> <span class="o">=</span> <span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T0</span><span class="o">+</span><span class="n">C2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">mu</span><span class="o">/</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">r1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">ln</span><span class="p">(</span><span class="n">r1</span><span class="o">/</span><span class="n">r0</span><span class="p">)</span>
+<span class="n">C4</span> <span class="o">=</span> <span class="n">T0</span> <span class="o">+</span> <span class="n">C2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">mu</span><span class="o">/</span><span class="n">k</span><span class="o">/</span><span class="n">r0</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">C3</span><span class="o">*</span><span class="n">ln</span><span class="p">(</span><span class="n">r0</span><span class="p">)</span>
+<span class="n">Tee</span> <span class="o">=</span> <span class="n">project</span><span class="p">((</span><span class="o">-</span><span class="n">C2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">mu</span><span class="o">/</span><span class="n">k</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">C3</span><span class="o">*</span><span class="n">ln</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">C4</span><span class="o">-</span><span class="n">T0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T0</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error recomputed temperature = &quot;</span><span class="p">,</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">Tn</span><span class="p">,</span> <span class="n">Tee</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Which is a strong indication that (3.23) is wrong!!&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+Error velocity    =  1.1540847636407312e-05
+Error temperature =  0.20666794167009878
+??? Should be close to zero.
+
+
+Error recomputed temperature =  0.000492714248321644
+Which is a strong indication that (3.23) is wrong!!
+</pre></div>
+</div>
+<img alt="../../../_images/couette_7_1.png" src="../../../_images/couette_7_1.png" />
+<img alt="../../../_images/couette_7_2.png" src="../../../_images/couette_7_2.png" />
+</div>
+</div>
 </div>
 </div>
 </div>

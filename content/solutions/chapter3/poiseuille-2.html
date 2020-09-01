@@ -376,6 +376,7 @@
 <span class="kn">from</span> <span class="nn">mshr</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cosh</span> <span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">plotting</span> <span class="o">=</span> <span class="kc">True</span>
 
@@ -426,6 +427,7 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.045</span><span class="p">)</span>
 
     <span class="n">u_error</span> <span class="o">=</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="n">degree_rise</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1">#u_error = np.linalg.norm(u_.vector().get_local()-u_e.vector().get_local())**2</span>
 
     <span class="n">Q_comp</span>  <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">u_</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
     <span class="n">Q_exact</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mf">320.</span><span class="o">/</span><span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">dpdx</span><span class="p">)</span>

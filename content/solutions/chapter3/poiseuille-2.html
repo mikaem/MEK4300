@@ -225,6 +225,13 @@
   <a class="reference internal nav-link" href="#solutions-written-assignments-poiseuille">
    Solutions written assignments Poiseuille
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-15-in-white">
+     Problem 3-15 in White
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions-computer-exercises-poiseuille">
@@ -245,17 +252,18 @@
 <h1>Suggested solutions Poiseuille<a class="headerlink" href="#suggested-solutions-poiseuille" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="solutions-written-assignments-poiseuille">
 <h2>Solutions written assignments Poiseuille<a class="headerlink" href="#solutions-written-assignments-poiseuille" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.ipynb#problem-3-15">problem 1</a>. Since the boundary conditions are independent of <span class="math notranslate nohighlight">\(x\)</span> we may assume a parallel shear solution of the form <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, with <span class="math notranslate nohighlight">\(\partial p / \partial x = 0\)</span>. The momentum equation reduces to</p>
+<div class="section" id="problem-3-15-in-white">
+<h3>Problem 3-15 in White<a class="headerlink" href="#problem-3-15-in-white" title="Permalink to this headline">¶</a></h3>
+<p>Since the boundary conditions are independent of <span class="math notranslate nohighlight">\(x\)</span> we may assume a parallel shear solution of the form <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, with <span class="math notranslate nohighlight">\(\partial p / \partial x = 0\)</span>. The momentum equation reduces to</p>
 <div class="math notranslate nohighlight">
 \[
  0 =  \mu \nabla^2u + \rho g \sin \theta,
-   \]</div>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle of the plate with the horizontal. The boundary conditions are <span class="math notranslate nohighlight">\(u(0)=0\)</span> and <span class="math notranslate nohighlight">\(du/dx(h)=0\)</span>. Integrate twice to obtain</p>
 <div class="math notranslate nohighlight">
 \[
   u = -\frac{\rho g \sin \theta y^2}{2 \mu} + Ay + B
-   \]</div>
+\]</div>
 <p>The boundary conditions are then used to find A and B. The first, <span class="math notranslate nohighlight">\(u(0)=0\)</span>, gives us <span class="math notranslate nohighlight">\(B=0\)</span> and the second</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -263,12 +271,12 @@
   \frac{\mathrm{d} u}{dy}(y=h) = 0 &amp;= -\frac{\rho g \sin \theta h}{\mu} +A \\
   A &amp;= \frac{\rho g \sin \theta h}{\mu}
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>and thus the final velocity profile</p>
 <div class="math notranslate nohighlight">
 \[
   u(y) = \frac{\rho g \sin \theta y}{2 \mu}\left(2h - y\right)
-   \]</div>
+\]</div>
 <p>The volumetric flow rate <span class="math notranslate nohighlight">\(Q\)</span> per unit width is found through</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -276,8 +284,8 @@
   Q &amp;= \int_0^h u(y) \mathrm{d}y \\
   Q &amp;= \frac{\rho g h^3 \sin \theta}{3 \mu}
 \end{aligned}
-   \end{split}\]</div>
-</li>
+\end{split}\]</div>
+<ol>
 <li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.ipynb#problem-3-16">problem 2</a>. Assume negligible pressure gradient in <span class="math notranslate nohighlight">\(z\)</span>-direction since the film is thin and the pressure outside the film is constant atmospheric pressure. The momentum equation in <span class="math notranslate nohighlight">\(z\)</span>-direction reads</p>
 <div class="math notranslate nohighlight">
 \[
@@ -318,6 +326,8 @@
 \end{aligned}
    \end{split}\]</div>
 </li>
+</ol>
+<ol>
 <li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.ipynb#problem-3-17">problem 3</a>. Like in <a class="reference external" href="../../chapter3/poiseuille.ipynb#problem-3-15">problem 1</a> the velocity is given as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -361,11 +371,12 @@
 </li>
 </ol>
 </div>
+</div>
 <div class="section" id="solutions-computer-exercises-poiseuille">
 <h2>Solutions computer exercises Poiseuille<a class="headerlink" href="#solutions-computer-exercises-poiseuille" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>Verify analytical solutions (<a class="reference external" href="../../chapter3/poiseuille.ipynb#p-computer-1">computer problem 1</a>)</p>
-<p>In the script below we compute the solution for the triangle case, i.e., we verify Eq. (3-49) in <a class="bibtex reference internal" href="../../chapter3/couette.html#white06" id="id1">[Whi06]</a>. We create a script that computes the L2 error norm for a given mesh refinement and order of approximating polynomials.</p>
+<p>In the script below we compute the solution for the triangle case, i.e., we verify Eq. (3-49) in <a class="bibtex reference internal" href="../../chapter3/poiseuille.html#white06" id="id1">[Whi06]</a>. We create a script that computes the L2 error norm for a given mesh refinement and order of approximating polynomials.</p>
 </li>
 </ol>
 <div class="cell docutils container">
@@ -461,7 +472,7 @@ Exact volume flow    =  0.005412658773652741
 Computed error = 2.21121021e-05 3.12500000e-02 
 </pre></div>
 </div>
-<img alt="../../../_images/poiseuille-2_3_1.png" src="../../../_images/poiseuille-2_3_1.png" />
+<img alt="../../../_images/poiseuille-2_5_1.png" src="../../../_images/poiseuille-2_5_1.png" />
 </div>
 </div>
 <p>We see that the mesh is inhomogeneous, i.e., the cells are not all the same size. Let’s try again with a different value for the <code class="docutils literal notranslate"><span class="pre">mesh_density</span></code></p>
@@ -479,7 +490,7 @@ Exact volume flow    =  0.005412658773652741
 Computed error = 6.03994049e-18 2.50000000e-01 
 </pre></div>
 </div>
-<img alt="../../../_images/poiseuille-2_5_1.png" src="../../../_images/poiseuille-2_5_1.png" />
+<img alt="../../../_images/poiseuille-2_7_1.png" src="../../../_images/poiseuille-2_7_1.png" />
 </div>
 </div>
 <p>Wow! What happened here? We seem to approximate the solution exactly, or at least up to machine precision. If you look at the exact solution, you’ll see that it’s a third order polynomial. But we used piecewise linear elements, so how can the numerical solution be exact? An important observation is that the mesh now is uniform, i.e.,  all elements have the same size. And what we observe is actually something called superconvergence, that only happens for uniform meshes. If we make the mesh non-uniform, then we get what is expected and we need to use third order elements to achive machine precision, because the solution is a third order polynomial. Change the order to 3 and mesh_density to 4 to see the expected behaviour.</p>

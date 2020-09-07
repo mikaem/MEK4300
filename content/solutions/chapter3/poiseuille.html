@@ -225,11 +225,23 @@
   <a class="reference internal nav-link" href="#solutions-written-assignments-poiseuille">
    Solutions written assignments Poiseuille
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions-computer-exercises-poiseuille">
-   Solutions computer exercises Poiseuille
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-15-in-white">
+     Problem 3-15 in White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-16-in-white">
+     Problem 3-16 in White
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-3-17-in-white">
+     Problem 3-17 in White
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -245,17 +257,18 @@
 <h1>Suggested solutions Poiseuille<a class="headerlink" href="#suggested-solutions-poiseuille" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="solutions-written-assignments-poiseuille">
 <h2>Solutions written assignments Poiseuille<a class="headerlink" href="#solutions-written-assignments-poiseuille" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.html#problem-3-15">problem 1</a>. Since the boundary conditions are independent of <span class="math notranslate nohighlight">\(x\)</span> we may assume a parallel shear solution of the form <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, with <span class="math notranslate nohighlight">\(\partial p / \partial x = 0\)</span>. The momentum equation reduces to</p>
+<div class="section" id="problem-3-15-in-white">
+<h3>Problem 3-15 in White<a class="headerlink" href="#problem-3-15-in-white" title="Permalink to this headline">¶</a></h3>
+<p>Since the boundary conditions are independent of <span class="math notranslate nohighlight">\(x\)</span> we may assume a parallel shear solution of the form <span class="math notranslate nohighlight">\(\boldsymbol{u} = (u(y), 0, 0)\)</span>, with <span class="math notranslate nohighlight">\(\partial p / \partial x = 0\)</span>. The momentum equation reduces to</p>
 <div class="math notranslate nohighlight">
 \[
  0 =  \mu \nabla^2u + \rho g \sin \theta,
-   \]</div>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle of the plate with the horizontal. The boundary conditions are <span class="math notranslate nohighlight">\(u(0)=0\)</span> and <span class="math notranslate nohighlight">\(du/dx(h)=0\)</span>. Integrate twice to obtain</p>
 <div class="math notranslate nohighlight">
 \[
   u = -\frac{\rho g \sin \theta y^2}{2 \mu} + Ay + B
-   \]</div>
+\]</div>
 <p>The boundary conditions are then used to find A and B. The first, <span class="math notranslate nohighlight">\(u(0)=0\)</span>, gives us <span class="math notranslate nohighlight">\(B=0\)</span> and the second</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -263,12 +276,12 @@
   \frac{\mathrm{d} u}{dy}(y=h) = 0 &amp;= -\frac{\rho g \sin \theta h}{\mu} +A \\
   A &amp;= \frac{\rho g \sin \theta h}{\mu}
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>and thus the final velocity profile</p>
 <div class="math notranslate nohighlight">
 \[
   u(y) = \frac{\rho g \sin \theta y}{2 \mu}\left(2h - y\right)
-   \]</div>
+\]</div>
 <p>The volumetric flow rate <span class="math notranslate nohighlight">\(Q\)</span> per unit width is found through</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -276,18 +289,20 @@
   Q &amp;= \int_0^h u(y) \mathrm{d}y \\
   Q &amp;= \frac{\rho g h^3 \sin \theta}{3 \mu}
 \end{aligned}
-   \end{split}\]</div>
-</li>
-<li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.html#problem-3-16">problem 2</a>. Assume negligible pressure gradient in <span class="math notranslate nohighlight">\(z\)</span>-direction since the film is thin and the pressure outside the film is constant atmospheric pressure. The momentum equation in <span class="math notranslate nohighlight">\(z\)</span>-direction reads</p>
+\end{split}\]</div>
+</div>
+<div class="section" id="problem-3-16-in-white">
+<h3>Problem 3-16 in White<a class="headerlink" href="#problem-3-16-in-white" title="Permalink to this headline">¶</a></h3>
+<p>Assume negligible pressure gradient in <span class="math notranslate nohighlight">\(z\)</span>-direction since the film is thin and the pressure outside the film is constant atmospheric pressure. The momentum equation in <span class="math notranslate nohighlight">\(z\)</span>-direction reads</p>
 <div class="math notranslate nohighlight">
 \[
  \frac{\mu}{r}\frac{\mathrm{d} }{\mathrm{d}r}\left( r \frac{\mathrm{d} u}{\mathrm{d} r} \right) + \rho g = 0.
-   \]</div>
+\]</div>
 <p>Integrate twice to obtain</p>
 <div class="math notranslate nohighlight">
 \[
  u(r) = -\frac{\rho g r^2}{4 \mu} + A \ln r + B.
-   \]</div>
+\]</div>
 <p>The boundary conditions are no-slip at the wall and no shear at the free surface. The second one gives us</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -295,7 +310,7 @@
  \frac{\mathrm{d} u}{\mathrm{d} r} (y=b) &amp;= -\frac{\rho g b}{2 \mu} + \frac{A}{b} = 0 \\
   A &amp;= \frac{\rho g b^2}{2 \mu}
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>The no-slip boundary condition gives us</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -303,12 +318,12 @@
  u(a) = 0 &amp;= -\frac{\rho g a^2}{4 \mu} + \frac{\rho g b^2}{2 \mu} \ln a + B\\
  B &amp;= \frac{\rho g a^2}{4 \mu} - \frac{\rho g b^2}{2 \mu} \ln a,
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>which leads to the final expression for the velocity</p>
 <div class="math notranslate nohighlight">
 \[
  u(r) = \frac{\rho g}{4 \mu}\left(a^2 - r^2 \right) + \frac{\rho g b^2}{2 \mu} \ln \frac{r}{a}
-   \]</div>
+\]</div>
 <p>The volumetric flow rate can be found through</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -316,16 +331,18 @@
   Q &amp;= 2 \pi \int_a^b u(r) r \mathrm{d}r \\
   Q &amp;= \ldots
 \end{aligned}
-   \end{split}\]</div>
-</li>
-<li><p>Consider <a class="reference external" href="../../chapter3/poiseuille.html#problem-3-17">problem 3</a>. Like in <a class="reference external" href="../../chapter3/poiseuille.html#problem-3-15">problem 1</a> the velocity is given as</p>
+\end{split}\]</div>
+</div>
+<div class="section" id="problem-3-17-in-white">
+<h3>Problem 3-17 in White<a class="headerlink" href="#problem-3-17-in-white" title="Permalink to this headline">¶</a></h3>
+<p>Like in problem 3-15 the velocity is given as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
   u_1 &amp;= -\frac{\rho_1 g \sin \theta y^2}{2 \mu_1} + A_1y + B_1, \\
   u_2 &amp;= -\frac{\rho_2 g \sin \theta y^2}{2 \mu_2} + A_2y + B_2.
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>The boundary conditions are now</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -335,7 +352,7 @@
  \mu_1 \frac{\mathrm{d} u_1}{\mathrm{d} y}(h_1) &amp;= \mu_2 \frac{\mathrm{d} u_2}{\mathrm{d} y}(h_1) \\
  \frac{\mathrm{d} u_2}{\mathrm{d} y}(h_1+h_2) &amp;= 0.
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>The first one gives <span class="math notranslate nohighlight">\(B_1=0\)</span>. The remaining leads to three equations for three unknowns. They are:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -344,7 +361,7 @@
  -\frac{\rho_1 g \sin \theta h_1}{\mu_1} +A_1 &amp;= -\frac{\rho_2 g \sin \theta h_1}{\mu_2} +A_2 \\
  -\frac{\rho_2 g \sin \theta (h_1+h_2)}{\mu_2} + A_2 &amp;= 0
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(A_2\)</span> is given by the last equation. Inserting this into the previous gives us <span class="math notranslate nohighlight">\(A_1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -352,169 +369,12 @@
   A_1 &amp;= -\frac{\rho_2 g \sin \theta h_1}{\mu_2} + \frac{\rho_2 g \sin \theta (h_1+h_2)}{\mu_2} + \frac{\rho_1 g \sin \theta h_1}{\mu_1}\\
  A_1 &amp;= g \sin \theta \left(\frac{\rho_2 h_2}{\mu_2} + \frac{\rho_1 h_1}{\mu_1} \right)
 \end{aligned}
-   \end{split}\]</div>
+\end{split}\]</div>
 <p>And <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_2\)</span> inserted into the first gives us <span class="math notranslate nohighlight">\(B_2\)</span></p>
 <div class="math notranslate nohighlight">
 \[
  B_2 = -\frac{\rho_1 g \sin \theta h_1^2}{2 \mu_1} + A_1 h_1 + \frac{\rho_2 g \sin \theta h_1^2}{2 \mu_2} - A_2 h_1
-   \]</div>
-</li>
-</ol>
-</div>
-<div class="section" id="solutions-computer-exercises-poiseuille">
-<h2>Solutions computer exercises Poiseuille<a class="headerlink" href="#solutions-computer-exercises-poiseuille" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Verify analytical solutions (<a class="reference external" href="../../chapter3/poiseuille.html#p-computer-1">computer problem 1</a>)</p>
-<p>In the script below we compute the solution for the triangle case, i.e., we verify Eq. (3-49) in <a class="bibtex reference internal" href="../../chapter3/couette.html#white06" id="id1">[Whi06]</a>. We create a script that computes the L2 error norm for a given mesh refinement and order of approximating polynomials.</p>
-</li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mshr</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cosh</span> <span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">plotting</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="k">def</span> <span class="nf">poisson_triangle</span><span class="p">(</span><span class="n">refinement</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">mesh_density</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Refinement level = &quot;</span><span class="p">,</span> <span class="n">refinement</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Order = &quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
-
-    <span class="n">dpdx</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">)</span>
-    <span class="n">mu</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
-
-    <span class="n">p0</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">)</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">)</span>
-    <span class="n">domain</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p0</span><span class="p">])</span>
-    <span class="n">mesh</span> <span class="o">=</span> <span class="n">generate_mesh</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">mesh_density</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">refinement</span><span class="p">):</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">refine</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">plotting</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-        <span class="n">plot</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mesh&#39;</span><span class="p">)</span>
-
-    <span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-
-    <span class="n">F</span> <span class="o">=</span> <span class="n">inner</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">mu</span><span class="o">*</span><span class="n">dpdx</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span>
-
-    <span class="n">bc</span> <span class="o">=</span> <span class="n">DirichletBC</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">DomainBoundary</span><span class="p">())</span>
-
-    <span class="n">u_</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-    <span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">(</span><span class="n">F</span><span class="p">),</span> <span class="n">u_</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="n">bc</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">plotting</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-        <span class="n">ax1</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Velocity normal to plane&quot;</span><span class="p">)</span>
-
-    <span class="n">u_exact</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">(</span><span class="s2">&quot;dpdx/2./sqrt(3.)/a/mu*(x[1]+0.5*a*sqrt(3.))*(3*x[0]*x[0]-x[1]*x[1])&quot;</span><span class="p">,</span>
-                         <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">dpdx</span><span class="o">=</span><span class="n">dpdx</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-    <span class="n">u_e</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">u_exact</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">plotting</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
-        <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">u_e</span><span class="o">-</span><span class="n">u_</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Error velocity&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.045</span><span class="p">)</span>
-
-    <span class="n">u_error</span> <span class="o">=</span> <span class="n">errornorm</span><span class="p">(</span><span class="n">u_</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="n">degree_rise</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">Q_comp</span>  <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">u_</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
-    <span class="n">Q_exact</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mf">320.</span><span class="o">/</span><span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">dpdx</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed volume flow = &quot;</span><span class="p">,</span> <span class="n">Q_comp</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exact volume flow    = &quot;</span><span class="p">,</span> <span class="n">Q_exact</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed error = </span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8e</span><span class="s2"> &quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">u_error</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">hmin</span><span class="p">()))</span>
-
-    <span class="k">if</span> <span class="n">plotting</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-    <span class="k">return</span> <span class="n">u_error</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">hmin</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can now call <code class="docutils literal notranslate"><span class="pre">poisson_triangle</span></code> with three arguments, the refinement level, the approximation order, and finally a mesh density <span class="math notranslate nohighlight">\((&gt;0)\)</span> to start the refinement from.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh_density</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">refinement</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">order</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">u_error</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">poisson_triangle</span><span class="p">(</span><span class="n">refinement</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">mesh_density</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Refinement level =  1
-Order =  1
-Computed volume flow =  0.005363091530815116
-Exact volume flow    =  0.005412658773652741
-Computed error = 2.21121021e-05 3.12500000e-02 
-</pre></div>
-</div>
-<img alt="../../../_images/poiseuille_3_1.png" src="../../../_images/poiseuille_3_1.png" />
-</div>
-</div>
-<p>We see that the mesh is inhomogeneous, i.e., the cells are not all the same size. Let’s try again with a different value for the <code class="docutils literal notranslate"><span class="pre">mesh_density</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u_error</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">poisson_triangle</span><span class="p">(</span><span class="n">refinement</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Refinement level =  1
-Order =  1
-Computed volume flow =  0.0038057757002245857
-Exact volume flow    =  0.005412658773652741
-Computed error = 6.03994049e-18 2.50000000e-01 
-</pre></div>
-</div>
-<img alt="../../../_images/poiseuille_5_1.png" src="../../../_images/poiseuille_5_1.png" />
-</div>
-</div>
-<p>Wow! What happened here? We seem to approximate the solution exactly, or at least up to machine precision. If you look at the exact solution, you’ll see that it’s a third order polynomial. But we used piecewise linear elements, so how can the numerical solution be exact? An important observation is that the mesh now is uniform, i.e.,  all elements have the same size. And what we observe is actually something called superconvergence, that only happens for uniform meshes. If we make the mesh non-uniform, then we get what is expected and we need to use third order elements to achive machine precision, because the solution is a third order polynomial. Change the order to 3 and mesh_density to 4 to see the expected behaviour.</p>
-<p>For a nonuniform mesh we can investigate the order of accuracy using the technique discussed in <a class="reference external" href="../../chapter3/poiseuille.html#analysing-the-error">Analysing the error</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hs</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-<span class="c1"># Suppress plotting and printing</span>
-<span class="n">plotting</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/dev/null&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">f</span>
-<span class="k">for</span> <span class="n">refinement</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-    <span class="n">u_e</span><span class="p">,</span> <span class="n">hmin</span> <span class="o">=</span> <span class="n">poisson_triangle</span><span class="p">(</span><span class="n">refinement</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u_e</span><span class="p">)</span>
-    <span class="n">hs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hmin</span><span class="p">)</span>
-
-<span class="c1"># Enable printing again</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">stdout</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">hs</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error          hmin           r       &quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8e</span><span class="s2"> </span><span class="si">%2.8f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">log</span><span class="p">(</span><span class="n">error</span><span class="o">/</span><span class="n">errors</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">hs</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Error          hmin           r       
-8.65100113e-05 6.25000000e-02 0.00000000
-2.20610135e-05 3.12500000e-02 1.97136803
-5.51642912e-06 1.56250000e-02 1.99969248
-1.38727966e-06 7.81250000e-03 1.99147604
-</pre></div>
-</div>
-</div>
+\]</div>
 </div>
 </div>
 </div>

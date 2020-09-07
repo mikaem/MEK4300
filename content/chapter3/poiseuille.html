@@ -338,7 +338,7 @@
 <a class="reference internal image-reference" href="../../_images/channelprofile3.png"><img alt="../../_images/channelprofile3.png" src="../../_images/channelprofile3.png" style="width: 300px; height: 200px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Channel flow is a pressure driven Poiseuille flow</span><a class="headerlink" href="#channel" title="Permalink to this image">¶</a></p>
 </div>
-<p>Poiseuille flows are driven by pumps that forces the fluid to flow through pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="couette.html#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
+<p>Poiseuille flows are driven by pumps that forces the fluid to flow through pressure. Fluids flow naturally from regions of high pressure to regions of low pressure. Typical examples are cylindrical pipe flow and other duct flows. A fully developed plane channel flow is shown above. Fully developed Poiseuille flows exists only far from the entrances and exits of the ducts, where the flow is aligned parallel to the duct walls. If we assume the flow is in the x-direction, as shown in Fig. 3-6 of <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, then the velocity vector is <span class="math notranslate nohighlight">\(\boldsymbol{u}(y,z,t)=(u(y,z,t),0,0)\)</span> and Navier-Stokes equations can be simplified to</p>
 <div class="math notranslate nohighlight" id="equation-eq-planechannelns">
 <span class="eqno">(16)<a class="headerlink" href="#equation-eq-planechannelns" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
   \frac{\partial u}{\partial t} &amp;= \nu \nabla ^2 u - \frac{1}{\rho}\frac{\mathrm{d} p}{\mathrm{d} x},  \\
@@ -532,10 +532,10 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <h3>Starting flow in a cylindrical pipe<a class="headerlink" href="#starting-flow-in-a-cylindrical-pipe" title="Permalink to this headline">¶</a></h3>
 <p>When a fluid initially at rest suddenly is exposed to a constant pressure gradient, the fluid will start to move as a response to the applied forces and the flow will increase for some time until the steady state Poiseuille flow profile <a class="reference internal" href="#equation-eq-steadypoiseuille">(18)</a> is reached. For convenience we modify this equation slightly here and write it for the steady velocity <span class="math notranslate nohighlight">\(u_s\)</span> as</p>
 <div class="math notranslate nohighlight">
-\[  u_s = u_m \left(1-\tilde{r}^2 \right),\]</div>
+\[  u_s = u_{max} \left(1-\tilde{r}^2 \right),\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
-\[  u_m = -\frac{r_0^2}{4\mu}\frac{\partial p}{\partial x}\]</div>
+\[  u_{max} = -\frac{r_0^2}{4\mu}\frac{\partial p}{\partial x}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\tilde{r}=r/r_0\)</span>. We use the superposition principle and split the equation into two contributions</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = v(r, t) + u_s(r),\]</div>
@@ -585,10 +585,10 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>Since the equations are linear we can use superposition and obtain a total solution simply by summing over multiple possible solutions</p>
 <div class="math notranslate nohighlight">
 \[v(\tilde{r}, \tilde{t}) = \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r})  e^{-\lambda_k^2 \tilde{t}}.\]</div>
-<p>We now have a solution consisting of many constants that satisfy the boundary condition. It remains to close these constants using the initial condition <span class="math notranslate nohighlight">\(v(\tilde{r}, 0) = -u_m(1-\tilde{r}^2)\)</span>.</p>
+<p>We now have a solution consisting of many constants that satisfy the boundary condition. It remains to close these constants using the initial condition <span class="math notranslate nohighlight">\(v(\tilde{r}, 0) = -u_{max}(1-\tilde{r}^2)\)</span>.</p>
 <p>We have</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselinit">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eq-besselinit" title="Permalink to this equation">¶</a></span>\[  \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) = -u_m(1-\tilde{r}^2)\]</div>
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-besselinit" title="Permalink to this equation">¶</a></span>\[  \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) = -u_{max}(1-\tilde{r}^2)\]</div>
 <p>and we want to find <span class="math notranslate nohighlight">\(A_k\)</span>. To this end we use orthogonality</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselorthogonal">
 <span class="eqno">(27)<a class="headerlink" href="#equation-eq-besselorthogonal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_m x) dx = 0 \quad \mathrm{for\,} k \neq m\]</div>
@@ -597,17 +597,17 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <span class="eqno">(28)<a class="headerlink" href="#equation-eq-besselorthonormal" title="Permalink to this equation">¶</a></span>\[ \int_0^1 x J_n(\lambda_k x) J_n(\lambda_k x) dx = \frac{J_{n+1}^2(\lambda_k)}{2}.\]</div>
 <p>If <a class="reference internal" href="#equation-eq-besselinit">(26)</a> is multiplied by <span class="math notranslate nohighlight">\(\tilde{r} J_0(\lambda_m \tilde{r})\)</span> and integrated from zero to unity we get</p>
 <div class="math notranslate nohighlight">
-\[  \int_0^1 \tilde{r} J_0(\lambda_m \tilde{r}) \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) \mathrm{d}\tilde{r} = -\int_0^1 u_m(1-\tilde{r}^2) \tilde{r} J_0(\lambda_m \tilde{r}) \mathrm{d}\tilde{r}.\]</div>
+\[  \int_0^1 \tilde{r} J_0(\lambda_m \tilde{r}) \sum_{k=1}^{\infty} A_k J_0(\lambda_k \tilde{r}) \mathrm{d}\tilde{r} = -\int_0^1 u_{max}(1-\tilde{r}^2) \tilde{r} J_0(\lambda_m \tilde{r}) \mathrm{d}\tilde{r}.\]</div>
 <p>We now use <a class="reference internal" href="#equation-eq-besselorthogonal">(27)</a> to eliminate all terms on the left hand side where <span class="math notranslate nohighlight">\(k \neq m\)</span> and insert for <a class="reference internal" href="#equation-eq-besselorthonormal">(28)</a>. The result is a closed expression for <span class="math notranslate nohighlight">\(A_k\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-besselak">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eq-besselak" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{2}{J_1^2(\lambda_k)} \int_0^1 \tilde{r} J_0(\lambda_k \tilde{r})u_m(1-\tilde{r}^2) \mathrm{d}\tilde{r}.\]</div>
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-besselak" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{2}{J_1^2(\lambda_k)} \int_0^1 \tilde{r} J_0(\lambda_k \tilde{r})u_{max}(1-\tilde{r}^2) \mathrm{d}\tilde{r}.\]</div>
 <p>The integral on the right hand side can be evaluated exactly (details left out for now) leading to</p>
 <div class="math notranslate nohighlight" id="equation-eq-besselakfinal">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eq-besselakfinal" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{4 u_m J_2(\lambda_k)}{\lambda_k^2 J_1^2(\lambda_k)} = -\frac{8 u_m}{\lambda_k^3 J_1(\lambda_k)}\]</div>
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-besselakfinal" title="Permalink to this equation">¶</a></span>\[  A_k = -\frac{4 u_{max} J_2(\lambda_k)}{\lambda_k^2 J_1^2(\lambda_k)} = -\frac{8 u_{max}}{\lambda_k^3 J_1(\lambda_k)}\]</div>
 <p>The final solution to starting flow in a cylinder, <a class="reference internal" href="#equation-eq-unsteadycyl">(23)</a>, becomes</p>
 <div class="math notranslate nohighlight">
-\[ u(\tilde{r}, \tilde{t}) = u_m(1 - \tilde{r}^2) - \sum_{k=1}^{\infty} \frac{8 u_m J_0(\lambda_k \tilde{r})}{\lambda_k^3 J_1(\lambda_k)} e^{-\lambda_k^2 \tilde{t}}\]</div>
-<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="couette.html#white06" id="id2">[Whi06]</a>.</p>
+\[ u(\tilde{r}, \tilde{t}) = u_{max}(1 - \tilde{r}^2) - \sum_{k=1}^{\infty} \frac{8 u_{max} J_0(\lambda_k \tilde{r})}{\lambda_k^3 J_1(\lambda_k)} e^{-\lambda_k^2 \tilde{t}}\]</div>
+<p>in agreement with Eq. (3-96) in White  <a class="bibtex reference internal" href="#white06" id="id2">[Whi06]</a>.</p>
 </div>
 <div class="section" id="pipe-flow-due-to-an-oscillating-pressure-gradient">
 <h3>Pipe flow due to an oscillating pressure gradient<a class="headerlink" href="#pipe-flow-due-to-an-oscillating-pressure-gradient" title="Permalink to this headline">¶</a></h3>
@@ -658,7 +658,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[  u(r, t) = \frac{K e^{i\omega t}}{i \omega} \left( 1 - \frac{J_0(r \sqrt{-i \omega/\nu})}{J_0(r_0 \sqrt{-i \omega/\nu})} \right),\]</div>
-<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="couette.html#white06" id="id3">[Whi06]</a>.</p>
+<p>in accordance with Eq. 3-98 in <a class="bibtex reference internal" href="#white06" id="id3">[Whi06]</a>.</p>
 <p>The Bessel function can be found in the toolbox <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code>. The solution is computed below for a relatively large normalized <span class="math notranslate nohighlight">\(\tilde{\omega}=\omega r_0^2/\nu = 10\)</span>. A smaller value of <span class="math notranslate nohighlight">\(\tilde{\omega}\)</span> will result in velocity profiles closer to the steady Poiseuille profile <span class="math notranslate nohighlight">\(u_{max}(1-\tilde{r}^2)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,7 +715,7 @@ h=7.45E-02 E=9.41E-07 r=3.05
 <span id="id4"></span><h3>Computer exercise Poiseuille<a class="headerlink" href="#computer-exercise-poiseuille" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="verify-analytical-solutions">
 <h4>Verify analytical solutions<a class="headerlink" href="#verify-analytical-solutions" title="Permalink to this headline">¶</a></h4>
-<p>In <a class="bibtex reference internal" href="couette.html#white06" id="id5">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
+<p>In <a class="bibtex reference internal" href="#white06" id="id5">[Whi06]</a> Chap. 3-3.3 there are 6 analytical solutions provided for 6 different types of ducts. Verify the analytical solutions (3-47), (3-49) and (3-52). Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <code class="docutils literal notranslate"><span class="pre">errornorm</span></code>. Does the error vanish for higher order polynomials for all ducts or does it remain constant?</p>
 <p id="bibtex-bibliography-content/chapter3/poiseuille-0"><dl class="citation">
 <dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id5">4</a>)</span></dt>
 <dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>

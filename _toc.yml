@@ -31,3 +31,7 @@
       sections:
         - file: content/fenics/nonlinear
         - file: content/fenics/transient
+
+- part: Mandatory assignments
+  chapters:
+    - file: content/mandatory/mandatory1

@@ -150,6 +150,18 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Mandatory assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mandatory/mandatory1.html">
+   First mandatory assignments
+  </a>
+ </li>
+</ul>
 
 </nav>
 
@@ -353,16 +365,16 @@ are treated as unknowns (<code class="docutils literal notranslate"><span class=
 <p>The boundary conditions will of course depend on the problem being solved. Here we have set homogeneous Dirichlet (no-slip) on three walls and a parabolic profile on top, which corresponds to a modified lid driven cavity.
 Note that boundary conditions for velocity are set using <code class="docutils literal notranslate"><span class="pre">VQ.sub(0)</span></code>, where <code class="docutils literal notranslate"><span class="pre">sub(0)</span></code> corresponds to subspace 0 of the mixed <code class="docutils literal notranslate"><span class="pre">VQ</span></code> space. A Dirichlet boundary condition on pressure could have been set using <code class="docutils literal notranslate"><span class="pre">VQ.sub(1)</span></code>, but here that would be an over-specification.</p>
 <p>The stream function <span class="math notranslate nohighlight">\(\psi(\boldsymbol{x}, t)\)</span> was defined in Eq. <a class="reference internal" href="similarity.html#equation-eq-streamfunction2d">(36)</a> in <a class="reference internal" href="similarity.html"><span class="doc std std-doc">Similarity solutions</span></a>. The Poisson equation <a class="reference internal" href="similarity.html#equation-eq-eqstreamfunction2d">(37)</a> for the streamfunction, can be transformed to a variational form by multiplying with a <code class="docutils literal notranslate"><span class="pre">TestFunction</span></code> <span class="math notranslate nohighlight">\(\psi_v\)</span> and then integrating over the domain using integration by parts</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  \int_{\Omega} \psi_v \nabla^2 \psi \mathrm{d} x &amp;= -\int_{\Omega} \psi_v \omega_z \mathrm{d}x, \notag \\
-  -\int_{\Omega} \nabla (\psi_v) \cdot \nabla (\psi) \mathrm{d}x + \int_{\Gamma} \psi_v \nabla \psi \cdot \boldsymbol{n} \mathrm{d}s &amp;= -\int_{\Omega} \psi_v \omega_z \mathrm{d}x. \label{eq:FormStreamfunction}
+<div class="math notranslate nohighlight" id="equation-eq-formstreamfunction">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eq-formstreamfunction" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  \int_{\Omega} \psi_v \nabla^2 \psi \mathrm{d} x &amp;= -\int_{\Omega} \psi_v \omega_z \mathrm{d}x, \\
+  -\int_{\Omega} \nabla (\psi_v) \cdot \nabla (\psi) \mathrm{d}x + \int_{\Gamma} \psi_v \nabla \psi \cdot \boldsymbol{n} \mathrm{d}s &amp;= -\int_{\Omega} \psi_v \omega_z \mathrm{d}x. 
 \end{aligned}\end{split}\]</div>
 <p>Here <span class="math notranslate nohighlight">\(\boldsymbol{n}\)</span> is the normal vector pointing outwards from the external boundary. The normal can be used directly in FEniCS forms through, e.g., <code class="docutils literal notranslate"><span class="pre">n=FacetNormal(mesh)</span></code>.</p>
 <p>By taking the curl of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> and using that the curl of a gradient is always zero, an equation for the vorticity vector <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> is obtained</p>
 <div class="math notranslate nohighlight">
 \[  \nabla^2 \boldsymbol{\omega} = 0.\]</div>
-<p>Likewise, by taking the divergence (not gradient as it says in White <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>) of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> we obtain an equation for the pressure</p>
+<p>Likewise, by taking the divergence (not gradient as it says in White <a class="bibtex reference internal" href="../mandatory/mandatory1.html#white06" id="id1">[Whi06]</a>) of the momentum equation <a class="reference internal" href="#equation-eq-stokes">(47)</a> we obtain an equation for the pressure</p>
 <div class="math notranslate nohighlight">
 \[  \nabla^2 p = 0,\]</div>
 <p>which follows since <span class="math notranslate nohighlight">\(\nabla \cdot \nabla^2 \boldsymbol{u} = \nabla^2 (\nabla \cdot \boldsymbol{u})=0\)</span>. For Stokes flow both the pressure and the vorticity are governed by homogeneous Laplace equations. For 2D flows we also know the equation for the streamfunction <span class="math notranslate nohighlight">\(\nabla^2 \psi = -\omega_z\)</span>. Inserting this into the Laplace equation for <span class="math notranslate nohighlight">\(\omega_z\)</span> we obtain</p>
@@ -375,7 +387,7 @@ paradox, really only a paradox because the equations do not represent real physi
 <h2>Creeping flow past a sphere<a class="headerlink" href="#creeping-flow-past-a-sphere" title="Permalink to this headline">¶</a></h2>
 <p>Stokes flow past a sphere of radius <span class="math notranslate nohighlight">\(a\)</span> is a 3D flow and thus solutions to <span class="math notranslate nohighlight">\(\nabla^4 \psi = 0\)</span> may be found even though there is no-slip on the sphere wall and free stream far away. In spherical polar coordinates the stream function, <span class="math notranslate nohighlight">\(\psi\)</span>, is defined through</p>
 <div class="math notranslate nohighlight" id="equation-eq-streamfunctionsphere">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eq-streamfunctionsphere" title="Permalink to this equation">¶</a></span>\[  u_r = \frac{1}{r^2 \sin \theta} \frac{\partial \psi}{\partial \theta}, \quad u_{\theta} = -\frac{1}{r \sin \theta} \frac{\partial \psi}{\partial r}. \]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eq-streamfunctionsphere" title="Permalink to this equation">¶</a></span>\[  u_r = \frac{1}{r^2 \sin \theta} \frac{\partial \psi}{\partial \theta}, \quad u_{\theta} = -\frac{1}{r \sin \theta} \frac{\partial \psi}{\partial r}. \]</div>
 <p>The streamfunction equation becomes for spherical coordinates</p>
 <div class="math notranslate nohighlight">
 \[ \left( \frac{\partial^2 }{\partial r^2} + \frac{1}{r} \frac{\partial^2 }{\partial \theta^2} - \frac{\cot \theta}{r^2} \frac{\partial}{\partial \theta} \right)^2 \psi = 0,\]</div>
@@ -388,7 +400,7 @@ paradox, really only a paradox because the equations do not represent real physi
 <p>Using separation of variables White reports that the solution to this problem reads</p>
 <div class="math notranslate nohighlight">
 \[  \psi = \frac{1}{4}U a^2 \sin ^2 \theta \left(\frac{a}{r} - \frac{3r}{a} + \frac{2r^2}{a^2}\right),\]</div>
-<p>and thus we obtain the velocity components from <a class="reference internal" href="#equation-eq-streamfunctionsphere">(48)</a></p>
+<p>and thus we obtain the velocity components from <a class="reference internal" href="#equation-eq-streamfunctionsphere">(49)</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   u_r &amp;= U \cos \theta  \left(1 + \frac{a^3}{2r^3} - \frac{3a}{2r}\right), \\
@@ -409,8 +421,8 @@ paradox, really only a paradox because the equations do not represent real physi
 \end{aligned}\end{split}\]</div>
 <p>Insert for <span class="math notranslate nohighlight">\(u_r\)</span> and <span class="math notranslate nohighlight">\(u_{\theta}\)</span> and integrate both equations, using boundary conditions, to obtain</p>
 <div class="math notranslate nohighlight" id="equation-eq-pressuresphere">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eq-pressuresphere" title="Permalink to this equation">¶</a></span>\[  p(r, \theta) = p_{\infty} - \frac{3 \mu a U}{2 r^2} \cos \theta,\]</div>
-<p>where <span class="math notranslate nohighlight">\(p_{\infty}\)</span> is the pressure in the free stream. From <a class="reference internal" href="#equation-eq-pressuresphere">(49)</a> it is evident that the pressure is highest at the front (left hand side) of the sphere where <span class="math notranslate nohighlight">\(\theta=\pi\)</span>, and lowest at the rear where <span class="math notranslate nohighlight">\(\theta=0\)</span>. The pressure difference sets up a force acting on the sphere in the streamwise direction. The total force acting on the sphere is a vector that can be computed as</p>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-pressuresphere" title="Permalink to this equation">¶</a></span>\[  p(r, \theta) = p_{\infty} - \frac{3 \mu a U}{2 r^2} \cos \theta,\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_{\infty}\)</span> is the pressure in the free stream. From <a class="reference internal" href="#equation-eq-pressuresphere">(50)</a> it is evident that the pressure is highest at the front (left hand side) of the sphere where <span class="math notranslate nohighlight">\(\theta=\pi\)</span>, and lowest at the rear where <span class="math notranslate nohighlight">\(\theta=0\)</span>. The pressure difference sets up a force acting on the sphere in the streamwise direction. The total force acting on the sphere is a vector that can be computed as</p>
 <div class="math notranslate nohighlight">
 \[  \boldsymbol{F} = \int_{\Gamma} \tau \cdot \boldsymbol{n}\, \mathrm{d}A,\]</div>
 <p>where as before the total stress is composed of pressure and friction  through the stress tensor <span class="math notranslate nohighlight">\(\tau=-p \boldsymbol{I}+\mu(\nabla \boldsymbol{u}+\nabla \boldsymbol{u}^T)\)</span>. The normal to the surface of the sphere is everywhere aligned with the <span class="math notranslate nohighlight">\(r\)</span>-direction such that we can write</p>

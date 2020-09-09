@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>First mandatory assignments due 12 October &#8212; MEK4300 Lecture notes</title>
+    <title>First mandatory assignments &#8212; MEK4300 Lecture notes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
@@ -41,6 +41,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Transient problems" href="../fenics/transient.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -119,6 +120,18 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Mandatory assignments
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   First mandatory assignments
+  </a>
+ </li>
+</ul>
 
 </nav>
 
@@ -160,9 +173,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/content/mandatory/mandatory1.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/content/mandatory/mandatory1.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -192,26 +205,6 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mikaem/MEK4300/master?urlpath=tree/content/mandatory/mandatory1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
@@ -229,92 +222,70 @@
         
               <div>
                 
-  <div class="section" id="first-mandatory-assignments-due-12-october">
-<h1>First mandatory assignments due 12 October<a class="headerlink" href="#first-mandatory-assignments-due-12-october" title="Permalink to this headline">¶</a></h1>
-<ol>
-<li><p>Verify the analytical solutions (3-47), (3-49) and (3-52) in <a class="bibtex reference internal" href="../fenics/nonlinear.html#white06" id="id1">[Whi06]</a>. Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <em>errornorm</em>. Report tables of the error vs mesh size (<code class="docutils literal notranslate"><span class="pre">mesh.hmin()</span></code>) and comment on the order of accuracy. See <a class="reference external" href="../chapter3/poiseuille.html#analysing-the-error">Analysing the error</a> and <a class="reference external" href="../solutions/poiseuille.html#solutions-computer-exercises-poiseuille">the solution for a triangle</a>.</p></li>
-<li><p>Solve the normalized equations for <a class="reference external" href="../chapter3/similarity.html#mjx-eqn-eq:StagnationNonNorm">plane stagnation flow</a> and <a class="reference external" href="../chapter3/similarity.html#mjx-eqn-eq:AxiStagnationNonNorm">axissymmetric stagnation flow</a> using both Picard and Newton iterations. Hint: Define a new variable <span class="math notranslate nohighlight">\(H = F'\)</span> and solve a coupled system of equations for <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. Start by creating a mixed function space, with test and trial-functions:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+  <div class="section" id="first-mandatory-assignments">
+<h1>First mandatory assignments<a class="headerlink" href="#first-mandatory-assignments" title="Permalink to this headline">¶</a></h1>
+<p><em>Deadline for submission is <strong>October 9’th</strong>. Submit by email, preferably in jupyter notebook format.</em></p>
+<p><strong>1)</strong>
+Verify the analytical solutions (3-47), (3-49) and (3-52) in <span class="xref std std-ref">white06</span>. Experiment with higher order “CG” elements (the solution is then higher order continuous piecewise polynomials) and compute the <em>errornorm</em>. Report tables of the error vs mesh size (<code class="docutils literal notranslate"><span class="pre">mesh.hmin()</span></code>) and comment on the order of accuracy. See <a class="reference internal" href="../chapter3/poiseuille.html#analysing-the-error"><span class="std std-ref">Analysing the error</span></a>.</p>
+<p><strong>2)</strong>
+Solve the normalized equations for plane stagnation flow <a class="reference internal" href="../chapter3/similarity.html#equation-eq-stagnationnonnorm">(43)</a> and axissymmetric stagnation flow <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(45)</a> using both Picard and Newton iterations. Hint: Define a new variable <span class="math notranslate nohighlight">\(H = F'\)</span> and solve a coupled system of equations for <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. Start by creating a mixed function space, with test and trial-functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dolfin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">Ve</span> <span class="o">=</span> <span class="n">FiniteElement</span><span class="p">(</span><span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Ve</span><span class="p">)</span>
+<span class="n">VV</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Ve</span> <span class="o">*</span> <span class="n">Ve</span><span class="p">)</span>
+<span class="n">hf</span> <span class="o">=</span> <span class="n">TrialFunction</span><span class="p">(</span><span class="n">VV</span><span class="p">)</span>
+<span class="n">h</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span>
+<span class="n">vh</span><span class="p">,</span> <span class="n">vf</span> <span class="o">=</span> <span class="n">TestFunctions</span><span class="p">(</span><span class="n">VV</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ol>
-<p>from dolfin import *
-L = 10
-x = IntervalMesh(50, 0, L)
-Ve = FiniteElement(‘CG’, x.ufl_cell(), 1)
-V = FunctionSpace(x, Ve)
-VV = FunctionSpace(x, Ve * Ve)
-hf = TrialFunction(VV)
-h, f = split(hf)
-vh, vf = TestFunctions(VV)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-3. Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow for a driven cavity. The domain of the cavity is $[0, 1]\times[0, 1]$ and the dynamic viscosity $\mu=100$. The domain consists of 4 solid walls, where the top lid ($y=1$ and $ 0 &lt; x &lt; 1$) is moving at speed $\boldsymbol{u}=(1, 0)$. The remaining 3 walls are not moving. Compute the streamfunction and find the center of the vortex, i.e., the point where the streamfunction goes through a minimum. For the driven cavity the value of the streamfunction can be set to zero on the entire exterior domain.
-
-Note that the boundary condition on $\psi$ follows from the very [definition of the streamfunction](../chapter3/similarity.html#mjx-eqn-eq:streamfunction2D), where it should be understood that the variable $\psi$ will only need to be known up to an arbitrary constant. If $\psi$ is a solution, then $\psi+C$ gives exactly the same velocity field since the partial derivative of a constant (here $C$) is zero. As such we can put an &quot;anchor&quot; on the solution by specifying that $\psi=0$ at the corner where $x=0, y=0$. It then follows that $\psi$ will be zero on the entire domain.  Along the left hand border, where $x=0$ and $0 \leq y \leq 1$, we have the boundary condition on velocity stating that $u=\partial \psi / \partial y = 0$. Since the gradient of $\psi$ is 0 along the border it follows that $\psi=0$ along this border. Similarly, for the top lid $v=-\partial \psi / \partial x=0$, and thus $\psi$ must be equal to $0$ for the entire top lid. The same procedure applies to the last two borders and consequently $\psi=0$ for the entire border. Note that the value does not have to be zero, any constant value may be chosen.
-
-4. Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow creeping past a step (see Fig. 3-37 in {cite}`white06`. A mesh for the geometry is shown below
-
-&lt;img src=&quot;../images/Backstep_mesh.png&quot; width=&quot;400&quot; height=&quot;300&quot; title=&quot;Backwards facing step&quot; id=&quot;backstep&quot;/&gt;
-
-The height of the step is $0.1L$. The height and width of the rectangular geometry is $0.5L$ and $L$ respectively. Use $\mathrm{Re}=UL/\mu = 0.01$ (setting density to unity) as in Fig. 3-37 in {cite}`white06`. Set the velocity of the top (at $y=0.5L$) to constant $\boldsymbol{u}=(1, 0)$. Use pseudo-traction for the inlet located at $x=0$ and the outlet located at $x=L$. No-slip for the bottom wall.
-
-Create a suitable mesh using for example [Gmsh](http://geuz.org/gmsh). It is also possible to create this mesh directly using [mshr](https://bitbucket.org/fenics-project/mshr).
-
-a) Compute the streamfunction. Note that you cannot use homogeneous Dirichlet on the entire domain for this case. Hint: enforce boundary conditions weakly. Use definition of [the streamfunction](../chapter3/similarity.html#mjx-eqn-eq:streamfunction2D) and `n=FacetNormal(mesh)` to implement the weak boundary form (second term on left of [weak form](../chapter3/stokes.html#mjx-eqn-eq:FormStreamfunction)).
-
-b) Make a contour plot, similar to Fig. 3-27 in {cite}`white06`, of the streamfunction. Hint: Dump result to VTK-format  and plot contours using [paraview](http://www.paraview.org/). To create a VTK-file for the streamfunction solution `Function psi`:
-
-   ```python
-f = File(&quot;psi.pvd&quot;)
-f &lt;&lt; psi
-   ```
-
-c) Compute the velocity flux in and out of the domain. Is mass being conserved? Hint: to compute the flow through left and right domains we need to integrate the solution over these domains only
-
-   $$
-\begin{equation*}
-\overline{u} = \int_{\Gamma} u \mathrm{d}A.
-\end{equation*}
-   $$
-   
-   Surface integrals like this can be computed in FEniCS by making use of `SubDomain`s and a `MeshFunction` over the facets (the edges of the mesh):
-   
-   ```python
-def left(x, on_boundary):
-    return x[0] &lt; 1e-12 and on_boundary
-Left = AutoSubDomain(left)
-mf = MeshFunction(&quot;size_t&quot;, mesh, 1)
-mf.set_all(0)
-Left.mark(mf, 1)
-ds = ds(subdomain_data=mf, domain=mesh)
-   ```
-
-   Briefly, this code creates a Function that has an integer value on all facets (in 2D that means all the edges) in the mesh. The `SubDomain` `Left` is created by feeding an inside function (left) to the `AutoSubDomain` function. `Left.mark(mf, 1)` sets the value of all facets on the left boundary to 1. Using these tools we can now integrate over the left boundary exclusively. For example, to compute the area of the inlet do
-
-   ```python
-A = assemble(Constant(1)*ds(1))
-   ```
-
-d) Reverse the direction of the flow using $\boldsymbol{u}=(-1, 0)$ for the top boundary. Does this change the location of the vortex? Explain the result.
-
-e) Compute the normal stress on the bottom wall. Is there any difference depending on the direction of the flow? Is this realistic for real flows of moderate Reynolds numbers?
-
-   The normal stress on the wall is computed as
-
-   $$
-\begin{equation*}
-\int_{\Gamma} (\tau \cdot \boldsymbol{n}) \cdot \boldsymbol{n}\, \mathrm{d}s,
-\end{equation*}
-   $$
-   
-   where the stress tensor $\tau = -p\boldsymbol{I}+\mu(\nabla \boldsymbol{u} + \nabla \boldsymbol{u}^T)$.
+<p><strong>3)</strong>
+Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow for a driven cavity. The domain of the cavity is <span class="math notranslate nohighlight">\([0, 1]\times[0, 1]\)</span> and the dynamic viscosity <span class="math notranslate nohighlight">\(\mu=100\)</span>. The domain consists of 4 solid walls, where the top lid (<span class="math notranslate nohighlight">\(y=1\)</span> and $ 0 &lt; x &lt; 1$) is moving at speed <span class="math notranslate nohighlight">\(\boldsymbol{u}=(1, 0)\)</span>. The remaining 3 walls are not moving. Compute the streamfunction and find the center of the vortex, i.e., the point where the streamfunction goes through a minimum. For the driven cavity the value of the streamfunction can be set to zero on the entire exterior domain.</p>
+<p>Note that the boundary condition on <span class="math notranslate nohighlight">\(\psi\)</span> follows from the very definition of the streamfunction <a class="reference internal" href="../chapter3/similarity.html#equation-eq-streamfunction2d">(36)</a>, where it should be understood that the variable <span class="math notranslate nohighlight">\(\psi\)</span> will only need to be known up to an arbitrary constant. If <span class="math notranslate nohighlight">\(\psi\)</span> is a solution, then <span class="math notranslate nohighlight">\(\psi+C\)</span> gives exactly the same velocity field since the partial derivative of a constant (here <span class="math notranslate nohighlight">\(C\)</span>) is zero. As such we can put an “anchor” on the solution by specifying that <span class="math notranslate nohighlight">\(\psi=0\)</span> at the corner where <span class="math notranslate nohighlight">\(x=0, y=0\)</span>. It then follows that <span class="math notranslate nohighlight">\(\psi\)</span> will be zero on the entire domain.  Along the left hand border, where <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(0 \leq y \leq 1\)</span>, we have the boundary condition on velocity stating that <span class="math notranslate nohighlight">\(u=\partial \psi / \partial y = 0\)</span>. Since the gradient of <span class="math notranslate nohighlight">\(\psi\)</span> is 0 along the border it follows that <span class="math notranslate nohighlight">\(\psi=0\)</span> along this border. Similarly, for the top lid <span class="math notranslate nohighlight">\(v=-\partial \psi / \partial x=0\)</span>, and thus <span class="math notranslate nohighlight">\(\psi\)</span> must be equal to <span class="math notranslate nohighlight">\(0\)</span> for the entire top lid. The same procedure applies to the last two borders and consequently <span class="math notranslate nohighlight">\(\psi=0\)</span> for the entire border. Note that the value does not have to be zero, any constant value may be chosen.</p>
+<p><strong>4)</strong>
+Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow creeping past a step (see Fig. 3-37 in <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>. A mesh for the geometry is shown below</p>
+<div class="figure align-default" id="backwards-facing-step">
+<a class="reference internal image-reference" href="../../_images/Backstep_mesh.png"><img alt="../../_images/Backstep_mesh.png" src="../../_images/Backstep_mesh.png" style="width: 300px; height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Backwards facing step created using Gmsh</span><a class="headerlink" href="#backwards-facing-step" title="Permalink to this image">¶</a></p>
+</div>
+<p>The height of the step is <span class="math notranslate nohighlight">\(0.1L\)</span>. The height and width of the rectangular geometry is <span class="math notranslate nohighlight">\(0.5L\)</span> and <span class="math notranslate nohighlight">\(L\)</span> respectively. Use <span class="math notranslate nohighlight">\(\mathrm{Re}=UL/\mu = 0.01\)</span> (setting density to unity) as in Fig. 3-37 in <a class="bibtex reference internal" href="#white06" id="id2">[Whi06]</a>. Set the velocity of the top (at <span class="math notranslate nohighlight">\(y=0.5L\)</span>) to constant <span class="math notranslate nohighlight">\(\boldsymbol{u}=(1, 0)\)</span>. Use pseudo-traction for the inlet located at <span class="math notranslate nohighlight">\(x=0\)</span> and the outlet located at <span class="math notranslate nohighlight">\(x=L\)</span>. No-slip for the bottom wall.</p>
+<p>Create a suitable mesh using for example <a class="reference external" href="http://geuz.org/gmsh">Gmsh</a>. It is also possible to create this mesh directly using <a class="reference external" href="https://bitbucket.org/fenics-project/mshr">mshr</a>.</p>
+<p><strong>4a)</strong> Compute the streamfunction. Note that you cannot use homogeneous Dirichlet on the entire domain for this case. Hint: enforce boundary conditions weakly. Use definition of the streamfunction <a class="reference internal" href="../chapter3/similarity.html#equation-eq-streamfunction2d">(36)</a> and <code class="docutils literal notranslate"><span class="pre">n=FacetNormal(mesh)</span></code> to implement the weak boundary form (second term on the left of second line in  <a class="reference internal" href="../chapter3/stokes.html#equation-eq-formstreamfunction">(48)</a>).</p>
+<p><strong>4b)</strong> Make a contour plot, similar to Fig. 3-27 in <a class="bibtex reference internal" href="#white06" id="id3">[Whi06]</a>, of the streamfunction. Hint: Dump result to VTK-format  and plot contours using <a class="reference external" href="http://www.paraview.org/">paraview</a>. To create a VTK-file for the streamfunction solution <code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">psi</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;psi.pvd&quot;</span><span class="p">)</span>
+ <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="n">psi</span>
 </pre></div>
 </div>
+<p><strong>4c)</strong> Compute the velocity flux in and out of the domain. Is mass being conserved? Hint: to compute the flow through left and right domains we need to integrate the solution over these domains only</p>
+<div class="math notranslate nohighlight">
+\[ \overline{u} = \int_{\Gamma} u \mathrm{d}A.\]</div>
+<p>Surface integrals like this can be computed in FEniCS by making use of <code class="docutils literal notranslate"><span class="pre">SubDomain</span></code>s and a <code class="docutils literal notranslate"><span class="pre">MeshFunction</span></code> over the facets (the edges of the mesh):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">left</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on_boundary</span><span class="p">):</span>
+       <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1e-12</span> <span class="ow">and</span> <span class="n">on_boundary</span>
+<span class="n">Left</span> <span class="o">=</span> <span class="n">AutoSubDomain</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+<span class="n">mf</span> <span class="o">=</span> <span class="n">MeshFunction</span><span class="p">(</span><span class="s2">&quot;size_t&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mf</span><span class="o">.</span><span class="n">set_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Left</span><span class="o">.</span><span class="n">mark</span><span class="p">(</span><span class="n">mf</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">(</span><span class="n">subdomain_data</span><span class="o">=</span><span class="n">mf</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p>{% bibliography –cited %}</p>
+<p>Briefly, this code creates a Function that has an integer value on all facets (in 2D that means all the edges) in the mesh. The <code class="docutils literal notranslate"><span class="pre">SubDomain</span></code> <code class="docutils literal notranslate"><span class="pre">Left</span></code> is created by feeding an inside function (left) to the <code class="docutils literal notranslate"><span class="pre">AutoSubDomain</span></code> function. <code class="docutils literal notranslate"><span class="pre">Left.mark(mf,</span> <span class="pre">1)</span></code> sets the value of all facets on the left boundary to 1. Using these tools we can now integrate over the left boundary exclusively. For example, to compute the area of the inlet do</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>4d)</strong> Reverse the direction of the flow using <span class="math notranslate nohighlight">\(\boldsymbol{u}=(-1, 0)\)</span> for the top boundary. Does this change the location of the vortex? Explain the result.</p>
+<p><strong>4e)</strong> Compute the normal stress on the bottom wall. Is there any difference depending on the direction of the flow? Is this realistic for real flows of moderate Reynolds numbers?</p>
+<p>The normal stress on the wall is computed as</p>
+<div class="math notranslate nohighlight">
+\[ \int_{\Gamma} (\tau \cdot \boldsymbol{n}) \cdot \boldsymbol{n}\, \mathrm{d}s,\]</div>
+<p>where the stress tensor <span class="math notranslate nohighlight">\(\tau = -p\boldsymbol{I}+\mu(\nabla \boldsymbol{u} + \nabla \boldsymbol{u}^T)\)</span>.</p>
+<p id="bibtex-bibliography-content/mandatory/mandatory1-0"><dl class="citation">
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>)</span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -345,6 +316,7 @@ e) Compute the normal stress on the bottom wall. Is there any difference dependi
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../fenics/transient.html" title="previous page">Transient problems</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

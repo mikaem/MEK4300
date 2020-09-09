@@ -133,6 +133,18 @@
   </ul>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Mandatory assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mandatory/mandatory1.html">
+   First mandatory assignments
+  </a>
+ </li>
+</ul>
 
 </nav>
 
@@ -264,7 +276,7 @@
                 
   <div class="section" id="numerical-solution-of-nonlinear-equations">
 <h1>Numerical solution of nonlinear equations<a class="headerlink" href="#numerical-solution-of-nonlinear-equations" title="Permalink to this headline">¶</a></h1>
-<p>Several derived equations in <a class="reference internal" href="../chapter3/similarity.html"><span class="doc std std-doc">Similarity solutions</span></a> (e.g., Eq. <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(45)</a>) are nonlinear and no analytical solutions are known. Very few techniques are actually available for solving nonlinear equations analytically and as such we usually have to rely on numerical methods to obtain solutions for real fluid flows. Reynolds Averaged Navier-Stokes equations, that will be discussed thoroughly in chapter 6 of White <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>, are basically Navier-Stokes equations with a nonlinear viscosity coefficient. In this section we will consider two of the most important techniques for iteratively solving nonlinear equations: Picard and Newton iterations.</p>
+<p>Several derived equations in <a class="reference internal" href="../chapter3/similarity.html"><span class="doc std std-doc">Similarity solutions</span></a> (e.g., Eq. <a class="reference internal" href="../chapter3/similarity.html#equation-eq-axistagnationnonnorm">(45)</a>) are nonlinear and no analytical solutions are known. Very few techniques are actually available for solving nonlinear equations analytically and as such we usually have to rely on numerical methods to obtain solutions for real fluid flows. Reynolds Averaged Navier-Stokes equations, that will be discussed thoroughly in chapter 6 of White <a class="bibtex reference internal" href="../mandatory/mandatory1.html#white06" id="id1">[Whi06]</a>, are basically Navier-Stokes equations with a nonlinear viscosity coefficient. In this section we will consider two of the most important techniques for iteratively solving nonlinear equations: Picard and Newton iterations.</p>
 <p>The general procedure for obtaining solutions to nonlinear equations is to guess an initial solution and then successively recompute new and hopefully better approximations to the solution.  This is illustrated nicely with Newton’s method (also called Newton-Raphson’s method). Consider a nonlinear function <span class="math notranslate nohighlight">\(f(x)\)</span> of one variable <span class="math notranslate nohighlight">\(x\)</span> (e.g., <span class="math notranslate nohighlight">\(f(x)=x^2-1\)</span> or <span class="math notranslate nohighlight">\(f(x)=x \sin(x)-1\)</span>), where one is interested in finding the roots <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(f(x)=0\)</span>. Newton’s method boils down to making an initial guess <span class="math notranslate nohighlight">\(x_0\)</span> that does not satisfy our equation (i.e., <span class="math notranslate nohighlight">\(f(x_0) \neq 0\)</span>) and from this initial guess we successively compute better approximations to the final root:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -306,7 +318,7 @@
 \[  - \nabla \cdot \left(q(u) \nabla u \right) = f(u),\]</div>
 <p>where <span class="math notranslate nohighlight">\(q\)</span> and <span class="math notranslate nohighlight">\(f\)</span> may be nonlinear functions of <span class="math notranslate nohighlight">\(u\)</span>. Using testfunction <span class="math notranslate nohighlight">\(v\)</span> and neglecting the boundary term the variational form reads</p>
 <div class="math notranslate nohighlight" id="equation-eq-nonlinpoissonvar">
-<span class="eqno">(69)<a class="headerlink" href="#equation-eq-nonlinpoissonvar" title="Permalink to this equation">¶</a></span>\[  \int_{\Omega}  q(u) \nabla u \cdot \nabla v \mathrm{d}x = \int_{\Omega} f(u) v \mathrm{d}x.\]</div>
+<span class="eqno">(70)<a class="headerlink" href="#equation-eq-nonlinpoissonvar" title="Permalink to this equation">¶</a></span>\[  \int_{\Omega}  q(u) \nabla u \cdot \nabla v \mathrm{d}x = \int_{\Omega} f(u) v \mathrm{d}x.\]</div>
 <p>This is a nonlinear variational form and we need to solve it iteratively.</p>
 <div class="section" id="newton-s-method">
 <h3>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h3>
@@ -368,7 +380,7 @@ Iteration 5 Error = 8.698631493053902e-17
 </div>
 <div class="section" id="picard-iterations">
 <h3>Picard iterations<a class="headerlink" href="#picard-iterations" title="Permalink to this headline">¶</a></h3>
-<p>For Picard iterations we have to linearize the variational form in Eq. <a class="reference internal" href="#equation-eq-nonlinpoissonvar">(69)</a> ourself. Let us first linearize such that the coefficient is known:</p>
+<p>For Picard iterations we have to linearize the variational form in Eq. <a class="reference internal" href="#equation-eq-nonlinpoissonvar">(70)</a> ourself. Let us first linearize such that the coefficient is known:</p>
 <div class="math notranslate nohighlight">
 \[F(u;v) =   \int_{\Omega}  q(u^k) \nabla u \cdot \nabla v \mathrm{d}x - \int_{\Omega} f(u^k, u) v \mathrm{d}x\]</div>
 <p>The first term on the rhs of <span class="math notranslate nohighlight">\(F(u;v)\)</span> is bilinear in that it contains both trial- and testfunctions <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. The equation is also linear in <span class="math notranslate nohighlight">\(u\)</span>, which is necessary for FEniCS to accept it. Note that the function <span class="math notranslate nohighlight">\(f\)</span> could be linear in <span class="math notranslate nohighlight">\(u\)</span> as well. For example, if <span class="math notranslate nohighlight">\(f(u) = u^2\)</span>, then we can linearize it like <span class="math notranslate nohighlight">\(f(u) = u \cdot u^k\)</span>. Picard iterations are implemented as Newton up to the point where the form is created. The remaining part of the Picard code reads:</p>

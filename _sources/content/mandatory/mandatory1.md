@@ -3,7 +3,7 @@
 *Deadline for submission is **October 9'th**. Submit by email, preferably in jupyter notebook format.*
 
 **1)**
-Verify the analytical solutions (3-47), (3-49) and (3-52) in {ref}`white06`. Experiment with higher order "CG" elements (the solution is then higher order continuous piecewise polynomials) and compute the *errornorm*. Report tables of the error vs mesh size (`mesh.hmin()`) and comment on the order of accuracy. See {ref}`analysing-the-error`.
+Verify the analytical solutions (3-47), (3-49) and (3-52) in {cite}`white06`. Experiment with higher order "CG" elements (the solution is then higher order continuous piecewise polynomials) and compute the *errornorm*. Report tables of the error vs mesh size (`mesh.hmin()`) and comment on the order of accuracy. See {ref}`analysing-the-error`.
 
 **2)**
 Solve the normalized equations for plane stagnation flow {eq}`eq:StagnationNonNorm` and axissymmetric stagnation flow {eq}`eq:AxiStagnationNonNorm` using both Picard and Newton iterations. Hint: Define a new variable $H = F'$ and solve a coupled system of equations for $H$ and $F$. Start by creating a mixed function space, with test and trial-functions.

@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Second mandatory assignment due 13 November &#8212; MEK4300 Lecture notes</title>
+    <title>Second mandatory assignment &#8212; MEK4300 Lecture notes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
@@ -41,6 +41,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="First mandatory assignments" href="mandatory1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -124,10 +125,15 @@
   Mandatory assignments
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="mandatory1.html">
    First mandatory assignments
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Second mandatory assignment
   </a>
  </li>
 </ul>
@@ -241,19 +247,21 @@
         
               <div>
                 
-  <div class="section" id="second-mandatory-assignment-due-13-november">
-<h1>Second mandatory assignment due 13 November<a class="headerlink" href="#second-mandatory-assignment-due-13-november" title="Permalink to this headline">¶</a></h1>
-<ol>
-<li><p>Implement a nonlinear solver for <a class="reference external" href="../solutions/chapter4/falknerskan.html#mjx-eqn-eq:FalknerSkan">the Falkner-Skan equation</a>.</p>
-<p>a) Vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> and reproduce Fig. 4-11 (a) and (b) in <a class="bibtex reference internal" href="mandatory1.html#white06" id="id1">[Whi06]</a>.</p>
-<p>b) What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{''}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions. Show these in a plot for <span class="math notranslate nohighlight">\(\beta = -0.1\)</span>.</p>
-</li>
-<li><p>Perform benchmarks 2.2 a) and 2.2 b) of <a class="reference external" href="http://www.uio.no/studier/emner/matnat/math/MEK4300/v14/undervisningsmateriale/schaeferturek1996.pdf">Schaefer and Turek</a> and report your results comparing with Table 3 and 4 of the benchmark.</p></li>
-<li><p>Consider a fully developed turbulent plane channel flow. The wall friction velocity <span class="math notranslate nohighlight">\(v^*=\sqrt{\nu\partial \overline{u}/\partial y}_{wall}=0.05\)</span> and the turbulent Reynolds number <span class="math notranslate nohighlight">\(Re_{\tau} = v^*/\nu = 1000\)</span>.</p>
-<p>a) Use the Mixing length model and implement a solver for a plane turbulent channel flow.</p>
+  <div class="section" id="second-mandatory-assignment">
+<h1>Second mandatory assignment<a class="headerlink" href="#second-mandatory-assignment" title="Permalink to this headline">¶</a></h1>
+<p><em>Deadline for submission is <strong>November 13’th</strong>. Submit by email, preferably in jupyter notebook format.</em></p>
+<p><strong>1)</strong>
+Implement a nonlinear solver for <code class="xref eq docutils literal notranslate"><span class="pre">falknerskan</span></code>.</p>
+<p><strong>1a)</strong> Vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> and reproduce Fig. 4-11 (a) and (b) in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id1">[Whi06]</a>.</p>
+<p><strong>1b)</strong> What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{''}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions. Show these in a plot for <span class="math notranslate nohighlight">\(\beta = -0.1\)</span>.</p>
+<p><strong>2)</strong>
+Perform benchmarks 2.2 a) and 2.2 b) of <a class="reference external" href="http://www.uio.no/studier/emner/matnat/math/MEK4300/v14/undervisningsmateriale/schaeferturek1996.pdf">Schaefer and Turek</a> and report your results comparing with Table 3 and 4 of the benchmark.</p>
+<p><strong>3)</strong>
+Consider a fully developed turbulent plane channel flow. The wall friction velocity <span class="math notranslate nohighlight">\(v^*=\sqrt{\nu\partial \overline{u}/\partial y}_{wall}=0.05\)</span> and the turbulent Reynolds number <span class="math notranslate nohighlight">\(Re_{\tau} = v^*/\nu = 1000\)</span>.</p>
+<p><strong>3a)</strong> Use the Mixing length model and implement a solver for a plane turbulent channel flow.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned*}
+\begin{aligned}
  0 &amp;= \nu \frac{\partial^2 \overline{u}}{\partial y^2} - \frac{1}{\rho}
 \frac{\partial \overline{p}}{\partial x} - \frac{\partial
 \overline{u'v'}}{\partial y}, \\
@@ -261,11 +269,12 @@
  \nu_t &amp;= l^2 |\frac{\partial \overline{u}}{\partial y}|, \\
  l &amp;= \kappa y \left(1 - \exp\left( -\frac{y^+}{A}\right) \right), \\
  y^+ &amp;= \frac{y v^*}{\nu}.
- \end{aligned*}
-   \end{split}\]</div>
+ \end{aligned}
+\end{split}\]</div>
 <p>The constants <span class="math notranslate nohighlight">\(\kappa=0.41\)</span> and <span class="math notranslate nohighlight">\(A=26\)</span>.</p>
-<p>Hint 1: the pressure gradient is constant and can be computed from <span class="math notranslate nohighlight">\(v^*\)</span> by integrating the momentum equation across the channel.</p>
-<p>Hint 2: use a mesh skewed towards the walls. You should resolve the solution up to at least <span class="math notranslate nohighlight">\(y^+=1\)</span> (or <span class="math notranslate nohighlight">\(y\approx\nu/v^*\)</span> for the first inner node of the computational mesh). To compute a skewed mesh you could for example do something like this</p>
+<ul>
+<li><p>Hint 1: the pressure gradient is constant and can be computed from <span class="math notranslate nohighlight">\(v^*\)</span> by integrating the momentum equation across the channel.</p></li>
+<li><p>Hint 2: use a mesh skewed towards the walls. You should resolve the solution up to at least <span class="math notranslate nohighlight">\(y^+=1\)</span> (or <span class="math notranslate nohighlight">\(y\approx\nu/v^*\)</span> for the first inner node of the computational mesh). To compute a skewed mesh you could for example do something like this</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arctan</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">IntervalMesh</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">coordinates</span><span class="p">()</span>
@@ -276,23 +285,23 @@
 Modify the mesh and check the location of the first inner node to ensure that
 it’s less than <span class="math notranslate nohighlight">\(\nu/v^*\)</span>. How many nodes do you need to ensure <span class="math notranslate nohighlight">\(y^+&lt;1\)</span> if you
 use a regularly spaced mesh that is not skewed towards the wall?</p>
-<p>b) Verify that the solution approximates the theoretical results</p>
+</li>
+</ul>
+<p><strong>3b)</strong> Verify that the solution approximates the theoretical results</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned*}
+\begin{aligned}
  y^+ &amp;= u^+\quad \mathrm{for} \quad y^+ &lt; 5, \\
  u^+ &amp;= \frac{1}{\kappa} \ln y^+ + B \quad \mathrm{for} \quad y^+ &gt; 30,
-\end{aligned*}
-   \end{split}\]</div>
+\end{aligned}
+\end{split}\]</div>
 <p>where the “constant” <span class="math notranslate nohighlight">\(B=5.5\)</span>. Can you improve the agreement with the computational results by modifying the constants? What is the value of the turbulent viscosity <span class="math notranslate nohighlight">\(\nu_T\)</span> at the center of the channel? Do you believe this value is reasonable?</p>
-</li>
-<li><p>Derive from first principles</p>
-<p>a) the Reynolds Averaged Navier Stokes equations (Eq. 6-13 in <a class="bibtex reference internal" href="mandatory1.html#white06" id="id2">[Whi06]</a>).</p>
-<p>b) the turbulence kinetic energy equation (Eq. 6.17 in <a class="bibtex reference internal" href="mandatory1.html#white06" id="id3">[Whi06]</a>).</p>
-<p>c) the Reynolds stress equation (Eq. 6-18 in <a class="bibtex reference internal" href="mandatory1.html#white06" id="id4">[Whi06]</a>).</p>
+<p><strong>4)</strong>
+Derive from first principles</p>
+<p><strong>4a)</strong> the Reynolds Averaged Navier Stokes equations (Eq. 6-13 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id2">[Whi06]</a>).</p>
+<p><strong>4b)</strong> the turbulence kinetic energy equation (Eq. 6.17 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id3">[Whi06]</a>).</p>
+<p><strong>4c)</strong> the Reynolds stress equation (Eq. 6-18 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id4">[Whi06]</a>).</p>
 <p>See, e.g., <a class="reference external" href="http://turbulence-online.com/Publications/Lecture_Notes/Turbulence_Lille/TB_16January2013.pdf">this book</a> for more details about derivation.</p>
-</li>
-</ol>
 <p>{% bibliography –cited %}</p>
 </div>
 
@@ -324,6 +333,7 @@ use a regularly spaced mesh that is not skewed towards the wall?</p>
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="mandatory1.html" title="previous page">First mandatory assignments</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

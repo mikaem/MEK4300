@@ -41,6 +41,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Suggested derivation of Falkner-Skan equations" href="falknerskan.html" />
+    <link rel="prev" title="Suggested derivation of boundary layer equations" href="boundarylayer.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -85,7 +87,7 @@
   White - Viscous Fluid Flow
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../chapter3/intro.html">
    Chapter 3
@@ -101,10 +103,51 @@
    Chapter 6
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="../intro.html">
    Suggested solutions
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter3/intro.html">
+     Chapter 3
+    </a>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../chapter3/couette.html">
+       Suggested solutions Couette
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../chapter3/poiseuille.html">
+       Suggested solutions Poiseuille
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="reference internal" href="intro.html">
+     Chapter 4
+    </a>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="boundarylayer.html">
+       Suggested derivation of boundary layer equations
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Suggested derivation of Blasius equation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="falknerskan.html">
+       Suggested derivation of Falkner-Skan equations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -128,6 +171,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../mandatory/mandatory1.html">
    First mandatory assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mandatory/mandatory2.html">
+   Second mandatory assignment
   </a>
  </li>
 </ul>
@@ -245,30 +293,45 @@
 <h1>Suggested derivation of Blasius equation<a class="headerlink" href="#suggested-derivation-of-blasius-equation" title="Permalink to this headline">¶</a></h1>
 <p>The Blasius solution is derived from the boundary layer equations using a similarity variable</p>
 <div class="math notranslate nohighlight">
-\[  \eta(x, y) = y \sqrt{\frac{U}{2 \nu x}}.\]</div>
+\[
+  \eta(x, y) = y \sqrt{\frac{U}{2 \nu x}}.
+\]</div>
 <p>The pressure gradient is zero and the stream function and the velocity components are assumed given at a constant <span class="math notranslate nohighlight">\(x\)</span>-value as</p>
 <div class="math notranslate nohighlight">
-\[  \psi = \sqrt{2 \nu U x} f(\eta), \quad u = U f^{\prime}, \quad v = \sqrt{\frac{\nu U}{2 x}} \left(\eta f^{\prime} - f \right).\]</div>
+\[
+  \psi = \sqrt{2 \nu U x} f(\eta), \quad u = U f^{\prime}, \quad v = \sqrt{\frac{\nu U}{2 x}} \left(\eta f^{\prime} - f \right).
+\]</div>
 <p>The derivatives of <span class="math notranslate nohighlight">\(\eta\)</span> are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}  \frac{\partial \eta}{\partial x} &amp;= -\frac{y}{2}\sqrt{\frac{U}{2 \nu}} x^{-\frac{3}{2}} = -\frac{\eta}{2 x}, \\
-  \frac{\partial \eta}{\partial y} &amp;= \sqrt{\frac{U}{2 \nu x}}.\end{split}\]</div>
+<p>\begin{align*}
+\frac{\partial \eta}{\partial x} &amp;= -\frac{y}{2}\sqrt{\frac{U}{2 \nu}} x^{-\frac{3}{2}} = -\frac{\eta}{2 x}, \
+\frac{\partial \eta}{\partial y} &amp;= \sqrt{\frac{U}{2 \nu x}}.
+\end{align*}</p>
 <p>These are then used in the partial derivatives of the velocity components</p>
 <div class="math notranslate nohighlight">
-\[  \frac{\partial u}{\partial x} =  \frac{\partial u}{\partial \eta} \frac{\partial \eta}{\partial x} = -U f^{\prime\prime}\frac{\eta}{2x}\]</div>
+\[
+  \frac{\partial u}{\partial x} =  \frac{\partial u}{\partial \eta} \frac{\partial \eta}{\partial x} = -U f^{\prime\prime}\frac{\eta}{2x}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned} \frac{\partial u}{\partial y} = \frac{\partial u}{\partial \eta} \frac{\partial \eta}{\partial y} = U f^{\prime\prime}\sqrt{\frac{U}{2 \nu x}}
-``\\```{math}
- \frac{\partial^2 u}{\partial y^2} = U f^{\prime\prime\prime} \frac{U}{2 \nu x}\end{aligned}\end{align} \]</div>
+\[
+ \frac{\partial u}{\partial y} = \frac{\partial u}{\partial \eta} \frac{\partial \eta}{\partial y} = U f^{\prime\prime}\sqrt{\frac{U}{2 \nu x}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial^2 u}{\partial y^2} = U f^{\prime\prime\prime} \frac{U}{2 \nu x}
+\]</div>
 <p>Inserting into the momentum equation</p>
 <div class="math notranslate nohighlight">
-\[ U f^{\prime} (-1)U f^{\prime\prime}\frac{\eta}{2x} + \sqrt{\frac{\nu U}{2 x}} \left(\eta f^{\prime} - f \right) U f^{\prime\prime}\sqrt{\frac{U}{2 \nu x}} = \nu U f^{\prime\prime\prime} \frac{U}{2 \nu x}\]</div>
+\[
+ U f^{\prime} (-1)U f^{\prime\prime}\frac{\eta}{2x} + \sqrt{\frac{\nu U}{2 x}} \left(\eta f^{\prime} - f \right) U f^{\prime\prime}\sqrt{\frac{U}{2 \nu x}} = \nu U f^{\prime\prime\prime} \frac{U}{2 \nu x}
+\]</div>
 <p>Multiply by <span class="math notranslate nohighlight">\(2x/U^2\)</span> and rearrange</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{aligned}
  -f^{\prime} f^{\prime\prime} \eta + \left(\eta f^{\prime} - f \right) f^{\prime\prime} = f^{\prime\prime\prime}, \\
  f^{\prime\prime\prime} + f f^{\prime\prime} = 0
-\end{aligned}\end{split}\]</div>
+\end{aligned}
+\end{split}\]</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -299,6 +362,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="boundarylayer.html" title="previous page">Suggested derivation of boundary layer equations</a>
+    <a class='right-next' id="next-link" href="falknerskan.html" title="next page">Suggested derivation of Falkner-Skan equations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

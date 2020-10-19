@@ -41,6 +41,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Suggested derivation of Blasius equation" href="blasius.html" />
+    <link rel="prev" title="Chapter 4" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -85,7 +87,7 @@
   White - Viscous Fluid Flow
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../chapter3/intro.html">
    Chapter 3
@@ -101,10 +103,51 @@
    Chapter 6
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="../intro.html">
    Suggested solutions
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter3/intro.html">
+     Chapter 3
+    </a>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../chapter3/couette.html">
+       Suggested solutions Couette
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../chapter3/poiseuille.html">
+       Suggested solutions Poiseuille
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="reference internal" href="intro.html">
+     Chapter 4
+    </a>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Suggested derivation of boundary layer equations
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="blasius.html">
+       Suggested derivation of Blasius equation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="falknerskan.html">
+       Suggested derivation of Falkner-Skan equations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -128,6 +171,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../mandatory/mandatory1.html">
    First mandatory assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mandatory/mandatory2.html">
+   Second mandatory assignment
   </a>
  </li>
 </ul>
@@ -243,48 +291,80 @@
                 
   <div class="section" id="suggested-derivation-of-boundary-layer-equations">
 <h1>Suggested derivation of boundary layer equations<a class="headerlink" href="#suggested-derivation-of-boundary-layer-equations" title="Permalink to this headline">¶</a></h1>
-<p>The boundary layer equations (Eq. (4-32) in <a class="bibtex reference internal" href="../../mandatory/mandatory1.html#white06" id="id1">[Whi06]</a> are derived by multiplying the Navier-Stokes equations by <span class="math notranslate nohighlight">\(L/U^2\)</span> and then eliminating all terms proportional to <span class="math notranslate nohighlight">\(1/Re\)</span> and <span class="math notranslate nohighlight">\(1/Re^2\)</span>. This is justified for flows with high Reynolds number. The NS equations are non-dimensionalized using</p>
+<p>The boundary layer equations (Eq. (4-32) in <a class="bibtex reference internal" href="../../chapter4/intro.html#white06" id="id1">[Whi06]</a> are derived by multiplying the Navier-Stokes equations by <span class="math notranslate nohighlight">\(L/U^2\)</span> and then eliminating all terms proportional to <span class="math notranslate nohighlight">\(1/Re\)</span> and <span class="math notranslate nohighlight">\(1/Re^2\)</span>. This is justified for flows with high Reynolds number. The NS equations are non-dimensionalized using</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+\[\begin{split}
+\begin{aligned}
   \overline{x} = \frac{x}{L} &amp;&amp; \overline{u} = \frac{u}{U} &amp;&amp; \overline{v} = \frac{v}{U}\sqrt{Re} \\
   \overline{y} = \frac{y}{L}\sqrt{Re} &amp;&amp; \overline{t} = \frac{t U}{L} &amp;&amp; \overline{p} = \frac{p}{\rho U^2}
-\end{aligned}\end{split}\]</div>
+\end{aligned}
+\end{split}\]</div>
 <p>Term by term the momentum equation in the streamwise (<span class="math notranslate nohighlight">\(x\)</span>) direction is multiplied by <span class="math notranslate nohighlight">\(L/U^2\)</span></p>
 <div class="math notranslate nohighlight">
-\[  \frac{L}{U^2} \frac{\partial u}{\partial t} = \frac{\partial (u/U)}{\partial (t U / L)} = \frac{\partial \overline{u}}{\partial \overline{t}}\]</div>
+\[
+  \frac{L}{U^2} \frac{\partial u}{\partial t} = \frac{\partial (u/U)}{\partial (t U / L)} = \frac{\partial \overline{u}}{\partial \overline{t}}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} u\frac{\partial u}{\partial x} = \frac{u}{U} \frac{\partial (u/U)}{\partial (x/L)} = \overline{u} \frac{\partial \overline{u}}{\partial \overline{x}}\]</div>
+\[
+ \frac{L}{U^2} u\frac{\partial u}{\partial x} = \frac{u}{U} \frac{\partial (u/U)}{\partial (x/L)} = \overline{u} \frac{\partial \overline{u}}{\partial \overline{x}}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} v\frac{\partial u}{\partial y} = \frac{v}{U}\sqrt{Re} \frac{\partial (u/U)}{\partial (\frac{y}{L}\sqrt{Re})} = \overline{v} \frac{\partial \overline{u}}{\partial \overline{y}}\]</div>
+\[
+ \frac{L}{U^2} v\frac{\partial u}{\partial y} = \frac{v}{U}\sqrt{Re} \frac{\partial (u/U)}{\partial (\frac{y}{L}\sqrt{Re})} = \overline{v} \frac{\partial \overline{u}}{\partial \overline{y}}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \nu\frac{\partial^2 u}{\partial x \partial x} = \frac{\nu}{UL} \frac{\partial^2 (u/U)}{\partial (x/L) \partial (x/L)}  = \frac{1}{Re} \frac{\partial^2 \overline{u}}{\partial \overline{x}^2}\]</div>
+\[
+ \frac{L}{U^2} \nu\frac{\partial^2 u}{\partial x \partial x} = \frac{\nu}{UL} \frac{\partial^2 (u/U)}{\partial (x/L) \partial (x/L)}  = \frac{1}{Re} \frac{\partial^2 \overline{u}}{\partial \overline{x}^2}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \nu \frac{\partial^2 u}{\partial y \partial y} = \frac{\partial^2 (u/U)}{\partial (\frac{y}{L} \sqrt{Re}) \partial (\frac{y}{L} \sqrt{Re})}  = \frac{\partial^2 \overline{u}}{\partial \overline{y}^2}\]</div>
+\[
+ \frac{L}{U^2} \nu \frac{\partial^2 u}{\partial y \partial y} = \frac{\partial^2 (u/U)}{\partial (\frac{y}{L} \sqrt{Re}) \partial (\frac{y}{L} \sqrt{Re})}  = \frac{\partial^2 \overline{u}}{\partial \overline{y}^2}
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \frac{1}{\rho}\frac{\partial p}{\partial x} = \frac{\partial \frac{p}{\rho U^2}}{\partial x/L} = \frac{\partial \overline{p}}{\partial \overline{x}}\]</div>
+\[
+ \frac{L}{U^2} \frac{1}{\rho}\frac{\partial p}{\partial x} = \frac{\partial \frac{p}{\rho U^2}}{\partial x/L} = \frac{\partial \overline{p}}{\partial \overline{x}}
+\]</div>
 <p>The second derivative of <span class="math notranslate nohighlight">\(\overline{u}\)</span> in the <span class="math notranslate nohighlight">\(x\)</span>-direction is neglected and we end up with</p>
 <div class="math notranslate nohighlight">
-\[\frac{\partial \overline{u}}{\partial \overline{t}} + \overline{u} \frac{\partial \overline{u}}{\partial \overline{x}} +\overline{v} \frac{\partial \overline{u}}{\partial \overline{y}} = \frac{\partial^2 \overline{u}}{\partial \overline{y}^2} - \frac{\partial \overline{p}}{\partial \overline{x}}\]</div>
+\[
+\frac{\partial \overline{u}}{\partial \overline{t}} + \overline{u} \frac{\partial \overline{u}}{\partial \overline{x}} +\overline{v} \frac{\partial \overline{u}}{\partial \overline{y}} = \frac{\partial^2 \overline{u}}{\partial \overline{y}^2} - \frac{\partial \overline{p}}{\partial \overline{x}}
+\]</div>
 <p>In a similar manner it is trivial to show that the continuity equation is unchanged through normalization</p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial \overline{u}}{\partial \overline{x}} + \frac{\partial \overline{v}}{\partial \overline{y}} = 0.\]</div>
+\[
+ \frac{\partial \overline{u}}{\partial \overline{x}} + \frac{\partial \overline{v}}{\partial \overline{y}} = 0.
+\]</div>
 <p>whereas the momentum equation in the wall normal direction is found from</p>
 <div class="math notranslate nohighlight">
-\[  \frac{L}{U^2} \frac{\partial v}{\partial t} = \frac{1}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{t}},\]</div>
+\[
+  \frac{L}{U^2} \frac{\partial v}{\partial t} = \frac{1}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{t}},
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} u\frac{\partial v}{\partial x} = \frac{\overline{u}}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{x}},\]</div>
+\[
+ \frac{L}{U^2} u\frac{\partial v}{\partial x} = \frac{\overline{u}}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{x}},
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} v\frac{\partial v}{\partial y} = \frac{\overline{v}}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{y}},\]</div>
+\[
+ \frac{L}{U^2} v\frac{\partial v}{\partial y} = \frac{\overline{v}}{\sqrt{Re}} \frac{\partial \overline{v}}{\partial \overline{y}},
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \nu\frac{\partial^2 v}{\partial x \partial x} = \frac{1}{Re^{\frac{3}{2}}} \frac{\partial^2 \overline{v}}{\partial \overline{x}^2},\]</div>
+\[
+ \frac{L}{U^2} \nu\frac{\partial^2 v}{\partial x \partial x} = \frac{1}{Re^{\frac{3}{2}}} \frac{\partial^2 \overline{v}}{\partial \overline{x}^2},
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \nu\frac{\partial^2 v}{\partial y \partial y} = \frac{1}{\sqrt{Re}} \frac{\partial^2 \overline{v}}{\partial \overline{y}^2},\]</div>
+\[
+ \frac{L}{U^2} \nu\frac{\partial^2 v}{\partial y \partial y} = \frac{1}{\sqrt{Re}} \frac{\partial^2 \overline{v}}{\partial \overline{y}^2},
+\]</div>
 <div class="math notranslate nohighlight">
-\[ \frac{L}{U^2} \frac{1}{\rho}\frac{\partial p}{\partial y} = \sqrt{Re} \frac{\partial \frac{p}{\rho U^2}}{\partial (\frac{y}{L} \sqrt{Re})} = \sqrt{Re} \frac{\partial \overline{p}}{\partial \overline{y}}.\]</div>
+\[
+ \frac{L}{U^2} \frac{1}{\rho}\frac{\partial p}{\partial y} = \sqrt{Re} \frac{\partial \frac{p}{\rho U^2}}{\partial (\frac{y}{L} \sqrt{Re})} = \sqrt{Re} \frac{\partial \overline{p}}{\partial \overline{y}}.
+\]</div>
 <p>Dividing all terms by <span class="math notranslate nohighlight">\(\sqrt{Re}\)</span> the only term left is <span class="math notranslate nohighlight">\(\partial \overline{p} / \partial \overline{y}\)</span> and thus naturally from the momentum equation in the wall normal direction we obtain</p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial \overline{p}}{\partial \overline{y}} = 0.\]</div>
-<p>(Note that there is an error in White Eq.~(4-32), where the temperature is also accounted for. In Eq.~(4-32) the temperature term should be divided by <span class="math notranslate nohighlight">\(\sqrt{Re}\)</span>.)</p>
+\[
+ \frac{\partial \overline{p}}{\partial \overline{y}} = 0.
+\]</div>
+<p>Note that there is an error in White Eq. (4-32), where the temperature is also accounted for. In Eq. (4-32) the temperature term should be divided by <span class="math notranslate nohighlight">\(\sqrt{Re}\)</span>.</p>
 <p id="bibtex-bibliography-content/solutions/chapter4/boundarylayer-0"></p>
 </div>
 
@@ -316,6 +396,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Chapter 4</a>
+    <a class='right-next' id="next-link" href="blasius.html" title="next page">Suggested derivation of Blasius equation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

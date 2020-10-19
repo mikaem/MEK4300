@@ -252,7 +252,7 @@
 <p><em>Deadline for submission is <strong>November 13’th</strong>. Submit by email, preferably in jupyter notebook format.</em></p>
 <p><strong>1)</strong>
 Implement a nonlinear solver for the Falkner-Skan equation <a class="reference internal" href="../solutions/chapter4/falknerskan.html#equation-eq-falknerskan">(70)</a>.</p>
-<p><strong>1a)</strong> Vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> and reproduce Fig. 4-11 (a) and (b) in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id1">[Whi06]</a>.</p>
+<p><strong>1a)</strong> Vary the parameter <span class="math notranslate nohighlight">\(\beta\)</span> and reproduce Fig. 4-11 (a) and (b) in <a class="bibtex reference internal" href="#white06" id="id1">[Whi06]</a>.</p>
 <p><strong>1b)</strong> What happens at <span class="math notranslate nohighlight">\(\beta=-0.19884\)</span>? At <span class="math notranslate nohighlight">\(-0.19884 \leq \beta \leq 0\)</span> there are according to White at least two possible solutions. One solution is shown in Fig. 4-11a in White. Another solution shows negative values for <span class="math notranslate nohighlight">\(f^{''}(0)\)</span>, thus indicating backflow close to the wall. Using different initial guesses for the solution it should be possible to obtain both solutions. Show these in a plot for <span class="math notranslate nohighlight">\(\beta = -0.1\)</span>.</p>
 <p><strong>2)</strong>
 Perform benchmarks 2.2 a) and 2.2 b) of <a class="reference external" href="http://www.uio.no/studier/emner/matnat/math/MEK4300/v14/undervisningsmateriale/schaeferturek1996.pdf">Schaefer and Turek</a> and report your results comparing with Table 3 and 4 of the benchmark.</p>
@@ -298,11 +298,16 @@ use a regularly spaced mesh that is not skewed towards the wall?</p>
 <p>where the “constant” <span class="math notranslate nohighlight">\(B=5.5\)</span>. Can you improve the agreement with the computational results by modifying the constants? What is the value of the turbulent viscosity <span class="math notranslate nohighlight">\(\nu_T\)</span> at the center of the channel? Do you believe this value is reasonable?</p>
 <p><strong>4)</strong>
 Derive from first principles</p>
-<p><strong>4a)</strong> the Reynolds Averaged Navier Stokes equations (Eq. 6-13 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id2">[Whi06]</a>).</p>
-<p><strong>4b)</strong> the turbulence kinetic energy equation (Eq. 6.17 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id3">[Whi06]</a>).</p>
-<p><strong>4c)</strong> the Reynolds stress equation (Eq. 6-18 in <a class="bibtex reference internal" href="../chapter4/intro.html#white06" id="id4">[Whi06]</a>).</p>
+<p><strong>4a)</strong> the Reynolds Averaged Navier Stokes equations (Eq. 6-13 in <a class="bibtex reference internal" href="#white06" id="id2">[Whi06]</a>).</p>
+<p><strong>4b)</strong> the turbulence kinetic energy equation (Eq. 6.17 in <a class="bibtex reference internal" href="#white06" id="id3">[Whi06]</a>).</p>
+<p><strong>4c)</strong> the Reynolds stress equation (Eq. 6-18 in <a class="bibtex reference internal" href="#white06" id="id4">[Whi06]</a>).</p>
 <p>See, e.g., <a class="reference external" href="http://turbulence-online.com/Publications/Lecture_Notes/Turbulence_Lille/TB_16January2013.pdf">this book</a> for more details about derivation.</p>
-<p>{% bibliography –cited %}</p>
+<p id="bibtex-bibliography-content/mandatory/mandatory2-0"><dl class="citation">
+<dt class="bibtex label" id="white06"><span class="brackets">Whi06</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>)</span></dt>
+<dd><p>Frank M. White. <em>Viscous Fluid Flow</em>. McGraw-Hill, third edition, 2006.</p>
+</dd>
+</dl>
+</p>
 </div>
 
     <script type="text/x-thebe-config">

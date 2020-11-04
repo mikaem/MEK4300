@@ -3,7 +3,7 @@
 *Deadline for submission is **October 9'th**. Submit by email, preferably in jupyter notebook format.*
 
 **1)**
-Verify the analytical solutions (3-47), (3-49) and (3-52) in {ref}`white06`. Experiment with higher order "CG" elements (the solution is then higher order continuous piecewise polynomials) and compute the *errornorm*. Report tables of the error vs mesh size (`mesh.hmin()`) and comment on the order of accuracy. See {ref}`analysing-the-error`.
+Verify the analytical solutions (3-47), (3-49) and (3-52) in {cite}`white06`. Experiment with higher order "CG" elements (the solution is then higher order continuous piecewise polynomials) and compute the *errornorm*. Report tables of the error vs mesh size (`mesh.hmin()`) and comment on the order of accuracy. See {ref}`analysing-the-error`.
 
 **2)**
 Solve the normalized equations for plane stagnation flow {eq}`eq:StagnationNonNorm` and axissymmetric stagnation flow {eq}`eq:AxiStagnationNonNorm` using both Picard and Newton iterations. Hint: Define a new variable $H = F'$ and solve a coupled system of equations for $H$ and $F$. Start by creating a mixed function space, with test and trial-functions.
@@ -21,7 +21,7 @@ vh, vf = TestFunctions(VV)
 ```
 
 **3)**
-Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow for a driven cavity. The domain of the cavity is $[0, 1]\times[0, 1]$ and the dynamic viscosity $\mu=100$. The domain consists of 4 solid walls, where the top lid ($y=1$ and $ 0 < x < 1$) is moving at speed $\boldsymbol{u}=(1, 0)$. The remaining 3 walls are not moving. Compute the streamfunction and find the center of the vortex, i.e., the point where the streamfunction goes through a minimum. For the driven cavity the value of the streamfunction can be set to zero on the entire exterior domain.
+Assume low Reynolds number and use FEniCS to compute a numerical solution of Stokes flow for a driven cavity. The domain of the cavity is $[0, 1]\times[0, 1]$ and the dynamic viscosity $\mu=100$. The domain consists of 4 solid walls, where the top lid ($y=1$ and $0<x<1$) is moving at speed $\boldsymbol{u}=(1, 0)$. The remaining 3 walls are not moving. Compute the streamfunction and find the center of the vortex, i.e., the point where the streamfunction goes through a minimum. For the driven cavity the value of the streamfunction can be set to zero on the entire exterior domain.
 
 Note that the boundary condition on $\psi$ follows from the very definition of the streamfunction {eq}`eq:streamfunction2D`, where it should be understood that the variable $\psi$ will only need to be known up to an arbitrary constant. If $\psi$ is a solution, then $\psi+C$ gives exactly the same velocity field since the partial derivative of a constant (here $C$) is zero. As such we can put an "anchor" on the solution by specifying that $\psi=0$ at the corner where $x=0, y=0$. It then follows that $\psi$ will be zero on the entire domain.  Along the left hand border, where $x=0$ and $0 \leq y \leq 1$, we have the boundary condition on velocity stating that $u=\partial \psi / \partial y = 0$. Since the gradient of $\psi$ is 0 along the border it follows that $\psi=0$ along this border. Similarly, for the top lid $v=-\partial \psi / \partial x=0$, and thus $\psi$ must be equal to $0$ for the entire top lid. The same procedure applies to the last two borders and consequently $\psi=0$ for the entire border. Note that the value does not have to be zero, any constant value may be chosen.
 
@@ -73,7 +73,7 @@ Briefly, this code creates a Function that has an integer value on all facets (i
 A = assemble(Constant(1)*ds(1))
 ```
 
-**4d)** Reverse the direction of the flow using $\boldsymbol{u}=(-1, 0)$ for the top boundary. Does this change the location of the vortex? Explain the result.
+**4d)** Reverse the direction of the flow using $\boldsymbol{u}=(-1, 0)$ for the top boundary. Does this change the streamlines? Explain the result.
 
 **4e)** Compute the normal stress on the bottom wall. Is there any difference depending on the direction of the flow? Is this realistic for real flows of moderate Reynolds numbers?
 

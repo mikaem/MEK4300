@@ -20,10 +20,10 @@
             - file: content/solutions/chapter3/couette
             - file: content/solutions/chapter3/poiseuille
         - file: content/solutions/chapter4/intro
-          #sections:
-            #- file: content/solutions/chapter4/boundarylayer
-            #- file: content/solutions/chapter4/blasius
-            #- file: content/solutions/chapter4/falknerskan
+          sections:
+            - file: content/solutions/chapter4/boundarylayer
+            - file: content/solutions/chapter4/blasius
+            - file: content/solutions/chapter4/falknerskan
 
 - part: FEniCS
   chapters:
@@ -35,3 +35,4 @@
 - part: Mandatory assignments
   chapters:
     - file: content/mandatory/mandatory1
+    - file: content/mandatory/mandatory2

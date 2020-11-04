@@ -12,6 +12,7 @@ clear:
 
 book:
 	jupyter-book build ./
+	python scripts/thebe_mikaem.py
 	python scripts/preprocess.py
 
 commit: pdf latexpdf book
